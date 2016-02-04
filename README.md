@@ -22,4 +22,31 @@ Timetable / Schedule
    3. Decide a fixed time to summarize the progress of each day
    4. Start coding
 
- * [Feb 3]: [TODO]
+ * [Feb 3]: ...
+
+ * [Feb 4]: Set up workspace/framework
+    * Spring Framework (IoC)
+    * Spring MVC
+    * Hibernate ORM
+    * Slf4j / Logback
+
+
+ * [Feb 5]: 
+    * User Register/Login (Server side)
+    * Integrate Twitter Bootstrap
+    * Implement JSP layout page (via tag)
+
+ * [Feb 6]:
+    * Book management (CRUD)
+    * Renting management
+    * Search / Query
+
+ * [Feb 7]
+    * Polish UI
+    * Reading Feedback / Comment System
+    * Book recommendation
+
+  ```
+  /* Happy New Year! */
+  ```
+ [TODO]
