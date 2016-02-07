@@ -1,8 +1,11 @@
 package cn.edu.xjtu.se.jackq.libmgmt.entity;
 
 
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+
 
 @Entity
 public class User implements Serializable {
@@ -14,15 +17,28 @@ public class User implements Serializable {
     }
 
     @Id
-    @Column(name = "id")
+    @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "name", length = 25, unique = true, nullable = false)
+    @Column(name = "UserName", length = 25, unique = true, nullable = false)
+    private String userName;
+
+    @Column(name = "PasswordHash", nullable = false)
+    private String passwordHash;
+
+    @Column(name = "Name")
     private String name;
 
-    @Column(name = "passwordHash", nullable = false)
-    private String passwordHash;
+    @Column(name = "Email")
+    private String email;
+
+    @Column(name = "PhoneNumber")
+    private String phoneNumber;
+
+
+    @Column(name = "dateOfBirth")
+    private Date dateOfBirth;
 
     public int getId() {
         return id;
@@ -30,6 +46,22 @@ public class User implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
     }
 
     public String getName() {
@@ -40,11 +72,27 @@ public class User implements Serializable {
         this.name = name;
     }
 
-    public String getPasswordHash() {
-        return passwordHash;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 }

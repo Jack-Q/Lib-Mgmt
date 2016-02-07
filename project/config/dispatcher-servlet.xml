@@ -35,7 +35,8 @@
             class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
 
     <mvc:resources mapping="/style/**" location="/static/style/"/>
-    <mvc:resources mapping="/script/**" location="/static/style"/>
+    <mvc:resources mapping="/script/**" location="/static/script/"/>
+    <mvc:resources mapping="/font/**" location="/static/fonts/" />
     <mvc:annotation-driven/>
 
 </beans>

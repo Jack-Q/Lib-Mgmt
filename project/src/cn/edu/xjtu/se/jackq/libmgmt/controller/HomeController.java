@@ -29,13 +29,13 @@ public class HomeController {
         return "home/index";
     }
 
-    @RequestMapping( path = "/add", method = RequestMethod.GET)
+    @RequestMapping( path = "add", method = RequestMethod.GET)
     public String addGet(@ModelAttribute("User") User user){
         logger.debug("request Home Add ");
         return "home/add";
     }
 
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
+    @RequestMapping(path = "add", method = RequestMethod.POST)
     public String addPost(@ModelAttribute("User") User user, Map<String, Object>map){
         map.put("indexMessageId", "user.add.success");
         userService.addUser(user);

@@ -17,7 +17,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="packagesToScan">
             <list>
-                <value>cn.edu.xjtu.se.jackq.libmgmt.dao</value>
+                <!-- Package where Hibernate find data model -->
                 <value>cn.edu.xjtu.se.jackq.libmgmt.entity</value>
             </list>
         </property>
@@ -26,7 +26,8 @@
             <props>
                 <prop key="hibernate.dialect">${jdbc.dialect}</prop>
                 <prop key="hibernate.show_sql">true</prop>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <!-- Update database when schema is updated -->
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
             </props>
         </property>
     </bean>

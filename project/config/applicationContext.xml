@@ -10,5 +10,4 @@
 
     <context:component-scan base-package="cn.edu.xjtu.se.jackq.libmgmt.service" />
     <context:component-scan base-package="cn.edu.xjtu.se.jackq.libmgmt.dao" />
-
 </beans>

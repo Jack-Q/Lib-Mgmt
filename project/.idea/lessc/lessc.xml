@@ -10,18 +10,19 @@
               <option name="cssDirectories">
                 <list>
                   <CssDirectory>
-                    <option name="path" value="$PROJECT_DIR$\web\static\style" />
+                    <option name="path" value="$PROJECT_DIR$/../project\web\static\style" />
                   </CssDirectory>
                 </list>
               </option>
               <option name="excludePattern" value="inc-*" />
               <option name="id" value="0" />
-              <option name="lessDirPath" value="$PROJECT_DIR$\web\static\less-style" />
+              <option name="lessDirPath" value="$PROJECT_DIR$/../project\web\static\less-style" />
               <option name="name" value="Less Compiler" />
             </LessProfile>
           </value>
         </entry>
       </map>
     </option>
+    <option name="copyCssFiles" value="false" />
   </component>
 </project>
