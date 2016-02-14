@@ -20,7 +20,23 @@
     <inspection_tool class="JNDIResource" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="insideTryAllowed" value="false" />
     </inspection_tool>
-    <inspection_tool class="JspUnescapedEl" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="JspUnescapedEl" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="safeTags">
+        <list>
+          <SafeTagInfo>
+            <option name="namespace" value="http://java.sun.com/jsp/jstl/core" />
+            <option name="tagName" value="out" />
+            <option name="attributeName" value="value" />
+            <option name="fix" value="true" />
+          </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="http://www.springframework.org/tags/form" />
+            <option name="tagName" value="form" />
+            <option name="attributeName" value="action" />
+          </SafeTagInfo>
+        </list>
+      </option>
+    </inspection_tool>
     <inspection_tool class="LoggerInitializedWithForeignClass" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="loggerClassName" value="org.apache.log4j.Logger,org.slf4j.LoggerFactory,org.apache.commons.logging.LogFactory,java.util.logging.Logger" />
       <option name="loggerFactoryMethodName" value="getLogger,getLogger,getLog,getLogger" />

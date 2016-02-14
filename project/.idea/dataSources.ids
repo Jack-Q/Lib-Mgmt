@@ -8,32 +8,6 @@
     <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
     <database-model serializer="dbm" rdbms="MYSQL" format-version="2.4">
       <schema id="1" name="libmgmt"/>
-      <table id="2" parent="1" name="user"/>
-      <column id="3" parent="2" name="id">
-        <mandatory>1</mandatory>
-        <data-type>int(11)</data-type>
-      </column>
-      <column id="4" parent="2" name="name">
-        <mandatory>1</mandatory>
-        <data-type>varchar(25)</data-type>
-      </column>
-      <column id="5" parent="2" name="passwordHash">
-        <mandatory>1</mandatory>
-        <data-type>varchar(255)</data-type>
-      </column>
-      <index id="6" parent="2" name="UK_syftr7gx86fwf7ox7bgvnnta7">
-        <columns>name</columns>
-        <desc-columns></desc-columns>
-        <unique>1</unique>
-      </index>
-      <key id="7" parent="2" name="PRIMARY">
-        <columns>id</columns>
-        <primary>1</primary>
-      </key>
-      <key id="8" parent="2" name="UK_syftr7gx86fwf7ox7bgvnnta7">
-        <columns>name</columns>
-        <underlying-index>UK_syftr7gx86fwf7ox7bgvnnta7</underlying-index>
-      </key>
     </database-model>
   </data-source>
 </component>

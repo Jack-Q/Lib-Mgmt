@@ -13,7 +13,20 @@
         http://www.springframework.org/schema/context/spring-context.xsd ">
 
     <context:component-scan base-package="cn.edu.xjtu.se.jackq.libmgmt.controller"/>
+    
 
+    <bean class="cn.edu.xjtu.se.jackq.libmgmt.interceptor.AuthorizationInterceptor" id="authorizationInterceptor">
+        <property name="authPageUrl" value="/user/login" />
+        <property name="indexPageUrl" value="/" />
+        <property name="userProfileUrl" value="/user" />
+    </bean>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <ref bean="authorizationInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/views/"/>
@@ -34,9 +47,19 @@
             p:location="classpath:persistence-mysql.properties"
             class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
 
+    <bean class="org.springframework.context.support.ConversionServiceFactoryBean" id="conversionService">
+        <property name="converters">
+            <array>
+                <bean class="cn.edu.xjtu.se.jackq.libmgmt.converter.StringToDateConverter">
+                    <property name="pattern" value="yyyy-mm-dd"/>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
     <mvc:resources mapping="/style/**" location="/static/style/"/>
     <mvc:resources mapping="/script/**" location="/static/script/"/>
-    <mvc:resources mapping="/font/**" location="/static/fonts/" />
-    <mvc:annotation-driven/>
+    <mvc:resources mapping="/font/**" location="/static/fonts/"/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
 </beans>

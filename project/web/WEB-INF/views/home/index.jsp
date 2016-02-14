@@ -12,21 +12,47 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <layout:basic pageTitle="Welcome">
-    <div class="index-banner">
-        Welcome to Lib-Mgmt
-    </div>
-    <div class="index-section">
-        <c:if test="${(indexMessageId != null)}">
-            <spring:message code="${fn:escapeXml(indexMessageId)}" />
-        </c:if>
-        <div>
-            <a href="<spring:url value="/add"/>" >Add User</a>
+    <div class="container">
+
+        <div class="index-banner">
+            Welcome to Lib-Mgmt
         </div>
-            <%--@elvariable id="userList" type="java.util.List<cn.edu.xjtu.se.jackq.libmgmt.entity.User>"--%>
-        <c:forEach items="${userList}" var="user">
+        <div class="index-section">
+
+            <c:if test="${(indexMessageId != null)}">
+                <div class="alert-info alert alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <p><spring:message code="${fn:escapeXml(indexMessageId)}" /></p>
+                </div>
+            </c:if>
             <div>
-                <c:out value="${user.name}"/> - <c:out value="${user.passwordHash}"/>
+                Current User List
             </div>
-        </c:forEach>
+            <div>
+                <ul>
+                    <li>
+                        Currently, password hash function is merely pass its literal value
+                    </li>
+
+                    <c:if test="${userList.size() == 0}">
+                        <li>
+                            Create new user by Register page ()
+                        </li>
+                    </c:if>
+
+                </ul>
+            </div>
+            <dl>
+                <c:forEach items="${userList}" var="user">
+                    <dt>
+                        <c:out value="${user.name}"/>
+                    </dt>
+                    <dd>
+                        <c:out value="${user.passwordHash}"/>
+                    </dd>
+                </c:forEach>
+            </dl>
+
+        </div>
     </div>
 </layout:basic>

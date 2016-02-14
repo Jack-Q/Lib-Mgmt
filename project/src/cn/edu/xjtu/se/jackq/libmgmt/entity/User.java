@@ -2,6 +2,8 @@ package cn.edu.xjtu.se.jackq.libmgmt.entity;
 
 
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -21,6 +23,7 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @NaturalId
     @Column(name = "UserName", length = 25, unique = true, nullable = false)
     private String userName;
 

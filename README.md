@@ -31,22 +31,19 @@ Timetable / Schedule
     * Slf4j / Logback
 
 
- * [Feb 5]: 
+ * [Feb 5]:
     * User Register/Login (Server side)
     * Integrate Twitter Bootstrap
     * Implement JSP layout page (via tag)
 
- * [Feb 6]:
+ * [Feb 6]: (Postponed)
     * Book management (CRUD)
     * Renting management
     * Search / Query
 
- * [Feb 7]
+ * [Feb 7]: (Postponed)
     * Polish UI
     * Reading Feedback / Comment System
     * Book recommendation
 
-  ```
-  /* Happy New Year! */
-  ```
- [TODO]
+* [TODO]

@@ -5,8 +5,9 @@
 <%@ attribute name="notLogin" required="false" fragment="true"
               description="HTML Content which will be represented when no user has logined" %>
 
+
 <c:choose>
-    <c:when test="false">
+    <c:when test="${sessionScope['Auth'].authorized}">
         <jsp:invoke fragment="whenLogin"/>
     </c:when>
     <c:otherwise>

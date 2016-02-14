@@ -12,7 +12,12 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml; classpath:spring-hibernate.xml; classpath:dispatcher-servlet.xml</param-value>
+        <param-value>
+            classpath:applicationContext.xml;
+            classpath:spring-hibernate.xml;
+            classpath:dispatcher-servlet.xml;
+            <!--classpath:spring-aop.xml-->
+        </param-value>
 
     </context-param>
 

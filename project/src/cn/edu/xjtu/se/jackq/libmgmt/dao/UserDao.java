@@ -15,6 +15,7 @@ public interface UserDao {
     User getUserByName(String name);
     void updateNameById(int id, String newName);
     void updatePasswordById(int id, String password);
-
+    boolean updateUser(User user);
     List<User> listUser();
+
 }

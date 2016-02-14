@@ -28,6 +28,17 @@
   -webkit-font-smoothing: antialiased;
 }
 
+// Theme Tweak
+.alert{
+  border-radius: 10px;
+}
+
+.form-group label.control-label{
+  font-size: 14px;
+  text-shadow: 0 0 2px #cdd;
+  color: #353335;
+}
+
 body, html {
   font-family: "Microsoft YaHei UI", "Microsoft YaHei", SimHei, "Segoe UI", sans-serif;
   font-size: 18px;
@@ -43,12 +54,14 @@ body {
 }
 
 .main-header {
+  height:50px;
   ul.nav > li > .btn {
     margin: 0 10px;
     padding: 0 20px;
     line-height: 60px;
     transform-origin: top center;
-    transform: scale(1.1);
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.3);
+    border-radius: 0 0 5px 5px;
   }
 }
 

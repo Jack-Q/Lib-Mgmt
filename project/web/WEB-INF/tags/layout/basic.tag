@@ -68,7 +68,12 @@
                 <layout:login>
                     <jsp:attribute name="whenLogin">
                         <li>
-                            <a href="#">Welcome Jack !</a>
+                            <a href="<spring:url value="/user/index" />"
+                               title="manage user profile">Welcome <c:out value="${sessionScope.Auth.name}"/>! </a>
+                        </li>
+                        <li>
+
+                            <a href="<spring:url value="/user/logout"/>">Logout</a>
                         </li>
                     </jsp:attribute>
                     <jsp:attribute name="notLogin">
@@ -96,7 +101,7 @@
     </div>
     <div class="page-copyright">
 
-        2016 &copy; Lib-Mgmt
+        2016 &copy; Lib-Mgmt | <a href="<spring:url value="/home/about" />">About</a>
 
     </div>
 </div>

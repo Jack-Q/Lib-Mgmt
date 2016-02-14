@@ -43,8 +43,12 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserByName(String name) {
-        //sessionFactory.getCurrentSession()
-        return null;
+        Session currentSession = sessionFactory.getCurrentSession();
+//        User user = currentSession.createQuery(
+//                "select u from User u where u.userName = :name").setParameter("name", name).get
+        User user = (User) currentSession.bySimpleNaturalId(User.class).load(name);
+
+        return user;
     }
 
     @Override
@@ -55,6 +59,13 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void updatePasswordById(int id, String password) {
 
+    }
+
+    @Override
+    public boolean updateUser(User user) {
+        Session currentSession = this.sessionFactory.getCurrentSession();
+        currentSession.update(user);
+        return true;
     }
 
     @SuppressWarnings("unchecked")
