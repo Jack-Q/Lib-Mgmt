@@ -11,10 +11,10 @@
     <jsp:body>
         <div class="container">
             <h1>
-                User Profile
+                User Management
             </h1>
             <h2>
-                Manage Your Account Data
+                Manage User Accounts
             </h2>
             <div class="row">
                 <div class="col-sm-6 col-lg-4">
@@ -22,7 +22,7 @@
                         <c:out value="${User.name}"/>
                     </div>
                 </div>
-                </div>
             </div>
+        </div>
     </jsp:body>
 </layout:basic>

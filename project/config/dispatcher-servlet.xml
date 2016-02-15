@@ -19,6 +19,7 @@
         <property name="authPageUrl" value="/user/login" />
         <property name="indexPageUrl" value="/" />
         <property name="userProfileUrl" value="/user" />
+        <property name="authDeniedUrl" value="/error/denied"/>
     </bean>
     <mvc:interceptors>
         <mvc:interceptor>

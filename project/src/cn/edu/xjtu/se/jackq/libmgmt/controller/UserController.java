@@ -2,6 +2,7 @@ package cn.edu.xjtu.se.jackq.libmgmt.controller;
 
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.Auth;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserLogin;
@@ -16,9 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
-import java.util.Arrays;
 import java.util.Base64;
 
 @Controller
@@ -33,6 +32,12 @@ public class UserController {
     @RequestMapping(value = {"", "index"})
     public String index(){
         return "user/index";
+    }
+
+    @RequestMapping(value = "manage")
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String manage() {
+        return "user/manage";
     }
 
     @Auth(allowAnonymous = true)
@@ -148,7 +153,6 @@ public class UserController {
         redirectAttributes.addFlashAttribute("indexMessageId", "user.register.success");
         return "redirect:" + returnToUrl;
     }
-
 
 
     private String decodeRedirectUrlPara(String redirectToUrPara){

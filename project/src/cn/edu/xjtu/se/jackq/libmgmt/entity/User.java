@@ -1,22 +1,18 @@
 package cn.edu.xjtu.se.jackq.libmgmt.entity;
 
 
-
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
 public class User implements Serializable {
 
     private static final long serialVersionUID = -769431514181613067L;
-
-    public User(){
-
-    }
 
     @Id
     @Column(name = "Id")
@@ -40,8 +36,13 @@ public class User implements Serializable {
     private String phoneNumber;
 
 
-    @Column(name = "dateOfBirth")
+    @Column(name = "DateOfBirth")
     private Date dateOfBirth;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @JoinTable(name = "UserRole")
+    @Enumerated(EnumType.STRING)
+    private List<UserRole> roles;
 
     public int getId() {
         return id;
@@ -97,5 +98,13 @@ public class User implements Serializable {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public List<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
     }
 }

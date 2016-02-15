@@ -5,9 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Jack on 2/14/2016.
- */
+
 @Entity
 public class BookCopy implements Serializable {
     private static final long serialVersionUID = -4668523476390472345L;
@@ -21,6 +19,7 @@ public class BookCopy implements Serializable {
     private boolean loanable;
 
     @Column(name = "Status")
+    @Enumerated(EnumType.STRING)
     private BookCopyStatus status;
 
     @Column(name = "note")

@@ -46,6 +46,8 @@ public class UserServiceImpl implements UserService {
             sessionUser.setUserName(username);
             sessionUser.setName(user.getName());
             sessionUser.setId(user.getId());
+            sessionUser.setRoles(user.getRoles());
+
             return true;
         }
         return false;
