@@ -34,10 +34,22 @@ public class UserController {
         return "user/index";
     }
 
+    /**
+     * Manage Reader Accounts
+     */
     @RequestMapping(value = "manage")
     @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
     public String manage() {
         return "user/manage";
+    }
+
+    /**
+     * Manage Librarian Account
+     */
+    @RequestMapping(value = "admin")
+    @Auth(userRoles = UserRole.ADMIN)
+    public String admin() {
+        return "user/admin";
     }
 
     @Auth(allowAnonymous = true)

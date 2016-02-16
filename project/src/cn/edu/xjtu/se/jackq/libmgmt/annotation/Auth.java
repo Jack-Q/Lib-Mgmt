@@ -7,6 +7,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Indicate the accessibility of a specific controller or request handler
+ * <p>
+ * The authentication is processed in the
+ * {@link cn.edu.xjtu.se.jackq.libmgmt.interceptor.AuthorizationInterceptor AuthorizationInterceptor }.
+ *
+ * @author Jack Q
+ * @see cn.edu.xjtu.se.jackq.libmgmt.interceptor.AuthorizationInterceptor
+ */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Auth {

@@ -4,18 +4,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
+
+<c:set var="CurrentUser" value="${applicationScope}" scope="page"/>
+
 <layout:basic pageTitle="User Profile">
     <jsp:body>
         <div class="container">
             <h1>
-                User Management
+                User Management (Admin)
             </h1>
             <h2>
-                Manage User Accounts
+                Manage Administrator Accounts
             </h2>
             <div class="row">
                 <div class="col-sm-6 col-lg-4">
                     <div>
+                        Manage Accounts of Librarians
                     </div>
                 </div>
             </div>

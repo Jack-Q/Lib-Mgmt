@@ -34,6 +34,11 @@
             <option name="tagName" value="form" />
             <option name="attributeName" value="action" />
           </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="http://java.sun.com/JSP/Page" />
+            <option name="tagName" value="include" />
+            <option name="attributeName" value="page" />
+          </SafeTagInfo>
         </list>
       </option>
     </inspection_tool>

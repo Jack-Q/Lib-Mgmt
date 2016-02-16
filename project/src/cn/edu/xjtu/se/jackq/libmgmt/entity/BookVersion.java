@@ -1,13 +1,11 @@
 package cn.edu.xjtu.se.jackq.libmgmt.entity;
 
+import org.hibernate.annotations.NaturalId;
+
 import javax.persistence.*;
-import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Jack on 2/14/2016.
- */
 @Entity
 public class BookVersion implements Serializable {
     private static final long serialVersionUID = -2943826404696834910L;
@@ -15,6 +13,10 @@ public class BookVersion implements Serializable {
     @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @NaturalId
+    @Column(name = "VersionCode", unique = true, nullable = false)
+    private String versionCode;
 
     @Column(name = "VersionNote")
     private String versionNote;
@@ -51,6 +53,14 @@ public class BookVersion implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getVersionCode() {
+        return versionCode;
+    }
+
+    public void setVersionCode(String versionCode) {
+        this.versionCode = versionCode;
     }
 
     public String getVersionNote() {

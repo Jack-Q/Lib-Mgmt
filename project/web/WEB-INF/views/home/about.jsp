@@ -16,6 +16,6 @@
        </div>
    </div>
     <div class="index-section">
-
+        <jsp:include page="/about"/>
     </div>
 </layout:basic>

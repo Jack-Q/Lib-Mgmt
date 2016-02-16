@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<layout:basic pageTitle="User Profile">
+<layout:basic pageTitle="Book">
     <jsp:body>
         <div class="container">
             <h1>

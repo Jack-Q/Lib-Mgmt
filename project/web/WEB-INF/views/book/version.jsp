@@ -4,11 +4,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<layout:basic pageTitle="User Profile">
+<layout:basic pageTitle="Book">
     <jsp:body>
         <div class="container">
             <h1>
-                User Management
+                Book Version
             </h1>
             <h2>
                 Manage User Accounts
@@ -16,9 +16,17 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-4">
                     <div>
+                        <c:out value="${bookCode}"/>
+
+                    </div>
+                    <div>
+                        <c:out value="${versionCode}"/>
                     </div>
                 </div>
             </div>
+
+
+            <jsp:include page="/book/comment/${bookCode}/${versionCode}"/>
         </div>
     </jsp:body>
 </layout:basic>
