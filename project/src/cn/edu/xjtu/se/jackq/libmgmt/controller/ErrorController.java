@@ -11,4 +11,9 @@ public class ErrorController {
     public String denied() {
         return "error/denied";
     }
+
+    @RequestMapping("resource")
+    public String resource() {
+        return "error/resource";
+    }
 }

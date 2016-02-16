@@ -27,6 +27,11 @@
 
     </bean>
 
+    <bean class="cn.edu.xjtu.se.jackq.libmgmt.interceptor.StaticResourceAccessibilityInterceptor"
+          id="staticResourceAccessibilityInterceptor">
+        <property name="errorPageUrl" value="/error/resource"/>
+    </bean>
+
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
@@ -35,6 +40,10 @@
         <mvc:interceptor>
             <mvc:mapping path="/**"/>
             <ref bean="partialPageInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <ref bean="staticResourceAccessibilityInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 
