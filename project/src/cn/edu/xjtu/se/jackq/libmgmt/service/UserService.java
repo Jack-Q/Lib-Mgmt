@@ -1,6 +1,7 @@
 package cn.edu.xjtu.se.jackq.libmgmt.service;
 
 import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 
 import java.util.List;
@@ -29,4 +30,5 @@ public interface UserService{
 
     boolean changePassword(int id, String newPassword);
 
+    boolean addRole(User user, UserRole userRole);
 }

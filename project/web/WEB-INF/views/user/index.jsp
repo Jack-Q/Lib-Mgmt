@@ -46,10 +46,13 @@
                         <dd><c:out value="${User.phoneNumber}"/></dd>
                         <dt>Date of Birth</dt>
                         <dd><fmt:formatDate value="${User.dateOfBirth}" type="Date" pattern="yyyy-MM-dd"/></dd>
+                        <dt></dt>
+                        <dd>
+                            <a class="btn btn-raised btn-sm" href="<spring:url value="/user/information" />"
+                               title="Update Data">Update
+                                Data</a>
+                        </dd>
                     </dl>
-                    <a class="btn btn-raised btn-primary" href="<spring:url value="/user/information" />"
-                       title="Update Data">Update
-                        Data</a>
                 </div>
             </div>
         </div>

@@ -83,4 +83,10 @@
     <mvc:resources mapping="/font/**" location="/static/fonts/"/>
     <mvc:annotation-driven conversion-service="conversionService"/>
 
+
+    <bean class="cn.edu.xjtu.se.jackq.libmgmt.listener.ApplicationServiceInitializer"
+          name="applicationServiceInitializer">
+        <property name="adminAccountUserName" value="admin"/>
+        <property name="adminAccountPassword" value="admin"/>
+    </bean>
 </beans>

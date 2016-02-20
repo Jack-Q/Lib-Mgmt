@@ -250,6 +250,8 @@ public class UserController {
             model.addAttribute("errorMessageId", "user.information.error.failed");
             return "user/information";
         }
+        // Update session data
+        sessionUser.setName(user.getName());
         redirectAttributes.addFlashAttribute("indexMessageId", "user.information.success");
         return "redirect:/user/index";
     }

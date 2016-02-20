@@ -2,11 +2,13 @@ package cn.edu.xjtu.se.jackq.libmgmt.service;
 
 import cn.edu.xjtu.se.jackq.libmgmt.dao.UserDao;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,7 +23,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setUserName(username);
         user.setPasswordHash(hashPassword(password));
-        user.setName(username);
+        user.setName(name);
         userDao.addUser(user);
         return user;
     }
@@ -114,6 +116,22 @@ public class UserServiceImpl implements UserService {
 
         user.setPasswordHash(hashPassword);
         return userDao.updateUser(user);
+    }
+
+
+    public boolean addRole(User user, UserRole role) {
+        if (user == null || role == null) {
+            return false;
+        }
+
+        List<UserRole> roles = user.getRoles();
+        if (roles == null) {
+            roles = new ArrayList<>();
+        }
+        roles.add(role);
+        user.setRoles(roles);
+        return userDao.updateUser(user);
+
     }
 
     public void signIn(User user) {
