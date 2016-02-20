@@ -6,6 +6,7 @@ import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserChangePassword;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserInformation;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserLogin;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserRegister;
 import org.apache.commons.logging.Log;
@@ -58,7 +59,7 @@ public class UserController {
 
     @Auth(allowAnonymous = true)
     @RequestMapping(value = "login", method = RequestMethod.GET)
-    public String login(@ModelAttribute("UserLogin") UserLogin userLogin, @ModelAttribute("returnTo") String returnToUrlPara){
+    public String login(@ModelAttribute("UserLogin") UserLogin userLogin, @ModelAttribute("returnTo") String returnToUrlPara) {
         // String returnToUrl = decodeRedirectUrlPara(returnToUrlPara);
         return "user/login";
     }
@@ -69,18 +70,18 @@ public class UserController {
                           @ModelAttribute("returnTo") String returnToUrlPara,
                           RedirectAttributes redirectAttributes,
                           HttpSession session,
-                          Model model){
+                          Model model) {
         String returnToUrl = decodeRedirectUrlPara(returnToUrlPara);
         SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
-        if(sessionUser == null){
+        if (sessionUser == null) {
             sessionUser = new SessionUser();
             session.setAttribute("Auth", sessionUser);
         }
-        if(sessionUser.isAuthorized()){
+        if (sessionUser.isAuthorized()) {
             userService.doLogout(sessionUser);
         }
         boolean loginResult = userService.doLogin(userLogin.getUserName(), userLogin.getPassword(), sessionUser);
-        if(loginResult){
+        if (loginResult) {
             redirectAttributes.addFlashAttribute("indexMessageId", "user.login.success");
             return "redirect:" + returnToUrl;
         }
@@ -90,9 +91,9 @@ public class UserController {
 
     @Auth(allowAnonymous = true) // Set it allow anonymous to prevent infinite loop in login and logout
     @RequestMapping("logout")
-    public String logout(HttpSession session, RedirectAttributes redirectAttributes){
+    public String logout(HttpSession session, RedirectAttributes redirectAttributes) {
         SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
-        if(sessionUser != null && sessionUser.isAuthorized()){
+        if (sessionUser != null && sessionUser.isAuthorized()) {
             userService.doLogout(sessionUser);
             redirectAttributes.addFlashAttribute("indexMessageId", "user.logout.success");
         }
@@ -101,7 +102,7 @@ public class UserController {
 
     @Auth(allowAnonymous = true)
     @RequestMapping(value = "register", method = RequestMethod.GET)
-    public String register(@ModelAttribute("UserRegister") UserRegister userRegister,  @ModelAttribute("returnTo") String returnToUrlPara){
+    public String register(@ModelAttribute("UserRegister") UserRegister userRegister, @ModelAttribute("returnTo") String returnToUrlPara) {
         // String returnToUrl = decodeRedirectUrlPara(returnToUrlPara);
         return "user/register";
     }
@@ -110,36 +111,36 @@ public class UserController {
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String doRegister(@ModelAttribute("UserRegister") UserRegister userRegister,
                              @ModelAttribute("returnTo") String returnToUrlPara,
-                             Model model, HttpSession session, RedirectAttributes redirectAttributes){
+                             Model model, HttpSession session, RedirectAttributes redirectAttributes) {
 
         String returnToUrl = decodeRedirectUrlPara(returnToUrlPara);
 
         // Validate Data
         String username = userRegister.getUserName();
-        if(null == username || username.isEmpty() || username.length() > 25){
+        if (null == username || username.isEmpty() || username.length() > 25) {
             model.addAttribute("errorMessageId", "user.register.error.username");
             return "user/register";
         }
         String password = userRegister.getPassword();
-        if(null == password || password.isEmpty()){
+        if (null == password || password.isEmpty()) {
             model.addAttribute("errorMessageId", "user.register.error.password");
             return "user/register";
         }
         String name = userRegister.getName();
-        if(null == name || name.isEmpty()){
+        if (null == name || name.isEmpty()) {
             model.addAttribute("errorMessageId", "user.register.error.name");
             return "user/register";
         }
 
         // Check Name Availability
-        if(!userService.checkNameAvailability(username)){
+        if (!userService.checkNameAvailability(username)) {
             model.addAttribute("errorMessageId", "user.register.error.nameConflict");
             return "user/register";
         }
 
         //Create user
         User user = userService.addUser(username, password, name);
-        if(null == user){
+        if (null == user) {
             model.addAttribute("errorMessageId", "user.register.error.create");
             return "user/register";
         }
@@ -152,14 +153,14 @@ public class UserController {
 
         // Login user
         SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
-        if(sessionUser == null){
+        if (sessionUser == null) {
             sessionUser = new SessionUser();
             session.setAttribute("Auth", sessionUser);
         }
 
 
         boolean loginResult = userService.doLogin(username, password, sessionUser);
-        if(!loginResult){
+        if (!loginResult) {
 
             model.addAttribute("errorMessageId", "user.register.error.create");
             return "user/register";
@@ -214,22 +215,59 @@ public class UserController {
         return "redirect:/user/index";
     }
 
+    @RequestMapping(value = "information", method = RequestMethod.GET)
+    public String information(@ModelAttribute("UserInformation") UserInformation information, HttpSession httpSession) {
+        // Retrieve current user information
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+        User user = userService.getUser(sessionUser.getId());
+        information.setName(user.getName());
+        information.setEmail(user.getEmail());
+        information.setPhoneNumber(user.getPhoneNumber());
+        information.setDateOfBirth(user.getDateOfBirth());
+        return "user/information";
+    }
 
+    @RequestMapping(value = "information", method = RequestMethod.POST)
+    public String doInformation(@ModelAttribute("UserInformation") UserInformation userInformation,
+                                Model model,
+                                HttpSession httpSession,
+                                RedirectAttributes redirectAttributes) {
+        // Validate data
+        // Only name is a required one
+        if (null == userInformation.getName() || userInformation.getName().isEmpty()) {
+            model.addAttribute("errorMessageId", "user.information.error.name");
+            return "user/information";
+        }
 
-    private String decodeRedirectUrlPara(String redirectToUrPara){
+        // Update data
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+        User user = userService.getUser(sessionUser.getUserName());
+        user.setName(userInformation.getName());
+        user.setEmail(userInformation.getEmail());
+        user.setPhoneNumber(userInformation.getPhoneNumber());
+        user.setDateOfBirth(userInformation.getDateOfBirth());
+        if (!userService.updateUser(user)) {
+            model.addAttribute("errorMessageId", "user.information.error.failed");
+            return "user/information";
+        }
+        redirectAttributes.addFlashAttribute("indexMessageId", "user.information.success");
+        return "redirect:/user/index";
+    }
+
+    private String decodeRedirectUrlPara(String redirectToUrPara) {
         System.out.println("Return to Url " + redirectToUrPara);
         String returnToUrl;
         try {
             returnToUrl = new String(Base64.getDecoder().decode(redirectToUrPara));
             // Ensure the redirect url is not empty
-            if(returnToUrl.isEmpty()){
+            if (returnToUrl.isEmpty()) {
                 returnToUrl = "/";
             }
             // Ensure the redirect url is in current site
-            if(returnToUrl.charAt(0) != '/'){
+            if (returnToUrl.charAt(0) != '/') {
                 returnToUrl = "/";
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             returnToUrl = "/";
         }
         System.out.println("Decoded " + returnToUrl);

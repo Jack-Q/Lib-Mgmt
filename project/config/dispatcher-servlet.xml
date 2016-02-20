@@ -72,7 +72,7 @@
         <property name="converters">
             <array>
                 <bean class="cn.edu.xjtu.se.jackq.libmgmt.converter.StringToDateConverter">
-                    <property name="pattern" value="yyyy-mm-dd"/>
+                    <property name="pattern" value="yyyy-MM-dd"/>
                 </bean>
             </array>
         </property>

@@ -39,6 +39,9 @@
             <option name="tagName" value="include" />
             <option name="attributeName" value="page" />
           </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="http://java.sun.com/jsp/jstl/fmt" />
+          </SafeTagInfo>
         </list>
       </option>
     </inspection_tool>

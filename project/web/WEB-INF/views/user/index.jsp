@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <c:set var="CurrentUser" value="${applicationScope}" scope="page"/>
@@ -44,9 +45,10 @@
                         <dt>Phone Number</dt>
                         <dd><c:out value="${User.phoneNumber}"/></dd>
                         <dt>Date of Birth</dt>
-                        <dd><c:out value="${User.dateOfBirth}"/></dd>
+                        <dd><fmt:formatDate value="${User.dateOfBirth}" type="Date" pattern="yyyy-MM-dd"/></dd>
                     </dl>
-                    <a class="btn btn-raised btn-primary" href="<spring:url value="/user/edit" />" title="Update Data">Update
+                    <a class="btn btn-raised btn-primary" href="<spring:url value="/user/information" />"
+                       title="Update Data">Update
                         Data</a>
                 </div>
             </div>
