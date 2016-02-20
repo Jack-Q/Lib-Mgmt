@@ -22,6 +22,10 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-aop-4.2.4.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.ideaLibSources/spring-aop-4.2.4.RELEASE-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/spring-beans-4.2.4.RELEASE-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.ideaLibSources/spring-context-4.2.4.RELEASE-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

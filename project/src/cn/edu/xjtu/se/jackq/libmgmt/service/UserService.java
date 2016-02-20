@@ -5,11 +5,13 @@ import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 
 import java.util.List;
 
-/**
- * Created by Jack on 2/3/2016.
- */
+
 public interface UserService{
     User addUser(String username, String password, String name);
+
+    User getUser(String userName);
+
+    User getUser(int id);
     void remove(User user);
     List<User> listUser();
 
@@ -22,4 +24,9 @@ public interface UserService{
     boolean checkNameAvailability(String userName);
 
     boolean updateUser(User user);
+
+    boolean checkPassword(int id, String currentPassword);
+
+    boolean changePassword(int id, String newPassword);
+
 }

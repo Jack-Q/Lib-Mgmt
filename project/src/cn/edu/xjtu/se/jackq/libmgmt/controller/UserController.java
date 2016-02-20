@@ -5,6 +5,7 @@ import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserChangePassword;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserLogin;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserRegister;
 import org.apache.commons.logging.Log;
@@ -30,7 +31,10 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = {"", "index"})
-    public String index(){
+    public String index(Model model, HttpSession session) {
+        SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
+        User currentUser = userService.getUser(sessionUser.getId());
+        model.addAttribute("User", currentUser);
         return "user/index";
     }
 
@@ -167,6 +171,51 @@ public class UserController {
     }
 
 
+    @RequestMapping(value = "changePassword", method = RequestMethod.GET)
+    public String changePassword(@ModelAttribute("UserChangePassword") UserChangePassword userChangePassword) {
+        return "user/changePassword";
+    }
+
+    @RequestMapping(value = "changePassword", method = RequestMethod.POST)
+    public String doChangePassword(@ModelAttribute("UserChangePassword") UserChangePassword userChangePassword,
+                                   Model model,
+                                   HttpSession httpSession,
+                                   RedirectAttributes redirectAttributes) {
+
+        // Validate Data
+        String currentPassword = userChangePassword.getCurrentPassword();
+        if (null == currentPassword || currentPassword.isEmpty()) {
+            model.addAttribute("errorMessageId", "user.changePassword.error.currentPassword");
+            return "user/changePassword";
+        }
+
+        String newPassword = userChangePassword.getNewPassword();
+        if (null == newPassword || newPassword.isEmpty()) {
+            model.addAttribute("errorMessageId", "user.changePassword.error.newPassword");
+            return "user/changePassword";
+        }
+
+        // Get Current User
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+
+        // Check current password
+        if (!userService.checkPassword(sessionUser.getId(), currentPassword)) {
+            model.addAttribute("errorMessageId", "user.changePassword.error.wrongPassword");
+            return "user/changePassword";
+        }
+
+        // Update Password
+        if (!userService.changePassword(sessionUser.getId(), newPassword)) {
+            model.addAttribute("errorMessageId", "user.changePassword.error.failed");
+            return "user/changePassword";
+        }
+
+        redirectAttributes.addFlashAttribute("indexMessageId", "user.changePassword.success");
+        return "redirect:/user/index";
+    }
+
+
+
     private String decodeRedirectUrlPara(String redirectToUrPara){
         System.out.println("Return to Url " + redirectToUrPara);
         String returnToUrl;
@@ -186,4 +235,6 @@ public class UserController {
         System.out.println("Decoded " + returnToUrl);
         return returnToUrl;
     }
+
+
 }

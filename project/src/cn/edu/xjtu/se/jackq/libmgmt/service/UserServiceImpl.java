@@ -11,12 +11,12 @@ import java.util.List;
 
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
     @Override
-    @Transactional
     public User addUser(String username, String password, String name) {
         User user = new User();
         user.setUserName(username);
@@ -24,6 +24,17 @@ public class UserServiceImpl implements UserService {
         user.setName(username);
         userDao.addUser(user);
         return user;
+    }
+
+    @Override
+    public User getUser(String userName) {
+        return userDao.getUserByName(userName);
+    }
+
+    @Override
+    @Transactional
+    public User getUser(int id) {
+        return userDao.getUserById(id);
     }
 
     @Override
@@ -79,6 +90,30 @@ public class UserServiceImpl implements UserService {
     public boolean updateUser(User user) {
         userDao.updateUser(user);
         return true;
+    }
+
+    @Override
+    public boolean checkPassword(int id, String currentPassword) {
+        User user = userDao.getUserById(id);
+        String hashPassword = hashPassword(currentPassword);
+
+        return null != user && user.getPasswordHash().equals(hashPassword);
+    }
+
+    @Override
+    public boolean changePassword(int id, String newPassword) {
+        User user = userDao.getUserById(id);
+        String hashPassword = hashPassword(newPassword);
+        if (user == null) {
+            return false;
+        }
+
+        if (newPassword == null || newPassword.isEmpty()) {
+            return false;
+        }
+
+        user.setPasswordHash(hashPassword);
+        return userDao.updateUser(user);
     }
 
     public void signIn(User user) {

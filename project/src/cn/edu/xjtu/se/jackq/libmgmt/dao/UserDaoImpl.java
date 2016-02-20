@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void removeUser(int userId) {
         Session currentSession = sessionFactory.getCurrentSession();
-        User user = (User) currentSession.load(User.class, userId);
+        User user = (User) currentSession.get(User.class, userId);
         if(null != user) {
             currentSession.delete(user);
         }
@@ -36,9 +36,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public User getUserById(int userId) {
-
         Session currentSession = sessionFactory.getCurrentSession();
-        return (User) currentSession.load(User.class, userId);
+        return (User) currentSession.get(User.class, userId);
     }
 
     @Override
@@ -46,9 +45,8 @@ public class UserDaoImpl implements UserDao {
         Session currentSession = sessionFactory.getCurrentSession();
 //        User user = currentSession.createQuery(
 //                "select u from User u where u.userName = :name").setParameter("name", name).get
-        User user = (User) currentSession.bySimpleNaturalId(User.class).load(name);
 
-        return user;
+        return (User) currentSession.bySimpleNaturalId(User.class).load(name);
     }
 
     @Override

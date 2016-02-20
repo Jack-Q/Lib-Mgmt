@@ -16,7 +16,6 @@
             classpath:applicationContext.xml;
             classpath:spring-hibernate.xml;
             classpath:dispatcher-servlet.xml;
-            <!--classpath:spring-aop.xml-->
         </param-value>
 
     </context-param>
