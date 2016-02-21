@@ -19,6 +19,7 @@
         </div>
         <div class="index-section">
 
+                <%--@elvariable id="indexMessageId" type="java.lang.String"--%>
             <c:if test="${(indexMessageId != null)}">
                 <div class="alert-info alert alert-dismissible">
                     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -45,7 +46,7 @@
             <dl>
                 <c:forEach items="${userList}" var="user">
                     <dt>
-                        <c:out value="${user.name}"/>
+                        <c:out value="${user.userName}"/>
                     </dt>
                     <dd>
                         <c:out value="${user.passwordHash}"/>

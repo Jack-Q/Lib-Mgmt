@@ -42,6 +42,11 @@
           <SafeTagInfo>
             <option name="namespace" value="http://java.sun.com/jsp/jstl/fmt" />
           </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="http://java.sun.com/jstl/fmt" />
+            <option name="tagName" value="formatDate" />
+            <option name="attributeName" value="value" />
+          </SafeTagInfo>
         </list>
       </option>
     </inspection_tool>

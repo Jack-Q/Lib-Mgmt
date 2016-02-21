@@ -17,8 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Base64;
 
@@ -103,7 +105,8 @@ public class UserController {
 
     @Auth(allowAnonymous = true)
     @RequestMapping(value = "register", method = RequestMethod.GET)
-    public String register(@ModelAttribute("UserRegister") UserRegister userRegister, @ModelAttribute("returnTo") String returnToUrlPara) {
+    public String register(@ModelAttribute("UserRegister") UserRegister userRegister,
+                           @ModelAttribute("returnTo") String returnToUrlPara) {
         // String returnToUrl = decodeRedirectUrlPara(returnToUrlPara);
         return "user/register";
     }
@@ -112,7 +115,9 @@ public class UserController {
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String doRegister(@ModelAttribute("UserRegister") UserRegister userRegister,
                              @ModelAttribute("returnTo") String returnToUrlPara,
-                             Model model, HttpSession session, RedirectAttributes redirectAttributes) {
+                             Model model,
+                             HttpSession session,
+                             RedirectAttributes redirectAttributes) {
 
         String returnToUrl = decodeRedirectUrlPara(returnToUrlPara);
 
@@ -256,6 +261,30 @@ public class UserController {
         redirectAttributes.addFlashAttribute("indexMessageId", "user.information.success");
         return "redirect:/user/index";
     }
+
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    @RequestMapping(value = "changeRoleAjax", method = RequestMethod.POST)
+    @ResponseBody
+    public String doChangeRoleAjax(@ModelAttribute("userId") int userId,
+                                   @ModelAttribute("roleName") String roleName,
+                                   HttpServletResponse response) {
+        response.setContentType("application/json");
+        UserRole role = UserRole.valueOf(roleName);
+
+
+        if (roleName == null || !userService.isInRole(userId, UserRole.GUEST) && !userService.isInRole(userId, UserRole.STUDENT)) {
+            return "{\"fail\": true}";
+        }
+
+        if (userService.setRole(userId, role)) {
+
+            return "{\"success\": true}";
+        } else {
+            return "{\"fail\": true}";
+        }
+
+    }
+
 
     private String decodeRedirectUrlPara(String redirectToUrPara) {
         System.out.println("Return to Url " + redirectToUrPara);

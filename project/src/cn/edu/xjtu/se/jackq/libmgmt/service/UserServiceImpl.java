@@ -25,6 +25,8 @@ public class UserServiceImpl implements UserService {
         user.setPasswordHash(hashPassword(password));
         user.setName(name);
         userDao.addUser(user);
+        // default role of user is Guest
+        addRole(user, UserRole.GUEST);
         return user;
     }
 
@@ -147,6 +149,17 @@ public class UserServiceImpl implements UserService {
         User user = userDao.getUserById(userId);
         return user != null && user.getRoles().contains(userRole);
 
+    }
+
+    @Override
+    public boolean setRole(int userId, UserRole userRole) {
+        User user = getUser(userId);
+        if (userRole == null || user == null) {
+            return false;
+        }
+        user.getRoles().clear();
+        user.getRoles().add(userRole);
+        return updateUser(user);
     }
 
     public void signIn(User user) {

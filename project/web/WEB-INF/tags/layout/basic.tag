@@ -106,7 +106,10 @@
     </div>
 </div>
 <script>
-    $.material.init();
+    $(function () {
+        $.material.init();
+        $('[data-toggle="tooltip"]').tooltip()
+    })
 </script>
 
 </body>

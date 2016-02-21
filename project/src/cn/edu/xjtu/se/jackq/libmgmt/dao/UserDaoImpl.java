@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -75,19 +77,27 @@ public class UserDaoImpl implements UserDao {
         Query query;
         switch (listPolicy) {
             case LIST_LIBERIAN:
-                query = currentSession.createQuery("from User as user where some elements(user.roles) in :roleList");
-                query.setString("roleList", UserRole.LIBRARIAN.toString());
+                query = currentSession.createQuery("from User user join user.roles role  where role in :roleList");
+                query.setParameterList("roleList", Collections.singletonList(UserRole.LIBRARIAN));
                 break;
             case LIST_READER:
-                query = currentSession.createQuery("from User as user where some elements(user.roles) in :roleList");
-                query.setParameterList("roleList", new String[]{UserRole.STUDENT.toString(), UserRole.GUEST.toString()});
+                query = currentSession.createQuery("from User user join user.roles role  where role in :roleList");
+                query.setParameterList("roleList", Arrays.asList(UserRole.STUDENT, UserRole.GUEST));
                 break;
             case LIST_ALL_USER:
             default:
                 query = currentSession.createQuery("from User");
                 break;
         }
-        return (List<User>) query.list();
+        List<User> userList;
+
+        try {
+            userList = query.list();
+        } catch (Exception e) {
+            userList = null;
+        }
+
+        return userList;
     }
 
 }

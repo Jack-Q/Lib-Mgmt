@@ -35,4 +35,6 @@ public interface UserService{
     boolean addRole(User user, UserRole userRole);
 
     boolean isInRole(int userId, UserRole userRole);
+
+    boolean setRole(int userId, UserRole userRole);
 }
