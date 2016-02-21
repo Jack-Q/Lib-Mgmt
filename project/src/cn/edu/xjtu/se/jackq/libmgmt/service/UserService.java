@@ -16,6 +16,8 @@ public interface UserService{
     void remove(User user);
     List<User> listUser();
 
+    List<User> listReader();
+
     boolean doLogin(String username, String password, SessionUser sessionUser);
 
     String hashPassword(String password);
@@ -31,4 +33,6 @@ public interface UserService{
     boolean changePassword(int id, String newPassword);
 
     boolean addRole(User user, UserRole userRole);
+
+    boolean isInRole(int userId, UserRole userRole);
 }

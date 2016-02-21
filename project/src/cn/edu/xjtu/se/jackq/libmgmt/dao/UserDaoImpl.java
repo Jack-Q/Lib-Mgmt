@@ -1,6 +1,8 @@
 package cn.edu.xjtu.se.jackq.libmgmt.dao;
 
 import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class UserDaoImpl implements UserDao {
     public void removeUser(int userId) {
         Session currentSession = sessionFactory.getCurrentSession();
         User user = (User) currentSession.get(User.class, userId);
-        if(null != user) {
+        if (null != user) {
             currentSession.delete(user);
         }
     }
@@ -68,8 +70,24 @@ public class UserDaoImpl implements UserDao {
 
     @SuppressWarnings("unchecked")
     @Override
-    public List<User> listUser() {
+    public List<User> listUser(int listPolicy) {
         Session currentSession = this.sessionFactory.getCurrentSession();
-        return (List<User>) currentSession.createQuery("from User").list();
+        Query query;
+        switch (listPolicy) {
+            case LIST_LIBERIAN:
+                query = currentSession.createQuery("from User as user where some elements(user.roles) in :roleList");
+                query.setString("roleList", UserRole.LIBRARIAN.toString());
+                break;
+            case LIST_READER:
+                query = currentSession.createQuery("from User as user where some elements(user.roles) in :roleList");
+                query.setParameterList("roleList", new String[]{UserRole.STUDENT.toString(), UserRole.GUEST.toString()});
+                break;
+            case LIST_ALL_USER:
+            default:
+                query = currentSession.createQuery("from User");
+                break;
+        }
+        return (List<User>) query.list();
     }
+
 }

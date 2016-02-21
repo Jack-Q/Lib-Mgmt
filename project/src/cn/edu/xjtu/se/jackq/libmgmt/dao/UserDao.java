@@ -14,6 +14,11 @@ public interface UserDao {
     void updateNameById(int id, String newName);
     void updatePasswordById(int id, String password);
     boolean updateUser(User user);
-    List<User> listUser();
+
+    int LIST_ALL_USER = 1;
+    int LIST_READER = 2;
+    int LIST_LIBERIAN = 3;
+
+    List<User> listUser(int listPolicy);
 
 }

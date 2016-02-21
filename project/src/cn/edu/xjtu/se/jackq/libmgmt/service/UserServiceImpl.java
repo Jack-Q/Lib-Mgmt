@@ -47,7 +47,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> listUser() {
-        return userDao.listUser();
+        return userDao.listUser(UserDao.LIST_ALL_USER);
+    }
+
+    @Override
+    public List<User> listReader() {
+        return userDao.listUser(UserDao.LIST_READER);
     }
 
     @Override
@@ -131,6 +136,16 @@ public class UserServiceImpl implements UserService {
         roles.add(role);
         user.setRoles(roles);
         return userDao.updateUser(user);
+
+    }
+
+    @Override
+    public boolean isInRole(int userId, UserRole userRole) {
+        if (userId <= 0) return false;
+        if (userRole == null) return false;
+
+        User user = userDao.getUserById(userId);
+        return user != null && user.getRoles().contains(userRole);
 
     }
 

@@ -43,8 +43,9 @@ public class UserController {
      * Manage Reader Accounts
      */
     @RequestMapping(value = "manage")
-    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
-    public String manage() {
+    // @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String manage(HttpSession httpSession, Model model) {
+        model.addAttribute("ReaderList", userService.listReader());
         return "user/manage";
     }
 
