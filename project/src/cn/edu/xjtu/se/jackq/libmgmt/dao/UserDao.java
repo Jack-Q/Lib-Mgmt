@@ -17,7 +17,7 @@ public interface UserDao {
 
     int LIST_ALL_USER = 1;
     int LIST_READER = 2;
-    int LIST_LIBERIAN = 3;
+    int LIST_LIBRARIAN = 3;
 
     List<User> listUser(int listPolicy);
 

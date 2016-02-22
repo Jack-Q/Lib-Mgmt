@@ -58,6 +58,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> listLibrarian() {
+        return userDao.listUser(UserDao.LIST_LIBRARIAN);
+    }
+
+    @Override
     public boolean doLogin(String username, String password, SessionUser sessionUser) {
         User user = userDao.getUserByName(username);
         String hashedPassword = hashPassword(password);

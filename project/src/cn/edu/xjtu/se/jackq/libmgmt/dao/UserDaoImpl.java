@@ -76,7 +76,7 @@ public class UserDaoImpl implements UserDao {
         Session currentSession = this.sessionFactory.getCurrentSession();
         Query query;
         switch (listPolicy) {
-            case LIST_LIBERIAN:
+            case LIST_LIBRARIAN:
                 query = currentSession.createQuery("from User user join user.roles role  where role in :roleList");
                 query.setParameterList("roleList", Collections.singletonList(UserRole.LIBRARIAN));
                 break;

@@ -15,6 +15,14 @@
             <h2>
                 Manage User Accounts
             </h2>
+            <c:if test="${sessionScope.get('Auth').admin}">
+
+                <p>
+                    To manage account for librarians, please visit <a href="<spring:url value="/user/admin" />"
+                                                                      class="btn btn-xs btn-raised">Admin
+                    page</a>.
+                </p>
+            </c:if>
                 <%--@elvariable id="indexMessageId" type="java.lang.String"--%>
             <c:if test="${(indexMessageId != null)}">
                 <div class="alert-info alert alert-dismissible">
@@ -87,13 +95,16 @@
                                                                 Edit Profile
                                                             </a>
                                                         </li>
+
+                                                        <c:if test="${sessionScope.get('Auth').admin}">
                                                         <li class="divider"></li>
                                                         <li>
-                                                            <a href="<spring:url value="/user/delete/${Reader.id}"/>"
+                                                            <a href="<spring:url value="/user/selectLibrarian/${Reader.id}"/>"
                                                                class=" alert-link">
-                                                                Delete
+                                                                Mark as Librarian
                                                             </a>
                                                         </li>
+                                                        </c:if>
                                                     </ul>
                                                 </div>
                                             </td>

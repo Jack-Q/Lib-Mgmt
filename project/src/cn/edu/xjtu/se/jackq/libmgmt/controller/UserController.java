@@ -40,7 +40,7 @@ public class UserController {
      */
     @RequestMapping(value = "manage")
     @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
-    public String manage(HttpSession httpSession, Model model) {
+    public String manage(Model model) {
         model.addAttribute("ReaderList", userService.listReader());
         return "user/manage";
     }
@@ -50,7 +50,9 @@ public class UserController {
      */
     @RequestMapping(value = "admin")
     @Auth(userRoles = UserRole.ADMIN)
-    public String admin() {
+    public String admin(Model model) {
+
+        model.addAttribute("LibrarianList", userService.listLibrarian());
         return "user/admin";
     }
 
@@ -406,6 +408,42 @@ public class UserController {
         }
         redirectAttributes.addFlashAttribute("indexMessageId", "user.edit.success");
         return "redirect:/user/manage";
+    }
+
+    @Auth(userRoles = UserRole.ADMIN)
+    @RequestMapping("selectLibrarian/{userId}")
+    public String selectLibrarian(@PathVariable int userId, RedirectAttributes redirectAttributes) {
+        User user = userService.getUser(userId);
+        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:error/argument";
+        }
+
+        if (!userService.setRole(userId, UserRole.LIBRARIAN)) {
+            redirectAttributes.addFlashAttribute("indexMessageId", "user.selectLibrarian.failed");
+        } else {
+
+            redirectAttributes.addFlashAttribute("indexMessageId", "user.selectLibrarian.success");
+        }
+
+        return "redirect:/user/manage";
+    }
+
+    @Auth(userRoles = UserRole.ADMIN)
+    @RequestMapping("deselectLibrarian/{userId}")
+    public String deselectLibrarian(@PathVariable int userId, RedirectAttributes redirectAttributes) {
+        User user = userService.getUser(userId);
+        if (user == null || !user.getRoles().contains(UserRole.LIBRARIAN)) {
+            return "redirect:error/argument";
+        }
+
+        if (!userService.setRole(userId, UserRole.GUEST)) {
+            redirectAttributes.addFlashAttribute("indexMessageId", "user.deselectLibrarian.failed");
+        } else {
+
+            redirectAttributes.addFlashAttribute("indexMessageId", "user.deselectLibrarian.success");
+        }
+
+        return "redirect:/user/admin";
     }
 
     private String decodeRedirectUrlPara(String redirectToUrPara) {

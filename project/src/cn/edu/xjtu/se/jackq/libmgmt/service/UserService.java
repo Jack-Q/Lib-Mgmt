@@ -18,6 +18,8 @@ public interface UserService{
 
     List<User> listReader();
 
+    List<User> listLibrarian();
+
     boolean doLogin(String username, String password, SessionUser sessionUser);
 
     String hashPassword(String password);
