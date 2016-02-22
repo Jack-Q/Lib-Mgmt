@@ -4,34 +4,49 @@ import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 @Entity
 public class Book implements Serializable {
-    private static final long serialVersionUID = -2428191795524513404L;
-
+    private static final long serialVersionUID = -2943826404696834910L;
     @Id
-    @Column(name="Id")
+    @Column(name = "Id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     @NaturalId
-    @Column(name = "BookCode", length = 30, unique = true, nullable = false)
+    @Column(name = "BookCode", unique = true, nullable = false)
     private String bookCode;
 
-    @Column(name = "LoginDate")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Date loginDate;
+    @NaturalId
+    @Column(name = "Isbn", unique = true, nullable = true)
+    private String isbn;
 
-    @Column(name = "UpdateDate")
-    private Date updateDate;
 
-    @Column(name = "BookName")
+    @Column(name = "BookName", nullable = false)
     private String bookName;
 
+    @Column(name = "BookNote")
+    private String bookNote;
+
+    @ManyToOne
+    @JoinColumn(name="PublisherId")
+    private Publisher publisher;
+
+    @Column(name = "Author")
+    private String author;
+
+    @Column(name = "Description")
+    private String description;
+
+    @Column(name = "YearOfPublish")
+    private int yearOfPublish;
+
     @OneToMany(mappedBy = "book")
-    private List<BookVersion> bookVersions;
+    private List<BookCopy> bookCopies;
+
+    @OneToMany(mappedBy = "book")
+    private List<BookComment> bookComments;
 
     public int getId() {
         return id;
@@ -49,20 +64,12 @@ public class Book implements Serializable {
         this.bookCode = bookCode;
     }
 
-    public Date getLoginDate() {
-        return loginDate;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setLoginDate(Date loginDate) {
-        this.loginDate = loginDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getBookName() {
@@ -73,11 +80,60 @@ public class Book implements Serializable {
         this.bookName = bookName;
     }
 
-    public List<BookVersion> getBookVersions() {
-        return bookVersions;
+    public String getBookNote() {
+        return bookNote;
     }
 
-    public void setBookVersions(List<BookVersion> bookVersions) {
-        this.bookVersions = bookVersions;
+    public void setBookNote(String bookNote) {
+        this.bookNote = bookNote;
+    }
+
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getYearOfPublish() {
+        return yearOfPublish;
+    }
+
+    public void setYearOfPublish(int yearOfPublish) {
+        this.yearOfPublish = yearOfPublish;
+    }
+
+    public List<BookCopy> getBookCopies() {
+        return bookCopies;
+    }
+
+    public void setBookCopies(List<BookCopy> bookCopies) {
+        this.bookCopies = bookCopies;
+    }
+
+    public List<BookComment> getBookComments() {
+        return bookComments;
+    }
+
+    public void setBookComments(List<BookComment> bookComments) {
+        this.bookComments = bookComments;
     }
 }

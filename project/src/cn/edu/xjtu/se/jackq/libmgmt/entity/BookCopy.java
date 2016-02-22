@@ -26,8 +26,8 @@ public class BookCopy implements Serializable {
     private String note;
 
     @ManyToOne
-    @JoinColumn(name = "BookVersionId")
-    private BookVersion bookVersion;
+    @JoinColumn(name = "BookId")
+    private Book book;
 
     @Column(name = "DateOfRecord")
     private Date dateOfRecord;
@@ -67,12 +67,12 @@ public class BookCopy implements Serializable {
         this.note = note;
     }
 
-    public BookVersion getBookVersion() {
-        return bookVersion;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBookVersion(BookVersion bookVersion) {
-        this.bookVersion = bookVersion;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public Date getDateOfRecord() {

@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Jack on 2/14/2016.
- */
+
 @Entity
 public class BookLoan implements Serializable {
     private static final long serialVersionUID = -2652971802397360982L;
@@ -30,8 +28,8 @@ public class BookLoan implements Serializable {
     @Column(name = "LoanPeriod")
     private int loanPeriod;
 
-    @Column(name = "DeadlineOfReturnning")
-    private Date deadlineOfReturnning;
+    @Column(name = "DeadlineOfReturning")
+    private Date deadlineOfReturning;
 
     @Column(name = "DateOfReturning")
     private Date dateOfReturning;
@@ -44,6 +42,14 @@ public class BookLoan implements Serializable {
 
     @Column(name = "Note")
     private String note;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public Date getDateOfBorrowing() {
         return dateOfBorrowing;
@@ -77,12 +83,12 @@ public class BookLoan implements Serializable {
         this.loanPeriod = loanPeriod;
     }
 
-    public Date getDeadlineOfReturnning() {
-        return deadlineOfReturnning;
+    public Date getDeadlineOfReturning() {
+        return deadlineOfReturning;
     }
 
-    public void setDeadlineOfReturnning(Date deadlineOfReturnning) {
-        this.deadlineOfReturnning = deadlineOfReturnning;
+    public void setDeadlineOfReturning(Date deadlineOfReturning) {
+        this.deadlineOfReturning = deadlineOfReturning;
     }
 
     public Date getDateOfReturning() {

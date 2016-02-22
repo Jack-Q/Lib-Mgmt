@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by Jack on 2/14/2016.
- */
+
 @Entity
 public class Publisher implements Serializable {
     private static final long serialVersionUID = -6968006543405937832L;
@@ -20,7 +18,7 @@ public class Publisher implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "publisher")
-    private List<BookVersion> bookVersions;
+    private List<Book> bookVersions;
 
     @Column(name = "Description")
     private String description;
@@ -41,11 +39,11 @@ public class Publisher implements Serializable {
         this.name = name;
     }
 
-    public List<BookVersion> getBookVersions() {
+    public List<Book> getBookVersions() {
         return bookVersions;
     }
 
-    public void setBookVersions(List<BookVersion> bookVersions) {
+    public void setBookVersions(List<Book> bookVersions) {
         this.bookVersions = bookVersions;
     }
 

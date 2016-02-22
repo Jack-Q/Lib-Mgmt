@@ -4,9 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by Jack on 2/14/2016.
- */
+
 @Entity
 public class BookComment implements Serializable{
 
@@ -22,8 +20,8 @@ public class BookComment implements Serializable{
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "BookVersionId")
-    private BookVersion bookVersion;
+    @JoinColumn(name = "BookId")
+    private Book book;
 
     @Column(name = "DateOfComment")
     private Date dateOfComment;
