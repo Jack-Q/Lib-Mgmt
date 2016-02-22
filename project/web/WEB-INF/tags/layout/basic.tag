@@ -42,7 +42,17 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li><a href="<spring:url value="/" />">Home</a></li>
-                <li><a href="<spring:url value="/user/index"/>">User</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="<spring:url value="/user/index"/>">User Profile</a>
+                        </li>
+                        <li>
+                            <a href="<spring:url value="/user/manage"/>">User Manage</a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle"
                        data-toggle="dropdown" role="button"

@@ -47,6 +47,21 @@
             <option name="tagName" value="formatDate" />
             <option name="attributeName" value="value" />
           </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="" />
+            <option name="tagName" value="out" />
+            <option name="attributeName" value="value" />
+          </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="" />
+            <option name="tagName" value="forEach" />
+            <option name="attributeName" value="items" />
+          </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="" />
+            <option name="tagName" value="formatDate" />
+            <option name="attributeName" value="value" />
+          </SafeTagInfo>
         </list>
       </option>
     </inspection_tool>

@@ -309,15 +309,19 @@ public class UserController {
                                   Model model,
                                   RedirectAttributes redirectAttributes,
                                   HttpSession httpSession) {
-        if (userResetPassword.getPassword() == null) {
-            model.addAttribute("errorMessageId", "user.resetPassword.error.password");
-            return "user/resetPassword";
-        }
 
         User user = userService.getUser(userId);
         if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
             return "redirect:error/argument";
         }
+
+        model.addAttribute("CurrentUser", user);
+
+        if (userResetPassword.getPassword() == null) {
+            model.addAttribute("errorMessageId", "user.resetPassword.error.password");
+            return "user/resetPassword";
+        }
+
 
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
 
@@ -331,6 +335,76 @@ public class UserController {
             return "user/resetPassword";
         }
         redirectAttributes.addFlashAttribute("indexMessageId", "user.resetPassword.success");
+        return "redirect:/user/manage";
+    }
+
+    @RequestMapping(value = "edit/{UserId}", method = RequestMethod.GET)
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String edit(@PathVariable("UserId") int userId,
+                       @ModelAttribute("UserEdit") UserEdit userEdit,
+                       HttpSession httpSession,
+                       Model model) {
+        User user = userService.getUser(userId);
+        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:/error/argument";
+        }
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+
+        // Librarian cannot change his password
+        if (user.getRoles().contains(UserRole.LIBRARIAN) && !sessionUser.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:/error/denied";
+        }
+
+
+        userEdit.setName(user.getName());
+        userEdit.setEmail(user.getEmail());
+        userEdit.setPhoneNumber(user.getPhoneNumber());
+        userEdit.setDateOfBirth(user.getDateOfBirth());
+
+        model.addAttribute("CurrentUser", user);
+        return "user/edit";
+    }
+
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    @RequestMapping(value = "edit/{UserId}", method = RequestMethod.POST)
+    public String doEdit(@PathVariable("UserId") int userId,
+                         @ModelAttribute("UserEdit") UserEdit userEdit,
+                         HttpSession httpSession,
+                         Model model,
+                         RedirectAttributes redirectAttributes) {
+
+        User user = userService.getUser(userId);
+        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:error/argument";
+        }
+
+        model.addAttribute("CurrentUser", user);
+
+        if (userEdit.getName() == null) {
+            model.addAttribute("errorMessageId", "user.edit.error.name");
+
+            return "user/edit";
+        }
+
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+
+        // Librarian cannot change his password
+        if (user.getRoles().contains(UserRole.LIBRARIAN) && !sessionUser.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:/error/denied";
+        }
+
+        user.setName(userEdit.getName());
+        user.setEmail(userEdit.getEmail());
+        user.setDateOfBirth(userEdit.getDateOfBirth());
+        user.setPhoneNumber(userEdit.getPhoneNumber());
+
+        if (!userService.updateUser(user)) {
+            model.addAttribute("errorMessageId", "user.edit.error.failed");
+            return "user/edit";
+        }
+        redirectAttributes.addFlashAttribute("indexMessageId", "user.edit.success");
         return "redirect:/user/manage";
     }
 

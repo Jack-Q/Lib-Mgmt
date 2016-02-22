@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f72e0c52-45d3-4eca-b782-50c43d8de2d5" name="Default" comment="Add User List &amp; Add role switch page">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserResetPassword.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/error/argument.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/user/resetPassword.jsp" />
+    <list default="true" id="f72e0c52-45d3-4eca-b782-50c43d8de2d5" name="Default" comment="Add Reset User Password Page">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserEdit.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/user/edit.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/text-string.properties" afterPath="$PROJECT_DIR$/res/text-string.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/ErrorController.java" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/ErrorController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/tags/layout/basic.tag" afterPath="$PROJECT_DIR$/web/WEB-INF/tags/layout/basic.tag" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp" />
     </list>
     <ignored path="LibMgmt.iws" />
@@ -66,12 +66,9 @@
       <file leaf-file-name="manage.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.6153846">
-              <caret line="6" column="70" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
-              <folding>
-                <element signature="e#6525#7848#0#HTML" expanded="false" />
-                <element signature="e#7937#10795#0#HTML" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-26.153847">
+              <caret line="93" column="70" selection-start-line="93" selection-start-column="70" selection-end-line="93" selection-end-column="70" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -79,15 +76,44 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.1560402">
-              <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+            <state vertical-scroll-proportion="3.5125628">
+              <caret line="402" column="44" selection-start-line="402" selection-start-column="44" selection-end-line="402" selection-end-column="44" />
               <folding>
                 <element signature="method#doLogin#0;class#UserController#0" expanded="false" />
                 <element signature="method#logout#0;class#UserController#0" expanded="false" />
-                <element signature="method#information#0;class#UserController#0" expanded="false" />
                 <element signature="method#doInformation#0;class#UserController#0" expanded="false" />
-                <element signature="method#decodeRedirectUrlPara#0;class#UserController#0" expanded="false" />
+                <element signature="method#doChangeRoleAjax#0;class#UserController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/edit.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.730769">
+              <caret line="35" column="77" selection-start-line="35" selection-start-column="77" selection-end-line="35" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="information.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/information.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="20.423077">
+              <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserInformation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserInformation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="29" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,8 +121,8 @@
       <file leaf-file-name="text-string.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/text-string.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.413794">
-              <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+            <state vertical-scroll-proportion="-15.172414">
+              <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -108,8 +134,8 @@
       <file leaf-file-name="resetPassword.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/resetPassword.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6923075">
-              <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,8 +144,18 @@
       <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/index.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.5">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="27" selection-end-column="19" />
+            <state vertical-scroll-proportion="-20.346153">
+              <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basic.tag" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/layout/basic.tag">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.3846154">
+              <caret line="51" column="68" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
               <folding />
             </state>
           </provider>
@@ -156,8 +192,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookCopy.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/user/admin.jsp" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/MyBookController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/book/index.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/book/book.jsp" />
@@ -196,7 +230,6 @@
         <option value="$PROJECT_DIR$/config/spring-hibernate.xml" />
         <option value="$PROJECT_DIR$/config/hibernate.cfg.xml" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/UserDaoImpl.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/tags/layout/basic.tag" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/home/index.jsp" />
@@ -204,8 +237,11 @@
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/ErrorController.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserResetPassword.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/user/resetPassword.jsp" />
-        <option value="$PROJECT_DIR$/res/text-string.properties" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/tags/layout/basic.tag" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserEdit.java" />
+        <option value="$PROJECT_DIR$/res/text-string.properties" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/user/edit.jsp" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java" />
       </list>
     </option>
@@ -333,6 +369,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Production">
@@ -360,20 +399,6 @@
             <PATH_ELEMENT USER_OBJECT="Root">
               <option name="myItemId" value="" />
               <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LibMgmt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LibMgmt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -461,6 +486,10 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="home" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -506,7 +535,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LibMgmt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="tags" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -665,8 +720,19 @@
         </subPane>
         <option name="show-excluded-files" value="false" />
       </pane>
-      <pane id="Scratches">
-        <subPane />
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LibMgmt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LibMgmt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
       </pane>
     </panes>
   </component>
@@ -1263,7 +1329,8 @@
       <workItem from="1455947560812" duration="916000" />
       <workItem from="1455956234571" duration="14512000" />
       <workItem from="1456031041732" duration="28473000" />
-      <workItem from="1456115350230" duration="3834000" />
+      <workItem from="1456115350230" duration="3948000" />
+      <workItem from="1456128613830" duration="1927000" />
     </task>
     <task id="LOCAL-00001" summary="Add role-based access control">
       <created>1455519479917</created>
@@ -1313,11 +1380,17 @@
       <option name="project" value="LOCAL" />
       <updated>1456072965247</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add Reset User Password Page">
+      <created>1456119209983</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1456119209983</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131838000" />
+    <option name="totallyTimeSpent" value="133879000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1340,7 +1413,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.51492536" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32822758" sideWeight="0.4957265" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32394367" sideWeight="0.48397437" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32286024" sideWeight="0.48397437" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32502708" sideWeight="0.48507464" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32286024" sideWeight="0.49786323" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -1349,7 +1422,6 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18390192" sideWeight="0.48970747" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17110874" sideWeight="0.51029253" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31400436" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261105" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1364,6 +1436,7 @@
       <window_info id="Palette   " active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3261105" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1386,7 +1459,8 @@
     <MESSAGE value=" Add function for updating user information" />
     <MESSAGE value="Add User Service Initializer to Add Admin Account from Configuration" />
     <MESSAGE value="Add User List &amp; Add role switch page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add User List &amp; Add role switch page" />
+    <MESSAGE value="Add Reset User Password Page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Reset User Password Page" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1401,37 +1475,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/converter/StringToDateConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36241612">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/information.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.615385">
-          <caret line="70" column="32" selection-start-line="70" selection-start-column="32" selection-end-line="70" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="20.76923">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.ideaLibSources/spring-context-4.2.4.RELEASE-sources.jar!/org/springframework/context/ApplicationListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1511,7 +1554,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1535,7 +1577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1543,7 +1584,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1551,7 +1591,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.076923">
           <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1646,10 +1685,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1340783">
           <caret line="89" column="64" selection-start-line="89" selection-start-column="64" selection-end-line="89" selection-end-column="64" />
-          <folding>
-            <element signature="e#679#680#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1657,7 +1692,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3575419">
           <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1696,7 +1730,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.53072625">
           <caret line="154" column="37" selection-start-line="154" selection-start-column="37" selection-end-line="154" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1732,14 +1765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/layout/basic.tag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44764096">
-          <caret line="98" column="77" selection-start-line="98" selection-start-column="77" selection-end-line="98" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/error/argument.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24518389">
@@ -1753,8 +1778,8 @@
         <state vertical-scroll-proportion="0.20100503">
           <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
           <folding>
-            <element signature="e#495#496#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#496#497#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1798,16 +1823,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/resetPassword.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6923075">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.346153">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/layout/basic.tag">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3846154">
+          <caret line="51" column="68" selection-start-line="51" selection-start-column="68" selection-end-line="51" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserEdit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26815644">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding>
+            <element signature="e#268#269#0" expanded="true" />
+            <element signature="e#308#309#0" expanded="true" />
+            <element signature="e#340#341#0" expanded="true" />
+            <element signature="e#372#373#0" expanded="true" />
+            <element signature="e#400#401#0" expanded="true" />
+            <element signature="e#442#443#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#514#515#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#602#603#0" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#718#719#0" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#816#817#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserInformation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="10" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/res/text-string.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.413794">
-          <caret line="18" column="61" selection-start-line="18" selection-start-column="61" selection-end-line="18" selection-end-column="61" />
+        <state vertical-scroll-proportion="-15.172414">
+          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
           <folding />
         </state>
       </provider>
@@ -1815,35 +1888,39 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/index.jsp">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.5">
-          <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="27" selection-end-column="19" />
+        <state vertical-scroll-proportion="-26.153847">
+          <caret line="93" column="70" selection-start-line="93" selection-start-column="70" selection-end-line="93" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp">
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/edit.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6153846">
-          <caret line="6" column="70" selection-start-line="6" selection-start-column="70" selection-end-line="6" selection-end-column="70" />
-          <folding>
-            <element signature="e#6525#7848#0#HTML" expanded="false" />
-            <element signature="e#7937#10795#0#HTML" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-15.730769">
+          <caret line="35" column="77" selection-start-line="35" selection-start-column="77" selection-end-line="35" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/information.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="20.423077">
+          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.1560402">
-          <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+        <state vertical-scroll-proportion="3.5125628">
+          <caret line="402" column="44" selection-start-line="402" selection-start-column="44" selection-end-line="402" selection-end-column="44" />
           <folding>
             <element signature="method#doLogin#0;class#UserController#0" expanded="false" />
             <element signature="method#logout#0;class#UserController#0" expanded="false" />
-            <element signature="method#information#0;class#UserController#0" expanded="false" />
             <element signature="method#doInformation#0;class#UserController#0" expanded="false" />
-            <element signature="method#decodeRedirectUrlPara#0;class#UserController#0" expanded="false" />
+            <element signature="method#doChangeRoleAjax#0;class#UserController#0" expanded="false" />
           </folding>
         </state>
       </provider>

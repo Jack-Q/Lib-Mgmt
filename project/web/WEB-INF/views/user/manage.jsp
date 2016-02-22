@@ -59,6 +59,7 @@
                                                         <c:out value="${role.name()}"/>
                                                     </span>
                                                 </c:forEach>
+
                                                 <a href="#" title="change user role" data-toggle="tooltip"
                                                    data-placement="bottom" class="btn btn-fab btn-fab-mini"
                                                    data-id="${Reader.id}">
