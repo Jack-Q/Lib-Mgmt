@@ -7,6 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
+
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -37,22 +39,30 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Lib-Mgmt</a>
+            <span class="navbar-brand">Lib-Mgmt</span>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="<spring:url value="/" />">Home</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">User<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="<spring:url value="/user/index"/>">User Profile</a>
-                        </li>
-                        <li>
-                            <a href="<spring:url value="/user/manage"/>">User Manage</a>
-                        </li>
-                    </ul>
-                </li>
+                <li><a title="Return to home" data-toggle="tooltip" data-placement="bottom"
+                       href="<spring:url value="/" />">Home</a></li>
+                <c:if test="${sessionScope.get('Auth').admin}">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">User<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="<spring:url value="/user/admin"/>">Librarian Management</a>
+                            </li>
+                            <li>
+                                <a href="<spring:url value="/user/manage"/>">User Management</a>
+                            </li>
+                        </ul>
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.get('Auth').librarian}">
+                    <li>
+                        <a href="<spring:url value="/user/manage" />">User</a>
+                    </li>
+                </c:if>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle"
                        data-toggle="dropdown" role="button"

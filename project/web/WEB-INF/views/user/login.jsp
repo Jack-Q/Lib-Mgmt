@@ -13,14 +13,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <layout:basic pageTitle="User Login">
-    <jsp:attribute name="pageHeader">
-        <li class="dropdown">
-            <a class="dropdown-toggle" href="#" data-toggle="dropdown">User Login<i class="caret"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Login</a></li>
-            </ul>
-        </li>
-    </jsp:attribute>
     <jsp:attribute name="pageFooter">
         <div>
             Need Help for login? Refer to Help Center.

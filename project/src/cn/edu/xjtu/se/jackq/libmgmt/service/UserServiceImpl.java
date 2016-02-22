@@ -90,6 +90,7 @@ public class UserServiceImpl implements UserService {
             sessionUser.setUserName(null);
             sessionUser.setId(0);
             sessionUser.setName(null);
+            sessionUser.setRoles(new ArrayList<>());
         }
         return true;
     }

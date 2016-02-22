@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<layout:basic pageTitle="User Profile">
+<layout:basic pageTitle="User Management">
     <jsp:body>
         <div class="container">
             <h1>
@@ -18,6 +18,8 @@
             <c:if test="${sessionScope.get('Auth').admin}">
 
                 <p>
+                    This page only list the user with role of <span class="label label-info">GUEST</span> or <span
+                        class="label label-info">STUDENT</span>.
                     To manage account for librarians, please visit <a href="<spring:url value="/user/admin" />"
                                                                       class="btn btn-xs btn-raised">Admin
                     page</a>.

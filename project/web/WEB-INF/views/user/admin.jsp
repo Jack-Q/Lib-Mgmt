@@ -9,7 +9,7 @@
 
 <c:set var="CurrentUser" value="${applicationScope}" scope="page"/>
 
-<layout:basic pageTitle="User Profile">
+<layout:basic pageTitle="Manage Librarian Account">
     <jsp:body>
         <div class="container">
             <h1>
