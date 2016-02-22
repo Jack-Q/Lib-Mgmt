@@ -23,7 +23,7 @@ public class ApplicationServiceInitializer implements ApplicationListener<Contex
     private void initUserService() {
         if (null == userService.getUser(getAdminAccountUserName())) {
             User admin = userService.addUser(getAdminAccountUserName(), getAdminAccountPassword(), "Administrator");
-            userService.addRole(admin, UserRole.ADMIN);
+            userService.setRole(admin.getId(), UserRole.ADMIN);
         }
     }
 
