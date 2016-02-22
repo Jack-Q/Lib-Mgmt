@@ -79,7 +79,16 @@
                     <jsp:attribute name="whenLogin">
                         <li>
                             <a href="<spring:url value="/user/index" />"
-                               title="manage user profile">Welcome <c:out value="${sessionScope.Auth.name}"/>! </a>
+                               title="manage user profile">
+                                <c:out value="${sessionScope.Auth.name}"/>
+                                <c:forEach var="role" items="${sessionScope.Auth.roles}">
+                                    <span class="label label-info" style="white-space: normal;"
+                                          title="Your Role is <c:out value="${role.name()}"/>" data-toggle="tooltip"
+                                          data-placement="bottom">
+                                        <c:out value="${role.name()}"/>
+                                    </span>
+                                </c:forEach>
+                            </a>
                         </li>
                         <li>
 
