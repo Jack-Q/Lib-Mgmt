@@ -5,19 +5,13 @@ import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
-import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserChangePassword;
-import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserInformation;
-import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserLogin;
-import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserRegister;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.*;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletResponse;
@@ -45,7 +39,7 @@ public class UserController {
      * Manage Reader Accounts
      */
     @RequestMapping(value = "manage")
-    // @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
     public String manage(HttpSession httpSession, Model model) {
         model.addAttribute("ReaderList", userService.listReader());
         return "user/manage";
@@ -285,6 +279,60 @@ public class UserController {
 
     }
 
+
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    @RequestMapping(value = "resetPassword/{UserId}", method = RequestMethod.GET)
+    public String resetPassword(@PathVariable("UserId") int userId,
+                                @ModelAttribute("UserResetPassword") UserResetPassword userResetPassword,
+                                Model model,
+                                HttpSession httpSession) {
+        User user = userService.getUser(userId);
+        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:/error/argument";
+        }
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+
+        // Librarian cannot change his password
+        if (user.getRoles().contains(UserRole.LIBRARIAN) && !sessionUser.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:/error/denied";
+        }
+
+        model.addAttribute("CurrentUser", user);
+        return "user/resetPassword";
+    }
+
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    @RequestMapping(value = "resetPassword/{UserId}", method = RequestMethod.POST)
+    public String doResetPassword(@PathVariable("UserId") int userId,
+                                  @ModelAttribute("UserResetPassword") UserResetPassword userResetPassword,
+                                  Model model,
+                                  RedirectAttributes redirectAttributes,
+                                  HttpSession httpSession) {
+        if (userResetPassword.getPassword() == null) {
+            model.addAttribute("errorMessageId", "user.resetPassword.error.password");
+            return "user/resetPassword";
+        }
+
+        User user = userService.getUser(userId);
+        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:error/argument";
+        }
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+
+        // Librarian cannot change his password
+        if (user.getRoles().contains(UserRole.LIBRARIAN) && !sessionUser.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:/error/denied";
+        }
+
+        if (!userService.changePassword(userId, userResetPassword.getPassword())) {
+            model.addAttribute("errorMessageId", "user.resetPassword.error.failed");
+            return "user/resetPassword";
+        }
+        redirectAttributes.addFlashAttribute("indexMessageId", "user.resetPassword.success");
+        return "redirect:/user/manage";
+    }
 
     private String decodeRedirectUrlPara(String redirectToUrPara) {
         System.out.println("Return to Url " + redirectToUrPara);

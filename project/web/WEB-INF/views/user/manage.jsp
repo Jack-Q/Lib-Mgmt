@@ -4,6 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <layout:basic pageTitle="User Profile">
     <jsp:body>
@@ -14,6 +15,13 @@
             <h2>
                 Manage User Accounts
             </h2>
+                <%--@elvariable id="indexMessageId" type="java.lang.String"--%>
+            <c:if test="${(indexMessageId != null)}">
+                <div class="alert-info alert alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <p><spring:message code="${fn:escapeXml(indexMessageId)}"/></p>
+                </div>
+            </c:if>
             <div class="row">
                 <div class="col-xs-12">
                     <c:choose>
@@ -23,7 +31,8 @@
                         </c:when>
                         <c:otherwise>
                             <%--Nonempty List--%>
-                            <div class="table-responsive">
+                            <%--Extra bottom padding to contain the drop down menu--%>
+                            <div class="table-responsive" style="padding-bottom: 100px;">
                                 <table class="table  table-hover">
                                     <thead>
                                     <tr>
@@ -62,9 +71,30 @@
                                                                 pattern="yyyy-MM-dd"/></td>
                                             <td><c:out value="${Reader.phoneNumber}"/></td>
                                             <td>
-                                                <a class="btn btn-xs btn-raised"
-                                                   href="<spring:url value="/user/resetPassword?id=${Reader.id}"/>">Reset
-                                                    Password</a>
+                                                <div class="btn-group">
+                                                    <button class="btn btn-primary btn-raised btn-sm dropdown-toggle"
+                                                            data-toggle="dropdown">Actions <i class="caret"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu">
+                                                        <li>
+                                                            <a href="<spring:url value="/user/resetPassword/${Reader.id}"/>">
+                                                                Reset Password
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="<spring:url value="/user/edit/${Reader.id}"/>">
+                                                                Edit Profile
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a href="<spring:url value="/user/delete/${Reader.id}"/>"
+                                                               class=" alert-link">
+                                                                Delete
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </td>
                                         </tr>
 

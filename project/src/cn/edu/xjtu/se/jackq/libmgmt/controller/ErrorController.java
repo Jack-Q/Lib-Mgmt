@@ -16,4 +16,9 @@ public class ErrorController {
     public String resource() {
         return "error/resource";
     }
+
+    @RequestMapping("argument")
+    public String argument() {
+        return "error/argument";
+    }
 }
