@@ -48,11 +48,13 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
+  background: url(../image/index-background.jpg) center center no-repeat;
+  background-size: cover;
 }
 
 body {
   padding-top: 60px;
-  background: @site-background;
+  background: fade(@site-background, 87);
 }
 
 .main-header {

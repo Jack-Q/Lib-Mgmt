@@ -22,10 +22,6 @@
                 Welcome to join us!
 
             </p>
-            <div class="badge">
-                Apart from general register process to create new account, you can also create new
-                account via third-party service or CAS Service of XJTU. <a href="#">Learn More >></a>
-            </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-6">
 

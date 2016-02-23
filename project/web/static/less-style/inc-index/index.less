@@ -27,6 +27,7 @@ body.index-body {
       box-shadow: 0 0 20px 3px rgba(180, 180, 180, 0.15);
       border-radius: 30px;
       padding: 30px 40px 45px;
+      position: relative;
       label {
         font-style: italic;
         font-weight: 300;
@@ -39,7 +40,31 @@ body.index-body {
         color: #fefeee;
         text-shadow: 0 0 5px #aaa;
       }
-
+      .icon-search {
+        color: rgba(220, 220, 220, 0.8);
+        font-size: 50px;
+        height: 80px;
+        line-height: 50px;
+        text-align: center;
+        width: 80px;
+        padding: 15px;
+        border-radius: 40px;
+        position: absolute;
+        top: 50px;
+        left: -17px;
+        background-color: transparent;
+        cursor: default;
+        transition: all ease 300ms;
+        i {
+          font-size: 50px;
+        }
+        &.on {
+          left: 730px;
+          box-shadow: 0 0 10px rgba(50, 50, 50, 0.4);
+          background-color: #00aa9a;
+          cursor: pointer;
+        }
+      }
     }
   }
   .index-footer-wrapper {
@@ -53,7 +78,9 @@ body.index-body {
   }
   .index-footer {
     margin: auto;
-    width: 1200px;
+    width: 100%;
+
+    max-width: 1200px;
     & > div {
       display: block;
       float: left;

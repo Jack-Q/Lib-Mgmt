@@ -17,9 +17,9 @@
         <layout:basic pageTitle="Welcome">
             <div class="container">
 
-                <div class="index-banner">
+                <h1 class="index-banner">
                     Welcome to Lib-Mgmt
-                </div>
+                </h1>
                 <div class="index-section">
 
                         <%--@elvariable id="indexMessageId" type="java.lang.String"--%>
@@ -29,6 +29,21 @@
                             <p><spring:message code="${fn:escapeXml(indexMessageId)}"/></p>
                         </div>
                     </c:if>
+
+                    <layout:role>
+                        <jsp:attribute name="admin">
+
+                        </jsp:attribute>
+                        <jsp:attribute name="librarian">
+
+                        </jsp:attribute>
+                        <jsp:attribute name="student">
+
+                        </jsp:attribute>
+                        <jsp:attribute name="guest">
+
+                        </jsp:attribute>
+                    </layout:role>
                     <div>
                         Current User List
                     </div>
@@ -92,6 +107,10 @@
                     book &hellip; &hellip;</label>
                 <input class="form-control" id="input-search" type="text">
             </div>
+
+            <div class="icon-search" id="icon-search">
+                <i class="material-icons">&#xE8B6;</i>
+            </div>
         </div>
     </div>
     <div class="index-footer-wrapper">
@@ -116,7 +135,37 @@
 <script>
     $(function () {
         $.material.init();
-        $('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip();
+        var search = $('#input-search');
+        var searchButton = $('#icon-search');
+        var doSearch = function () {
+            var searchValue = search.val();
+            if (searchValue == "") {
+                return false;
+            }
+            window.location = "/search?q=" + searchValue;
+            return true;
+        };
+        search.bind('focus blur change', function () {
+            if ($(this).is(':focus') || $(this).val().length > 0) {
+                searchButton.addClass('on')
+            } else {
+                searchButton.removeClass('on')
+            }
+        });
+        if (search.val().length > 0) {
+            searchButton.addClass('on');
+        }
+        search.bind('keydown', function (e) {
+            if (e.keyCode == 13 /*Code for enter kry*/) {
+                doSearch();
+            }
+        });
+        searchButton.bind('click', function () {
+            if (!doSearch()) {
+                search.focus();
+            }
+        });
     })
 </script>
 

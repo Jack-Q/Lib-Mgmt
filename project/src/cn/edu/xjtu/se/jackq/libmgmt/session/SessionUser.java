@@ -17,19 +17,19 @@ public class SessionUser implements Serializable {
     private List<UserRole> roles;
 
     public boolean isAdmin() {
-        return getRoles().contains(UserRole.ADMIN);
+        return getRoles() != null && getRoles().contains(UserRole.ADMIN);
     }
 
     public boolean isLibrarian() {
-        return getRoles().contains(UserRole.LIBRARIAN);
+        return getRoles() != null && getRoles().contains(UserRole.LIBRARIAN);
     }
 
     public boolean isStudent() {
-        return getRoles().contains(UserRole.STUDENT);
+        return getRoles() != null && getRoles().contains(UserRole.STUDENT);
     }
 
     public boolean isGuest() {
-        return getRoles().contains(UserRole.GUEST);
+        return getRoles() != null && getRoles().contains(UserRole.GUEST);
     }
 
     public String getUserName() {

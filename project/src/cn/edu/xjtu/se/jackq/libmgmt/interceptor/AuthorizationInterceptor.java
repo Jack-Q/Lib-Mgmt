@@ -56,6 +56,13 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     }
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        HttpSession session = request.getSession();
+        SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
+        if (sessionUser == null) {
+            sessionUser = new SessionUser();
+            session.setAttribute("Auth", sessionUser);
+        }
+
         if (handler instanceof HandlerMethod) {
             Method targetMethod = ((HandlerMethod) handler).getMethod();
             Auth methodAnnotation = targetMethod.getDeclaredAnnotation(Auth.class);
@@ -66,8 +73,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
                 System.out.println("=====================================================================");
                 System.out.println("Interceptor: Auth Check: " + getRedirectUrl(request));
                 System.out.println("=====================================================================");
-                HttpSession session = request.getSession();
-                SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
+
                 return checkAuth(sessionUser, methodAnnotation != null ? methodAnnotation : controllerAnnotation, request, response);
             }
         }
