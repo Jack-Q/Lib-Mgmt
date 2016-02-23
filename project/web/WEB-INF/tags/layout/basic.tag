@@ -12,10 +12,10 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-    <title><c:out value='${pageTitle}${empty pageTitle ? "" : " - "}'/> Lib-Mgmt</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><c:out value='${pageTitle}${empty pageTitle ? "" : " - "}'/> Lib-Mgmt</title>
     <!-- Stylesheets -->
     <link href="<spring:url value="/style/bootstrap.css" />" rel="stylesheet">
     <link href="<spring:url value="/style/bootstrap-material-design.css" />" rel="stylesheet">

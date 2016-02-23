@@ -337,6 +337,11 @@ public class UserController {
             return "user/resetPassword";
         }
         redirectAttributes.addFlashAttribute("indexMessageId", "user.resetPassword.success");
+
+        // For librarian, redirect to admin page
+        if (user.getRoles().contains(UserRole.LIBRARIAN)) {
+            return "redirect:/user/admin";
+        }
         return "redirect:/user/manage";
     }
 

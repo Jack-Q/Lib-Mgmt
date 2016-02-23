@@ -24,9 +24,9 @@ public class BookController {
         return "book/manage";
     }
 
-    @RequestMapping("comment/{bookCode}/{versionCode}")
+    @RequestMapping("comment/{bookCode}")
     @PartialView
-    public String comment(@PathVariable String bookCode, @PathVariable String versionCode) {
+    public String comment(@PathVariable String bookCode) {
         return "book/comment";
     }
 
@@ -35,8 +35,4 @@ public class BookController {
         return "book/detail";
     }
 
-    @RequestMapping({"detail/{bookCode}/{versionCode}"})
-    public String bookVersion(@PathVariable String bookCode, @PathVariable String versionCode) {
-        return "book/version";
-    }
 }

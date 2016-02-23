@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Jack
-  Date: 2/3/2016
-  Time: 22:20
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -29,51 +22,174 @@
                             <p><spring:message code="${fn:escapeXml(indexMessageId)}"/></p>
                         </div>
                     </c:if>
+                        <%-- Search box --%>
+                    <h6>Search</h6>
+                    <div class="index index-login">
+                        <div class="index-search-wrapper">
+                            <div class="index-search-box">
+                                <div class="form-group label-floating">
+                                    <label class="control-label" for="input-search">Type something here to search for a
+                                        book &hellip; &hellip;</label>
+                                    <input class="form-control" id="input-search" type="text">
+                                </div>
 
+                                <div class="icon-search" id="icon-search">
+                                    <i class="material-icons">&#xE8B6;</i>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
                     <layout:role>
                         <jsp:attribute name="admin">
+                            <h6>Operations</h6>
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="well well-lg">
+                                        <p>
+                                            Manage Book records and information. Add, update, remove, modify
+                                            book data in database.
+                                        </p>
+                                        <a href="<spring:url value="/book/manage" />"
+                                           class="btn btn-default btn-raised">
+                                            Book Management
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="well well-lg">
+                                        <p>
+                                            Manage user information for those user with STUDENT role and GUEST role.
+                                            You can modify their information and reset their password here.
+                                            You can also grant librarian role to some user to select them as librarian
+                                            here.
+                                        </p>
+                                        <a href="<spring:url value="/user/manage" />"
+                                           class="btn btn-lg btn-default btn-raised">
+                                            User Management
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="well well-lg">
+                                        <p>
+                                            Manage librarian information here.
+                                            You can also reset their password or revoke their librarian role.
+                                        </p>
+                                        <a href="<spring:url value="/user/admin" />" class="btn btn-default btn-raised">
+                                            Librarian Management
+                                        </a>
+                                    </div>
+                                </div>
 
+                            </div>
                         </jsp:attribute>
                         <jsp:attribute name="librarian">
+                            <h6>Lend & Return</h6>
+                            <div class="index-lend-return">
+                                <a data-toggle="tooltip" href="<spring:url value="/loan/lend" />"
+                                   title="Click to lend books to reader">
+                                    Lend
+                                </a>
+                                &nbsp;
+                                <a data-toggle="tooltip" href="<spring:url value="/loan/lend" />"
+                                   title="Click to accept books returned from reader">
+                                    Return
+                                </a>
+                            </div>
+                            <hr>
+                            <h6>Operations</h6>
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="well well-lg">
+                                        <p>
+                                            Manage Book records and information. Add, update, remove, modify
+                                            book data in database.
+                                        </p>
+                                        <a href="<spring:url value="/book/manage" />"
+                                           class="btn btn-default btn-raised">
+                                            Book Management
+                                        </a>
+                                    </div>
+                                </div>
 
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="well well-lg">
+                                        <p>
+                                            Manage user information for those user with STUDENT role and GUEST role.
+                                            You can modify their information and reset their password here.
+                                        </p>
+                                        <a href="<spring:url value="/user/manage" />"
+                                           class="btn btn-lg btn-default btn-raised">
+                                            User Management
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </jsp:attribute>
                         <jsp:attribute name="student">
+                            <h6>Operations</h6>
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-4">
+                                    <div class="well well-lg">
+                                        <p>
+                                            Manage my loan status and records.
+                                        </p>
+                                        <a href="<spring:url value="/book/manage" />"
+                                           class="btn btn-default btn-raised">
+                                            Loan Management
+                                        </a>
+                                    </div>
+                                </div>
 
+                            </div>
                         </jsp:attribute>
                         <jsp:attribute name="guest">
-
+                            <h6>Operations</h6>
+                            <div class="well">
+                                Sorry, as a guest currently, you can only search for information about books.
+                                Please contact librarian for supports.
+                            </div>
                         </jsp:attribute>
                     </layout:role>
-                    <div>
-                        Current User List
-                    </div>
-                    <div>
-                        <ul>
-                            <li>
-                                Currently, password hash function is merely pass its literal value
-                            </li>
-
-                            <c:if test="${userList.size() == 0}">
-                                <li>
-                                    Create new user by Register page ()
-                                </li>
-                            </c:if>
-
-                        </ul>
-                    </div>
-                    <dl>
-                        <c:forEach items="${userList}" var="user">
-                            <dt>
-                                <c:out value="${user.userName}"/>
-                            </dt>
-                            <dd>
-                                <c:out value="${user.passwordHash}"/>
-                            </dd>
-                        </c:forEach>
-                    </dl>
 
                 </div>
             </div>
+            <script>
+                $(function () {
+                    var search = $('#input-search');
+                    var searchButton = $('#icon-search');
+                    var doSearch = function () {
+                        var searchValue = search.val();
+                        if (searchValue == "") {
+                            return false;
+                        }
+                        window.location = "/search?q=" + searchValue;
+                        return true;
+                    };
+                    search.bind('focus blur change', function () {
+                        if ($(this).is(':focus') || $(this).val().length > 0) {
+                            searchButton.addClass('on')
+                        } else {
+                            searchButton.removeClass('on')
+                        }
+                    });
+                    if (search.val().length > 0) {
+                        searchButton.addClass('on');
+                    }
+                    search.bind('keydown', function (e) {
+                        if (e.keyCode == 13 /*Code for enter kry*/) {
+                            doSearch();
+                        }
+                    });
+                    searchButton.bind('click', function () {
+                        if (!doSearch()) {
+                            search.focus();
+                        }
+                    });
+                });
+            </script>
         </layout:basic>
     </jsp:attribute>
     <jsp:attribute name="notLogin">

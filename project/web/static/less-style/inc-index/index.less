@@ -5,8 +5,8 @@ body.index-body {
   background-size: cover;
 }
 
-.index{
-  font-size:20px;
+.index {
+  font-size: 20px;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -18,7 +18,6 @@ body.index-body {
     margin-top: -100px;
     height: 200px;
     width: 100%;
-
 
     .index-search-box {
       width: 800px;
@@ -50,7 +49,7 @@ body.index-body {
         padding: 15px;
         border-radius: 40px;
         position: absolute;
-        top: 50px;
+        top: 45px;
         left: -17px;
         background-color: transparent;
         cursor: default;
@@ -64,6 +63,18 @@ body.index-body {
           background-color: #00aa9a;
           cursor: pointer;
         }
+      }
+    }
+  }
+  &.index-login {
+    width: auto;
+    height: auto;
+    .index-search-wrapper {
+      position: relative;
+      height: 200px;
+      margin: 20px 0;
+      .index-search-box {
+        background-color: rgba(20, 20, 20, 0.3);
       }
     }
   }
@@ -136,6 +147,73 @@ body.index-body {
 
           }
         }
+      }
+    }
+  }
+
+}
+
+.index-section {
+  h6 {
+    font-size: 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: rgba(120, 120, 120, 0.4);
+    text-shadow: 0 0 3px rgba(140, 140, 140, 0.4);
+    position: relative;
+    padding-bottom: 10px;
+    &::after {
+      position: absolute;
+      height: 3px;
+      width: 25px;
+      background-color: rgba(0, 170, 154, 0.6);
+      content: ' ';
+      bottom: 4px;
+      left: 0;
+      z-index: 100;
+    }
+  }
+}
+
+.index-lend-return {
+  padding: 5px 30px;
+  text-align: justify;
+  .tooltip {
+    font-size: 16px;
+    transition: opacity ease 400ms;
+  }
+  a {
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 100;
+    text-decoration: none;
+    min-width: 200px;
+    width: 40%;
+    text-align: center;
+    border: solid 1px #aaa;
+    line-height: 100px;
+    transition: all ease 400ms;
+    overflow: hidden;
+    position: relative;
+    &::after {
+      position: absolute;
+      display: block;
+      height: 0;
+      width: 100%;
+      background-color: rgba(0, 170, 154, 0.6);
+      content: ' ';
+      bottom: 0;
+      left: 0;
+      z-index: 100;
+      transition: all ease 400ms;
+    }
+    &:hover {
+      background-color: rgba(120, 170, 154, 0.1);
+      box-shadow: 0 0 10px 2px rgba(120, 170, 154, 0.1);
+      color: #555;
+      text-shadow: 0 0 3px #aaa;
+      &::after {
+        height: 3px;
       }
     }
   }

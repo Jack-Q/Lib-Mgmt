@@ -1,9 +1,7 @@
 package cn.edu.xjtu.se.jackq.libmgmt.controller;
 
-import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,13 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     private static final Log logger = LogFactory.getLog(HomeController.class);
 
-    @Autowired
-    private UserService userService;
 
     @RequestMapping({"/", "/index"})
     public String index(Model model){
         logger.debug("Requesting Home Page: Home - Index");
-        model.addAttribute("userList", userService.listUser());
         return "home/index";
     }
 
