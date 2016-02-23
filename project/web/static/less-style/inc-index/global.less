@@ -7,7 +7,8 @@
   font-weight: 400;
   src: local('Material Icons'),
   local('MaterialIcons-Regular'),
-  url('../fonts/MaterialIcons-Regular.woff2'),
+    // The url path will not be parsed during less compiling
+  url('../font/MaterialIcons-Regular.woff2'),
   url(https://fonts.gstatic.com/s/materialicons/v11/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
 }
 
@@ -50,6 +51,7 @@ body, html {
 }
 
 body {
+  padding-top: 60px;
   background: @site-background;
 }
 
@@ -66,8 +68,8 @@ body {
 }
 
 .main-body {
-  margin-top: 60px;
-  min-height: 300px;
+  // Use Escape to pass calc arguments
+  min-height: ~"calc(100% - 100px)";
 }
 
 .main-footer {

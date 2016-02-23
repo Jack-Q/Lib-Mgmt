@@ -97,11 +97,16 @@
     <div class="index-footer-wrapper">
 
         <div class="index-footer">
+            <div class="logo-section">
+                <div class="text-logo">
+                    Lib-Mgmt
+                </div>
+            </div>
             <div class="user-section">
                 <i class="material-icons">&#xE851;</i>
                 <div class="section-actions">
-                    <a class="btn btn-raised btn-primary" href="<spring:url value="/user/login"/>">Login</a>
-                    <a class="btn btn-raised btn-primary" href="<spring:url value="/user/register"/>">Register</a>
+                    <a href="<spring:url value="/user/login"/>">Login</a>
+                    <a href="<spring:url value="/user/register"/>">Register</a>
 
                 </div>
             </div>

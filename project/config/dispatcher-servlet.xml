@@ -80,7 +80,7 @@
 
     <mvc:resources mapping="/style/**" location="/static/style/"/>
     <mvc:resources mapping="/script/**" location="/static/script/"/>
-    <mvc:resources mapping="/font/**" location="/static/fonts/"/>
+    <mvc:resources mapping="/font/**" location="/static/font/"/>
     <mvc:resources mapping="/image/**" location="/static/image/"/>
     <mvc:annotation-driven conversion-service="conversionService"/>
 
