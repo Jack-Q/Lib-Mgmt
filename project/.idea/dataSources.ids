@@ -262,26 +262,35 @@ Isbn</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
       </index>
-      <key id="74" parent="7" name="PRIMARY">
+      <index id="74" parent="7" name="UK_9t4er00mstv8by4kyik0uong0">
+        <columns>UserName</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="75" parent="7" name="PRIMARY">
         <columns>Id</columns>
         <primary>1</primary>
       </key>
-      <key id="75" parent="7" name="UK_5b4aamjjkdw32gwy7s9dstcai">
+      <key id="76" parent="7" name="UK_5b4aamjjkdw32gwy7s9dstcai">
         <columns>UserName</columns>
         <underlying-index>UK_5b4aamjjkdw32gwy7s9dstcai</underlying-index>
       </key>
-      <column id="76" parent="8" name="User_Id">
+      <key id="77" parent="7" name="UK_9t4er00mstv8by4kyik0uong0">
+        <columns>UserName</columns>
+        <underlying-index>UK_9t4er00mstv8by4kyik0uong0</underlying-index>
+      </key>
+      <column id="78" parent="8" name="User_Id">
         <mandatory>1</mandatory>
         <data-type>int(11)</data-type>
       </column>
-      <column id="77" parent="8" name="roles">
+      <column id="79" parent="8" name="roles">
         <data-type>varchar(255)</data-type>
       </column>
-      <index id="78" parent="8" name="FK_tqvprptig0xhu6f9f89s9rfc1">
+      <index id="80" parent="8" name="FK_tqvprptig0xhu6f9f89s9rfc1">
         <columns>User_Id</columns>
         <desc-columns></desc-columns>
       </index>
-      <foreign-key id="79" parent="8" name="FK_tqvprptig0xhu6f9f89s9rfc1">
+      <foreign-key id="81" parent="8" name="FK_tqvprptig0xhu6f9f89s9rfc1">
         <columns>User_Id</columns>
         <ref-key>~.user.PRIMARY</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>

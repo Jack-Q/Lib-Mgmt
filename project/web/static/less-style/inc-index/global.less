@@ -5,11 +5,12 @@
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
+  src: url(../font/MaterialIcons-Regular.eot); /* For IE6-8 */
   src: local('Material Icons'),
   local('MaterialIcons-Regular'),
-    // The url path will not be parsed during less compiling
-  url('../font/MaterialIcons-Regular.woff2'),
-  url(https://fonts.gstatic.com/s/materialicons/v11/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+  url(../font/MaterialIcons-Regular.woff2) format('woff2'),
+  url(../font/MaterialIcons-Regular.woff) format('woff'),
+  url(../font/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 .material-icons {
@@ -48,13 +49,12 @@ body, html {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: url(../image/index-background.jpg) center center no-repeat;
+  background: url(../image/index-background.jpg) center center no-repeat fixed;
   background-size: cover;
 }
 
 body {
-  padding-top: 60px;
-  background: fade(@site-background, 87);
+  padding-top: 50px;
 }
 
 .main-header {
@@ -72,6 +72,8 @@ body {
 .main-body {
   // Use Escape to pass calc arguments
   min-height: ~"calc(100% - 100px)";
+
+  background: fade(@site-background, 87);
 }
 
 .main-footer {
