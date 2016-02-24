@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.List;
 
 
-@Entity
+// @Entity
 public class Publisher implements Serializable {
     private static final long serialVersionUID = -6968006543405937832L;
 

@@ -18,8 +18,7 @@ public class Book implements Serializable {
     @Column(name = "BookCode", unique = true, nullable = false)
     private String bookCode;
 
-    @NaturalId
-    @Column(name = "Isbn", unique = true, nullable = true)
+    @Column(name = "Isbn", nullable = true)
     private String isbn;
 
 
@@ -29,9 +28,8 @@ public class Book implements Serializable {
     @Column(name = "BookNote")
     private String bookNote;
 
-    @ManyToOne
-    @JoinColumn(name="PublisherId")
-    private Publisher publisher;
+    @Column(name = "Publisher")
+    private String publisher;
 
     @Column(name = "Author")
     private String author;
@@ -88,12 +86,11 @@ public class Book implements Serializable {
         this.bookNote = bookNote;
     }
 
-
-    public Publisher getPublisher() {
+    public String getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(Publisher publisher) {
+    public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
 
