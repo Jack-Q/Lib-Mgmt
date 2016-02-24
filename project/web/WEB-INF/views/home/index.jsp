@@ -93,7 +93,7 @@
                                     Lend
                                 </a>
                                 &nbsp;
-                                <a data-toggle="tooltip" href="<spring:url value="/loan/lend" />"
+                                <a data-toggle="tooltip" href="<spring:url value="/loan/return" />"
                                    title="Click to accept books returned from reader">
                                     Return
                                 </a>
@@ -136,7 +136,7 @@
                                         <p>
                                             Manage my loan status and records.
                                         </p>
-                                        <a href="<spring:url value="/book/manage" />"
+                                        <a href="<spring:url value="/loan/status" />"
                                            class="btn btn-default btn-raised">
                                             Loan Management
                                         </a>

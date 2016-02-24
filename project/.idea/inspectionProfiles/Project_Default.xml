@@ -62,6 +62,11 @@
             <option name="tagName" value="formatDate" />
             <option name="attributeName" value="value" />
           </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="urn:jsptagdir:/WEB-INF/tags/layout" />
+            <option name="tagName" value="basic" />
+            <option name="attributeName" value="pageTitle" />
+          </SafeTagInfo>
         </list>
       </option>
     </inspection_tool>

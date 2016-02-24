@@ -1,0 +1,125 @@
+.page-lend, .page-return {
+  .step {
+    display: block;
+    margin: 20px 0;
+    & + .step {
+      border-top: solid 2px rgba(3, 168, 243, 0.1);
+      padding: 20px 0;
+    }
+    .step-title {
+      font-size: 23px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: rgba(120, 120, 120, 0.4);
+      text-shadow: 0 0 3px rgba(140, 140, 140, 0.4);
+      position: relative;
+      padding-bottom: 10px;
+      &::after {
+        position: absolute;
+        height: 3px;
+        width: 25px;
+        background-color: rgba(0, 170, 154, 0.6);
+        content: ' ';
+        bottom: 4px;
+        left: 0;
+        z-index: 100;
+      }
+    }
+
+  }
+
+  .step-user {
+    .select-user {
+      padding: 30px 0;
+      .select-candidate {
+        padding: 20px;
+        border-bottom: solid 1px #dedeee;
+        span {
+          margin: 0 3px;
+          display: inline-block;
+          padding: 3px 10px;
+          line-height: 20px;
+          background-color: rgba(90, 90, 90, 0.4);
+          color: #fefefe;
+          cursor: pointer;
+          border-radius: 13px;
+
+          text-shadow: 0 0 3px #999;
+        }
+      }
+    }
+    .selected-user {
+      cursor: default;
+      display: block;
+      margin: auto;
+      text-align: center;
+      font-size: 20px;
+      padding: 20px 30px;
+      border-radius: 25px;
+      max-width: 500px;
+      background-color: rgba(90, 90, 90, 0.4);
+      color: #fefefe;
+      text-shadow: 0 0 3px #999;
+
+    }
+  }
+  .step-book {
+    .amount-tip {
+      text-align: center;
+      span.label {
+        display: inline-block;
+        max-width: 500px;
+        width: 30%;
+        margin: 20px 10px;
+        padding: 10px 10px;
+        span.num {
+          margin: -15px 3px;
+          line-height: 36px;
+          display: inline-block;
+          border-radius: 18px;
+          height: 36px;
+          min-width: 36px;
+          background-color: rgba(120, 120, 120, 0.6);
+          transform: scale(1.2);
+          color: #fff;
+          box-shadow: 0 0 5px 2px rgba(120, 120, 120, 0.3);
+        }
+      }
+    }
+
+    .select-book {
+      z-index: 200;
+      border-radius: 20px;
+      transition: all ease 400ms;
+      position: absolute;
+      max-width: 1100px;
+      width: 80%;
+      height: 0;
+      opacity: 0;
+      pointer-events: none;
+      &::before {
+        pointer-events: none;
+        display: block;
+        content: ' ';
+        border: solid 35px transparent;
+        border-bottom: solid 35px #fff;
+        border-top: none;
+        position: absolute;
+        top: -20px;
+        left: 70px;
+      }
+      &.on {
+        pointer-events: all;
+        opacity: 1;
+        height: 500px;
+      }
+    }
+    .select-book-placer {
+      transition: all ease 400ms;
+      height: 0;
+    }
+    .select-book.on + .select-book-placer {
+      height: 550px;
+    }
+  }
+}

@@ -33,6 +33,20 @@
 // Theme Tweak
 .alert{
   border-radius: 10px;
+
+  button[data-dismiss="alert"] {
+    color: #fff;
+    opacity: 0.7;
+    transition: all ease 300ms;
+    &:hover {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+}
+
+div {
+  cursor: default;
 }
 
 .form-group label.control-label{
