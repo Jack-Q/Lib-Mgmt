@@ -36,7 +36,7 @@
                         <c:otherwise>
                             <%--Nonempty List--%>
                             <%--Extra bottom padding to contain the drop down menu--%>
-                            <div class="table-responsive" style="padding-bottom: 100px;">
+                            <div class="table-responsive" style="padding-bottom: 150px;">
                                 <table class="table  table-hover">
                                     <thead>
                                     <tr>
@@ -66,25 +66,29 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
-                                                            <a href="<spring:url value="/user/resetPassword/${Book.id}"/>">
-                                                                Reset Password
+                                                            <a href="<spring:url value="/book/detail/${Book.id}"/>">
+                                                                View Detail
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a href="<spring:url value="/book/edit/${Book.id}"/>">
+                                                                Update information
                                                             </a>
                                                         </li>
                                                         <li>
-                                                            <a href="<spring:url value="/user/edit/${Book.id}"/>">
-                                                                Edit Profile
+                                                            <a href="<spring:url value="/book/copies/${Book.id}"/>">
+                                                                Manage Copies
                                                             </a>
                                                         </li>
 
-                                                        <c:if test="${sessionScope.get('Auth').admin}">
-                                                            <li class="divider"></li>
-                                                            <li>
-                                                                <a href="<spring:url value="/user/selectLibrarian/${Book.id}"/>"
-                                                                   class=" alert-link">
-                                                                    Mark as Librarian
-                                                                </a>
-                                                            </li>
-                                                        </c:if>
+                                                        <li class="divider"></li>
+                                                        <li>
+                                                            <a href="<spring:url value="/book/delete/${Book.id}"/>"
+                                                               class=" alert-link">
+                                                                Delete book
+                                                            </a>
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </td>

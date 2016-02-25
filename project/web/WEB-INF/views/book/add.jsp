@@ -60,6 +60,15 @@
                                            required class="form-control" title="ISBN"/>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-3" for="form-note">Extra Note</label>
+                                <div class="col-xs-9">
+                                    <input type="text"
+                                           value="<c:out value="${BookAdd.bookNote}"/>"
+                                           placeholder="" id="form-note"
+                                           name="bookNote" class="form-control" title="Publisher"/>
+                                </div>
+                            </div>
                         </fieldset>
                         <fieldset>
                             <legend>Detailed Description</legend>
@@ -91,15 +100,6 @@
                                            value="<c:out value="${BookAdd.yearOfPublish != 0?BookAdd.yearOfPublish :2016}" default="2016"/>"
                                            placeholder="2016" id="form-year-of-publish"
                                            name="yearOfPublish" class="form-control" title="Year of Publish"/>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-xs-3" for="form-note">Extra Note</label>
-                                <div class="col-xs-9">
-                                    <input type="text"
-                                           value="<c:out value="${BookAdd.bookNote}"/>"
-                                           placeholder="" id="form-note"
-                                           name="bookNote" class="form-control" title="Publisher"/>
                                 </div>
                             </div>
                             <div class="form-group">

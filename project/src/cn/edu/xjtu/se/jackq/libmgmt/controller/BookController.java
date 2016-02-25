@@ -43,14 +43,32 @@ public class BookController {
         return "book/manage";
     }
 
-    @RequestMapping("comment/{bookCode}")
+    @RequestMapping("copiesPartial/{id}")
     @PartialView
-    public String comment(@PathVariable String bookCode) {
-        return "book/comment";
+    public String copiesPartial(@PathVariable int id, Model model) {
+        Book book = bookService.getBook(id);
+        model.addAttribute("CurrentBook", book);
+        model.addAttribute("BookCopies", book.getBookCopies());
+        return "book/copiesPartial";
     }
 
-    @RequestMapping({"detail", "detail/{bookCode}"})
-    public String detail(@PathVariable("bookCode") String bookCode) {
+    @RequestMapping("commentPartial/{id}")
+    @PartialView
+    public String commentPartial(@PathVariable int id, Model model) {
+        Book book = bookService.getBook(id);
+
+        model.addAttribute("CurrentBook", book);
+        model.addAttribute("BookComments", book.getBookComments());
+        return "book/commentPartial";
+    }
+
+    @RequestMapping("detail/{id}")
+    public String detail(@PathVariable("id") int id, Model model) {
+        Book book = bookService.getBook(id);
+        if (book == null) {
+            return "redirect:/error/argument";
+        }
+        model.addAttribute("CurrentBook", book);
         return "book/detail";
     }
 

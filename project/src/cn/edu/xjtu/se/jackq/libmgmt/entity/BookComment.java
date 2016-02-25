@@ -31,4 +31,52 @@ public class BookComment implements Serializable{
 
     @Column(name = "Stars")
     private int stars = 0;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Date getDateOfComment() {
+        return dateOfComment;
+    }
+
+    public void setDateOfComment(Date dateOfComment) {
+        this.dateOfComment = dateOfComment;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public int getStars() {
+        return stars;
+    }
+
+    public void setStars(int stars) {
+        this.stars = stars;
+    }
 }
