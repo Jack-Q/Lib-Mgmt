@@ -18,4 +18,5 @@ public interface BookService {
 
     List<Book> listBook();
 
+    List<Book> findBook(String query);
 }

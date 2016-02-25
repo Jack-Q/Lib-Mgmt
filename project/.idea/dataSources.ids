@@ -33,7 +33,7 @@
         <data-type>varchar(255)</data-type>
       </column>
       <column id="13" parent="2" name="Description">
-        <data-type>varchar(255)</data-type>
+        <data-type>varchar(2000)</data-type>
       </column>
       <column id="14" parent="2" name="Isbn">
         <data-type>varchar(255)</data-type>

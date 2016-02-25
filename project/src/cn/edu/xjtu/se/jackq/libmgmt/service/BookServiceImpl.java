@@ -1,6 +1,6 @@
 package cn.edu.xjtu.se.jackq.libmgmt.service;
 
-import cn.edu.xjtu.se.jackq.libmgmt.dao.BookCopyDao;
+
 import cn.edu.xjtu.se.jackq.libmgmt.dao.BookDao;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
@@ -17,8 +17,6 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookDao bookDao;
 
-    @Autowired
-    private BookCopyDao bookCopyDao;
 
     @Override
     public Book getBook(int id) {
@@ -64,5 +62,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> listBook() {
         return bookDao.listBook();
+    }
+
+    @Override
+    public List<Book> findBook(String query) {
+        return null;
     }
 }

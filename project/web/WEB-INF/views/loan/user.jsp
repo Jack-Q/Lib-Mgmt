@@ -62,5 +62,8 @@
             </div>
 
         </div>
+        <script>
+            // Target URL: http://localhost:8080/user/search?q=123&byId=0&byName=1
+        </script>
     </jsp:body>
 </layout:basic>

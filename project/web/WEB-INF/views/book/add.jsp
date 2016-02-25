@@ -107,7 +107,7 @@
                                 <div class="col-xs-9">
                                     <textarea
                                             placeholder="" id="form-description"
-                                            name="bookNote" class="form-control" title="Publisher"><c:out
+                                            name="description" class="form-control" title="Publisher"><c:out
                                             value="${BookAdd.description}"/></textarea>
                                 </div>
                             </div>
