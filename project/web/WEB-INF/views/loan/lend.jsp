@@ -39,7 +39,7 @@
                 <div class="amount-tip">
                     <span class="label label-info">
                         Holding
-                        <span class="num" id="num-current-holding">3</span>
+                        <span class="num" id="num-current-holding">${BookHoldingNum}</span>
                         books
                     </span>
                     <span class="label label-info">
@@ -149,28 +149,11 @@
             // search/ajax?q=123&byCode=1&byName=0&byAuthor=1
             $(function () {
                 var currentUserId = ${CurrentUser.id};
-                var currentBookLimit = 7;
+                var currentBookLimit = ${BookLeavingNum};
                 var currentLending = 0;
 
-                var loanBookData = [
-                    {
-                        id: 1,
-                        bookcode: "1233123",
-                        author: "",
-                        year: 2016,
-                        bookname: "测试",
-                        isbn: "1212122221"
-                    }];
-                var currentListData = [
-                    {
-                        id: 2,
-                        bookcode: "TEST0001",
-                        author: "TEST",
-                        year: 2016,
-                        bookname: "TEST",
-                        isbn: "1233120029222"
-                    }
-                ];
+                var loanBookData = [];
+                var currentListData = [];
                 var candidates = $(".select-candidate");
                 var bookSearch = $("#book-search");
 

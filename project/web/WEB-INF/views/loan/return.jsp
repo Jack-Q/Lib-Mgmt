@@ -73,16 +73,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Java Programming Language</td>
-                            <td>TP312JA-0001</td>
-                            <td>60</td>
-                            <td>2016-02-24</td>
-                            <td>
-                                <button class="btn btn-primary">Return</button>
-                            </td>
-                        </tr>
+                        <c:forEach var="Loan" items="${LoanList}">
+                            <tr>
+                                <td>${Loan.id}</td>
+                                <td><c:out value="${Loan.bookCopy.book.bookName}"/></td>
+                                <td><c:out value="${Loan.bookCopy.book.bookCode}"/></td>
+                                <td><c:out value="${Loan.loanPeriod}"/></td>
+                                <td><c:out value="${Loan.deadlineOfReturning}"/></td>
+                                <td>
+                                    <button data-loan-id="${Loan.id}" class="btn btn-primary btn-raised">Return</button>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>

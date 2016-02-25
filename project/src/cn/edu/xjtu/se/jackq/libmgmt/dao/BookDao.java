@@ -22,4 +22,6 @@ public interface BookDao {
 
     boolean AddCopy(BookCopy bookCopy);
 
+    boolean updateBookCopy(BookCopy bookCopy);
+
 }
