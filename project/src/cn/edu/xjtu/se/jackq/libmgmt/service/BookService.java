@@ -14,5 +14,7 @@ public interface BookService {
 
     Book updateBook(Book book);
 
+    boolean addBookCopies(int bookId, int count);
+
     List<Book> listBook();
 }

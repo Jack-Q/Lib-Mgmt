@@ -10,6 +10,10 @@ public class BookAdd {
     private int yearOfPublish;
     private String bookNote;
     private String description;
+    private int count;
+
+    public BookAdd() {
+    }
 
     public String getBookName() {
         return bookName;
@@ -73,5 +77,13 @@ public class BookAdd {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }

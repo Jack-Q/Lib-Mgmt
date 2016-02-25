@@ -1,6 +1,7 @@
 package cn.edu.xjtu.se.jackq.libmgmt.dao;
 
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -60,5 +61,12 @@ public class BookDaoImpl implements BookDao {
         Query query = currentSession.createQuery("from Book");
         List bookList = query.list();
         return bookList;
+    }
+
+    @Override
+    public boolean AddCopy(BookCopy bookCopy) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.persist(bookCopy);
+        return bookCopy.getId() != 0;
     }
 }

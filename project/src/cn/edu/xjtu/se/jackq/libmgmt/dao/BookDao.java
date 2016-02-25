@@ -1,6 +1,7 @@
 package cn.edu.xjtu.se.jackq.libmgmt.dao;
 
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
 
 import java.util.List;
 
@@ -18,4 +19,7 @@ public interface BookDao {
     Book getBookByBookCode(String bookCode);
 
     List<Book> listBook();
+
+    boolean AddCopy(BookCopy bookCopy);
+
 }

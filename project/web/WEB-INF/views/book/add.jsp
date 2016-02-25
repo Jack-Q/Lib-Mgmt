@@ -113,6 +113,20 @@
                             </div>
 
                         </fieldset>
+                        <fieldset>
+
+                            <legend>Book Copies</legend>
+
+                            <div class="form-group">
+                                <label class="control-label col-xs-3" for="form-count">Book Copies</label>
+                                <div class="col-xs-9">
+                                    <input type="number" id="form-count" name="count" required
+                                           min="0" max="100" step="1"
+                                           value="<c:out value="${BookAdd.count}"/>" class="form-control"
+                                           title="count" placeholder="1"/>
+                                </div>
+                            </div>
+                        </fieldset>
                         <div class="form-group">
                             <input class="btn btn-raised btn-primary" value="Add" type="submit"/>
                             <input class="btn btn-raised" value="Reset" type="reset"/>

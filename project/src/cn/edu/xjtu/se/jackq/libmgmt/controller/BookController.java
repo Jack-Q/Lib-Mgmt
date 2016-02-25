@@ -70,7 +70,6 @@ public class BookController {
             return "book/Add";
         }
 
-
         String bookCode = bookAdd.getBookCode();
         if (bookCode == null) {
             model.addAttribute("errorMessageId", "book.add.error.bookCode");
@@ -111,6 +110,7 @@ public class BookController {
             return "book/add";
         }
 
+        bookService.addBookCopies(book.getId(), bookAdd.getCount());
         redirectAttributes.addFlashAttribute("indexMessageId", "book.add.success");
         return "redirect:/book/manage";
     }
