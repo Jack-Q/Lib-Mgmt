@@ -34,7 +34,7 @@
                             <div class="input-group">
                                 <input type="text" id="user-search" class="form-control">
                               <span class="input-group-btn">
-                                <button type="button" class="btn btn-fab btn-fab-mini">
+                                <button type="button" id="user-search-btn" class="btn btn-fab btn-fab-mini">
                                     <i class="material-icons">search</i>
                                 </button>
                               </span>
@@ -54,8 +54,6 @@
                             </div>
                         </div>
                         <div class="select-candidate">
-                            <span data-id="1">Admin (12)</span>
-                            <span data-id="2">Label (3)</span>
                         </div>
                     </div>
                 </div>
@@ -64,6 +62,75 @@
         </div>
         <script>
             // Target URL: http://localhost:8080/user/search?q=123&byId=0&byName=1
+            $(function () {
+                var candidates = $(".select-candidate");
+                var userSearch = $("#user-search");
+                var updateCandidates = function (newCandidates) {
+                    candidates.fadeOut(300, function () {
+                        candidates.empty();
+                        newCandidates.forEach(function (candidate) {
+                            candidates.append("<span data-id='" + candidate.id + "'>" + candidate.name + "(" + candidate.username + ")</span>");
+                        });
+                    }).fadeIn(300);
+                };
+                // Ensure that at least one option is selected
+                $("#user-search-name, #user-search-id").bind("change", function (e) {
+                    var isByName = $("#user-search-name").prop("checked");
+                    var isById = $("#user-search-id").prop("checked");
+                    if (!isById && !isByName) {
+                        if (e.target.id == "user-search-id") {
+                            $("#user-search-name").prop("checked", true);
+                        } else {
+
+                            $("#user-search-id").prop("checked", true);
+                        }
+                    }
+                });
+                var retrieveCandidates = function () {
+                    var query = userSearch.val();
+                    var isByName = $("#user-search-name").prop("checked");
+                    var isById = $("#user-search-id").prop("checked");
+                    if (!isById && !isByName) {
+                        $("#user-search-name").prop("checked", true);
+                    }
+                    if (query.length == 0) {
+                        userSearch.focus();
+                        return;
+                    }
+                    $.get("<spring:url value="/user/search" />", {
+                        q: query,
+                        byId: isById,
+                        byName: isByName
+                    }, function (res) {
+                        if (typeof res === 'string') {
+                            try {
+                                res = JSON.parse(res);
+                            } catch (e) {
+                                res = {success: false};
+                            }
+                        }
+
+                        if (res.success && res.data) {
+                            updateCandidates(res.data);
+                        }
+
+                    });
+                };
+                candidates.click(function (e) {
+                    var id = $(e.target).data("id");
+                    if (!parseInt(id)) {
+                        return;
+                    }
+                    window.location = "<spring:url value="${NextPage}" />" + id;
+                });
+                $("#user-search-btn").click(retrieveCandidates);
+                userSearch.bind("keydown", function (e) {
+                    if (e.keyCode == 13 /* Key Code for Enter*/) {
+                        retrieveCandidates();
+                    }
+                })
+
+            });
         </script>
     </jsp:body>
 </layout:basic>
