@@ -260,7 +260,7 @@ public class UserController {
     }
 
     @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
-    @RequestMapping(value = "changeRoleAjax", method = RequestMethod.POST)
+    @RequestMapping(value = "changeRoleAjax", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
     @ResponseBody
     public String doChangeRoleAjax(@ModelAttribute("userId") int userId,
                                    @ModelAttribute("roleName") String roleName,
@@ -453,7 +453,7 @@ public class UserController {
     }
 
     @Auth(userRoles = UserRole.LIBRARIAN)
-    @RequestMapping("search")
+    @RequestMapping(value = "search", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String searchAjax(@RequestParam("q") String queryString,
                              @RequestParam("byId") boolean isById,
