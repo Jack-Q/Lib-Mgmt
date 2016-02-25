@@ -6,9 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Jack on 2/14/2016.
- */
 public class StringToDateConverter implements Converter<String, Date> {
     private String pattern = "yyyy-mm-dd";
 
