@@ -25,11 +25,12 @@ public class SearchController {
         return "search/result";
     }
 
-    @RequestMapping("ajax")
+    @RequestMapping(value = "ajax", produces = "application/json; charset=utf-8")
     @ResponseBody
     public String searchAjax() {
         List<Book> books = bookService.listBook();
         return encodeJsonForSearch(books, true);
+
     }
 
 
@@ -55,7 +56,7 @@ public class SearchController {
                 // Book book name
                 stringBuilder.append("\"bookname\": \"");
                 stringBuilder.append(book.getBookName());
-                stringBuilder.append("\"");
+                stringBuilder.append("\", ");
                 // Book ISBN
                 stringBuilder.append("\"isbn\": \"");
                 stringBuilder.append(book.getIsbn());
