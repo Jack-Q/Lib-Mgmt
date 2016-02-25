@@ -4,7 +4,7 @@ import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Book implements Serializable {
@@ -18,8 +18,7 @@ public class Book implements Serializable {
     @Column(name = "BookCode", unique = true, nullable = false)
     private String bookCode;
 
-    @NaturalId
-    @Column(name = "Isbn", unique = true, nullable = true)
+    @Column(name = "Isbn", nullable = true)
     private String isbn;
 
 
@@ -29,24 +28,24 @@ public class Book implements Serializable {
     @Column(name = "BookNote")
     private String bookNote;
 
-    @ManyToOne
-    @JoinColumn(name="PublisherId")
-    private Publisher publisher;
+    @Column(name = "Publisher")
+    private String publisher;
 
     @Column(name = "Author")
     private String author;
 
-    @Column(name = "Description")
+
+    @Column(name = "Description", length = 2000)
     private String description;
 
     @Column(name = "YearOfPublish")
     private int yearOfPublish;
 
-    @OneToMany(mappedBy = "book")
-    private List<BookCopy> bookCopies;
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+    private Set<BookCopy> bookCopies;
 
-    @OneToMany(mappedBy = "book")
-    private List<BookComment> bookComments;
+    @OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+    private Set<BookComment> bookComments;
 
     public int getId() {
         return id;
@@ -88,12 +87,11 @@ public class Book implements Serializable {
         this.bookNote = bookNote;
     }
 
-
-    public Publisher getPublisher() {
+    public String getPublisher() {
         return publisher;
     }
 
-    public void setPublisher(Publisher publisher) {
+    public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
 
@@ -121,19 +119,19 @@ public class Book implements Serializable {
         this.yearOfPublish = yearOfPublish;
     }
 
-    public List<BookCopy> getBookCopies() {
+    public Set<BookCopy> getBookCopies() {
         return bookCopies;
     }
 
-    public void setBookCopies(List<BookCopy> bookCopies) {
+    public void setBookCopies(Set<BookCopy> bookCopies) {
         this.bookCopies = bookCopies;
     }
 
-    public List<BookComment> getBookComments() {
+    public Set<BookComment> getBookComments() {
         return bookComments;
     }
 
-    public void setBookComments(List<BookComment> bookComments) {
+    public void setBookComments(Set<BookComment> bookComments) {
         this.bookComments = bookComments;
     }
 }

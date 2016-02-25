@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Base64;
+import java.util.List;
 
 @Controller
 @RequestMapping("/user/")
@@ -449,6 +450,52 @@ public class UserController {
         }
 
         return "redirect:/user/admin";
+    }
+
+    @Auth(userRoles = UserRole.LIBRARIAN)
+    @RequestMapping("search")
+    @ResponseBody
+    public String searchAjax(@RequestParam("q") String queryString,
+                             @RequestParam("byId") boolean isById,
+                             @RequestParam("byName") boolean isByName) {
+        // return "{\"success\":" + isByName + "}" + isById + queryString;
+
+        return encodeJsonForSearch(userService.listUser(), true);
+    }
+
+    private String encodeJsonForSearch(List<User> userList, boolean status) {
+        StringBuilder stringBuilder = new StringBuilder();
+        // Prepend Status
+        stringBuilder.append("{\"success\":");
+        stringBuilder.append(status);
+        stringBuilder.append(",\"data\": [");
+        // Close JSON Data
+        if (status) {
+            for (User user : userList) {
+                // Start Object
+                stringBuilder.append("{");
+                // User id
+                stringBuilder.append("\"id\": ");
+                stringBuilder.append(user.getId());
+                stringBuilder.append(", ");
+                // User username
+                stringBuilder.append("\"username\": \"");
+                stringBuilder.append(user.getUserName());
+                stringBuilder.append("\", ");
+                // User name
+                stringBuilder.append("\"name\": \"");
+                stringBuilder.append(user.getName());
+                stringBuilder.append("\"");
+                // End Object
+                stringBuilder.append("},");
+            }
+            if (stringBuilder.lastIndexOf(",") == stringBuilder.length() - 1) {
+                stringBuilder.delete(stringBuilder.lastIndexOf(","), stringBuilder.lastIndexOf(",") + 1); // Remove extra comma
+            }
+        }
+        // Return String Value
+        stringBuilder.append("]}");
+        return stringBuilder.toString();
     }
 
     private String decodeRedirectUrlPara(String redirectToUrPara) {

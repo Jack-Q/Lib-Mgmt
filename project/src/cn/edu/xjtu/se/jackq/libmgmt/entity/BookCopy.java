@@ -3,7 +3,7 @@ package cn.edu.xjtu.se.jackq.libmgmt.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -29,11 +29,12 @@ public class BookCopy implements Serializable {
     @JoinColumn(name = "BookId")
     private Book book;
 
+
     @Column(name = "DateOfRecord")
     private Date dateOfRecord;
 
-    @OneToMany(mappedBy = "bookCopy")
-    private List<BookLoan> bookLoans;
+    @OneToMany(mappedBy = "bookCopy", fetch = FetchType.EAGER)
+    private Set<BookLoan> bookLoans;
 
     public int getId() {
         return id;
@@ -83,11 +84,11 @@ public class BookCopy implements Serializable {
         this.dateOfRecord = dateOfRecord;
     }
 
-    public List<BookLoan> getBookLoans() {
+    public Set<BookLoan> getBookLoans() {
         return bookLoans;
     }
 
-    public void setBookLoans(List<BookLoan> bookLoans) {
+    public void setBookLoans(Set<BookLoan> bookLoans) {
         this.bookLoans = bookLoans;
     }
 }

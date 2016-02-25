@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f72e0c52-45d3-4eca-b782-50c43d8de2d5" name="Default" comment="Add Index page for user with different role">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/LoanController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/loan/lend.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/loan/return.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/loan/status.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/loan/user.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/static/less-style/inc-index/lend.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+    <list default="true" id="f72e0c52-45d3-4eca-b782-50c43d8de2d5" name="Default" comment="Add Detail Page for Book &amp; Add partial page BookCopies and BookComments">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/WEB-INF/views/search/result.jsp" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookCommentDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookCommentDaoImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookCopyDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookCopyDaoImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/PublisherDao.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/PublisherDaoImpl.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/home/index.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/home/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/static/less-style/inc-index/global.less" afterPath="$PROJECT_DIR$/web/static/less-style/inc-index/global.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/static/less-style/inc-index/index.less" afterPath="$PROJECT_DIR$/web/static/less-style/inc-index/index.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/static/less-style/index.less" afterPath="$PROJECT_DIR$/web/static/less-style/index.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/static/style/index.css" afterPath="$PROJECT_DIR$/web/static/style/index.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/SearchController.java" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/SearchController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Book.java" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Book.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookService.java" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookServiceImpl.java" afterPath="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/book/add.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/book/add.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/views/loan/user.jsp" afterPath="$PROJECT_DIR$/web/WEB-INF/views/loan/user.jsp" />
     </list>
     <ignored path="LibMgmt.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,24 +46,6 @@
         <option name="myItemId" />
         <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
       </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - LibMgmt@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-    </PATH>
-    <PATH>
-      <PATH_ELEMENT>
-        <option name="myItemId" />
-        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="MySQL - LibMgmt@localhost" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
-      <PATH_ELEMENT>
-        <option name="myItemId" value="user" />
-        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
-      </PATH_ELEMENT>
     </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
@@ -68,89 +54,50 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="return.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/loan/return.jsp">
+      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.038462">
-              <caret line="82" column="32" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.230769">
-              <caret line="12" column="14" selection-start-line="0" selection-start-column="0" selection-end-line="59" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/home/index.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-36.923077">
-              <caret line="142" column="42" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="489" column="40" selection-start-line="489" selection-start-column="40" selection-end-line="489" selection-end-column="40" />
               <folding>
-                <element signature="n#c:if#0;n#layout:basic#0;n#jsp:attribute#0;n#layout:login#0;n#jsp:root#0;n#!!top" expanded="false" />
+                <element signature="method#index#0;class#UserController#0" expanded="false" />
+                <element signature="method#manage#0;class#UserController#0" expanded="false" />
+                <element signature="method#admin#0;class#UserController#0" expanded="false" />
+                <element signature="method#login#0;class#UserController#0" expanded="false" />
+                <element signature="method#doLogin#0;class#UserController#0" expanded="false" />
+                <element signature="method#logout#0;class#UserController#0" expanded="false" />
+                <element signature="method#register#0;class#UserController#0" expanded="false" />
+                <element signature="method#doRegister#0;class#UserController#0" expanded="false" />
+                <element signature="method#changePassword#0;class#UserController#0" expanded="false" />
+                <element signature="method#doChangePassword#0;class#UserController#0" expanded="false" />
+                <element signature="method#information#0;class#UserController#0" expanded="false" />
+                <element signature="method#doInformation#0;class#UserController#0" expanded="false" />
+                <element signature="e#9946#9962#0" expanded="false" />
+                <element signature="method#doChangeRoleAjax#0;class#UserController#0" expanded="false" />
+                <element signature="method#decodeRedirectUrlPara#0;class#UserController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/book/book.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoanController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/LoanController.java">
+      <file leaf-file-name="SearchController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/SearchController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
+              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="status.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/loan/status.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.1326352">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="user.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/loan/user.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0">
-              <caret line="13" column="49" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="libmgmt.user" pinned="false" current-in-tab="false">
-        <entry file="dbDummy://dbtable:/40e872bf/0ab95171-db04-4332-9cf7-a5255108c999/libmgmt.user">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
-            </state>
-          </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.38394415">
+              <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+              <folding>
+                <element signature="e#544#3040#0#HTML" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -165,8 +112,8 @@
         <option value="spring-beans.schema" />
         <option value="Enum" />
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -186,35 +133,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/UserDao.java" />
-        <option value="$PROJECT_DIR$/config/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/config/spring-hibernate.xml" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/error/argument.jsp" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/ErrorController.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserResetPassword.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/user/resetPassword.jsp" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/UserEdit.java" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/user/edit.jsp" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/UserService.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/UserDaoImpl.java" />
-        <option value="$PROJECT_DIR$/config/hibernate.cfg.xml" />
-        <option value="$PROJECT_DIR$/res/text-string.properties" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/user/admin.jsp" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/user/login.jsp" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/listener/ApplicationServiceInitializer.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/0ab95171-db04-4332-9cf7-a5255108c999/console.sql" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookVersion.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookCopy.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Publisher.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookComment.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookLoan.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookVersionDao.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookVersionDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookCopyDaoImpl.java" />
-        <option value="$PROJECT_DIR$/config/dispatcher-servlet.xml" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/interceptor/AuthorizationInterceptor.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/session/SessionUser.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tags/layout/role.tag" />
@@ -222,21 +149,41 @@
         <option value="$PROJECT_DIR$/web/static/less-style/inc-index/varible.less" />
         <option value="$PROJECT_DIR$/res/persistence-mysql.properties" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookCopyStatus.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/BookController.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Book.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/HomeController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/tags/layout/basic.tag" />
         <option value="$PROJECT_DIR$/web/static/less-style/inc-index/index.less" />
         <option value="$PROJECT_DIR$/web/static/less-style/index.less" />
-        <option value="$PROJECT_DIR$/web/static/less-style/inc-index/global.less" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/views/loan/user.jsp" />
         <option value="$PROJECT_DIR$/web/static/less-style/inc-index/lend.less" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/loan/lend.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/loan/return.jsp" />
         <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/LoanController.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/home/index.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/views/loan/status.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/book/book.jsp" />
+        <option value="$PROJECT_DIR$/res/text-string.properties" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Publisher.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/BookAdd.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookDao.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookDaoImpl.java" />
+        <option value="$PROJECT_DIR$/config/dispatcher-servlet.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/book/manage.jsp" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookCopy.java" />
+        <option value="$PROJECT_DIR$/web/static/less-style/inc-index/global.less" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookComment.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/BookController.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/book/copiesPartial.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/book/detail.jsp" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/book/commentPartial.jsp" />
+        <option value="$PROJECT_DIR$/web/static/style/index.css" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Book.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/book/add.jsp" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookService.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/SearchController.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/search/result.jsp" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/web/WEB-INF/views/loan/user.jsp" />
       </list>
     </option>
   </component>
@@ -434,10 +381,6 @@
               <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -478,132 +421,6 @@
               <option name="myItemId" value="web" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LibMgmt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LibMgmt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WEB-INF" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="book" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LibMgmt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LibMgmt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="less-style" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LibMgmt" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="less-style" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="inc-index" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -633,15 +450,39 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="res" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libmgmt" />
+              <option name="myItemId" value="Resource Bundle 'text-string'" />
+              <option name="myItemType" value="com.intellij.lang.properties.projectView.ResourceBundleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LibMgmt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="LibMgmt" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1283,7 +1124,8 @@
       <workItem from="1456159330405" duration="230000" />
       <workItem from="1456201306160" duration="23186000" />
       <workItem from="1456245404300" duration="243000" />
-      <workItem from="1456287390258" duration="12538000" />
+      <workItem from="1456287390258" duration="26088000" />
+      <workItem from="1456376102387" duration="12040000" />
     </task>
     <task id="LOCAL-00001" summary="Add role-based access control">
       <created>1455519479917</created>
@@ -1399,11 +1241,35 @@
       <option name="project" value="LOCAL" />
       <updated>1456235062638</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Add Views for Loan Controller">
+      <created>1456308674322</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1456308674322</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Add Views for ist books &amp; Add book page">
+      <created>1456330986596</created>
+      <option name="number" value="00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1456330986596</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Add book copies during adding books &amp; Fix bugs with Mojibake in Chinese input">
+      <created>1456378270907</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1456378270907</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Add Detail Page for Book &amp; Add partial page BookCopies and BookComments">
+      <created>1456383998428</created>
+      <option name="number" value="00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1456383998428</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179981000" />
+    <option name="totallyTimeSpent" value="205571000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1427,14 +1293,14 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32719395" sideWeight="0.4957265" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3206934" sideWeight="0.48397437" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3336945" sideWeight="0.48507464" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.48507464" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32286024" sideWeight="0.49786323" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18387777" sideWeight="0.5136" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22974414" sideWeight="0.4864" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.195629" sideWeight="0.4864" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17110874" sideWeight="0.51029253" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3128998" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17537314" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2489339" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1483,13 +1349,17 @@
     <MESSAGE value="Add search button to new index page" />
     <MESSAGE value="Fix font resource &amp; Unified password for test db" />
     <MESSAGE value="Add Index page for user with different role" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Index page for user with different role" />
+    <MESSAGE value="Add Views for Loan Controller" />
+    <MESSAGE value="Add Views for ist books &amp; Add book page" />
+    <MESSAGE value="Add book copies during adding books &amp; Fix bugs with Mojibake in Chinese input" />
+    <MESSAGE value="Add Detail Page for Book &amp; Add partial page BookCopies and BookComments" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Detail Page for Book &amp; Add partial page BookCopies and BookComments" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="18" />
+      <option name="time" value="20" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1498,277 +1368,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/listener/ApplicationServiceInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77051926">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.403169">
-          <caret line="117" column="13" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.28021017">
-          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-          <folding>
-            <element signature="e#8680#11538#0#HTML" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/information.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9457093">
-          <caret line="27" column="65" selection-start-line="27" selection-start-column="65" selection-end-line="27" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/0ab95171-db04-4332-9cf7-a5255108c999/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.6666667">
-          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookLoanDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookComment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/hibernate.cfg.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.460177">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookCopyDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookCopyDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/dispatcher-servlet.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4095941">
-          <caret line="83" column="66" selection-start-line="83" selection-start-column="66" selection-end-line="83" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23529412">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/interceptor/AuthorizationInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="9" selection-start-line="63" selection-start-column="9" selection-end-line="63" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/session/SessionUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66386557">
-          <caret line="31" column="37" selection-start-line="31" selection-start-column="37" selection-end-line="31" selection-end-column="37" />
-          <folding>
-            <element signature="e#581#582#0" expanded="false" />
-            <element signature="e#661#662#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5384617">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/layout/login.tag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.923077">
-          <caret line="9" column="51" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/static/less-style/inc-index/varible.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/register.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.3846154">
-          <caret line="23" column="16" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/tags/layout/role.tag">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.461538">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/res/persistence-mysql.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.11173184">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookCopyStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/UserRole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/BookController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-          <folding>
-            <element signature="e#807#808#0" expanded="false" />
-            <element signature="e#844#845#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Publisher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookCopy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41899443">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookLoan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.17877094">
-          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Book.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44692737">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23210162">
-          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4347826">
-          <caret line="17" column="59" selection-start-line="17" selection-start-column="59" selection-end-line="17" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/static/less-style/index.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20930232">
-          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="uml://DATABASE/0ab95171-db04-4332-9cf7-a5255108c999">
       <provider selected="true" editor-type-id="UmlEditorProvider">
         <state>
@@ -1822,14 +1421,15 @@
               <point x="73.66666666666669" y="92.0" />
             </edge>
           </edges>
-          <settings layout="Hierarchic Group" zoom="0.8662068965517241" x="267.0700636942675" y="235.23009554140123" />
+          <settings layout="Hierarchic Group" zoom="0.8662068965517241" x="267.0" y="235.0" />
           <SelectedNodes>
             <node>0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookcopy</node>
           </SelectedNodes>
           <Categories>
-            <Category>Key columns</Category>
             <Category>Columns</Category>
+            <Category>Key columns</Category>
           </Categories>
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -1864,17 +1464,9 @@
         <state vertical-scroll-proportion="-3.0769231">
           <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
           <folding>
-            <element signature="e#189#649#0" expanded="false" />
-            <element signature="e#1474#2031#0" expanded="false" />
+            <element signature="e#190#650#0" expanded="false" />
+            <element signature="e#1489#2053#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/static/less-style/inc-index/global.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-36.923077">
-          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1888,39 +1480,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/40e872bf/0ab95171-db04-4332-9cf7-a5255108c999/libmgmt.user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/LoanController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="64" column="29" selection-start-line="64" selection-start-column="29" selection-end-line="64" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/loan/user.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="13" column="49" selection-start-line="0" selection-start-column="0" selection-end-line="65" selection-end-column="15" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/loan/return.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-21.038462">
-          <caret line="82" column="32" selection-start-line="82" selection-start-column="32" selection-end-line="82" selection-end-column="32" />
+          <caret line="85" column="32" selection-start-line="85" selection-start-column="32" selection-end-line="85" selection-end-column="32" />
           <folding />
         </state>
       </provider>
@@ -1933,7 +1506,378 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/loan/status.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.653846">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17035775">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/manage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53475934">
+          <caret line="15" column="36" selection-start-line="0" selection-start-column="0" selection-end-line="197" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/user/register.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46345812">
+          <caret line="23" column="16" selection-start-line="0" selection-start-column="0" selection-end-line="120" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.book">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.book</OriginalElement>
+          <nodes>
+            <node x="296.75" y="278.0">0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.user</node>
+            <node x="331.25" y="600.5">0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.userrole</node>
+            <node x="503.25" y="556.0">0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookcomment</node>
+            <node x="30.25" y="512.0">0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookloan</node>
+            <node x="0.0" y="289.0">0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookcopy</node>
+            <node x="246.75" y="0.0">0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.book</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookcopy" target="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.book">
+              <point x="0.0" y="-81.0" />
+              <point x="100.5" y="253.0" />
+              <point x="312.0" y="253.0" />
+              <point x="-65.25" y="114.0" />
+            </edge>
+            <edge source="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookloan" target="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.user">
+              <point x="70.25" y="-125.0" />
+              <point x="241.0" y="487.0" />
+              <point x="333.58333333333337" y="487.0" />
+              <point x="-73.66666666666667" y="92.0" />
+            </edge>
+            <edge source="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookloan" target="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookcopy">
+              <point x="-70.25" y="-125.0" />
+              <point x="0.0" y="81.0" />
+            </edge>
+            <edge source="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.userrole" target="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.user">
+              <point x="0.0" y="-36.5" />
+              <point x="1.4210854715202004E-14" y="92.0" />
+            </edge>
+            <edge source="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookcomment" target="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.book">
+              <point x="50.25" y="-81.0" />
+              <point x="654.0" y="253.0" />
+              <point x="442.5" y="253.0" />
+              <point x="65.25" y="114.0" />
+            </edge>
+            <edge source="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.bookcomment" target="0ab95171-db04-4332-9cf7-a5255108c999.TABLE:libmgmt.user">
+              <point x="-50.25" y="-81.0" />
+              <point x="553.5" y="487.0" />
+              <point x="480.9166666666667" y="487.0" />
+              <point x="73.66666666666669" y="92.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="1.0" x="120.0" y="253.0" />
+          <SelectedNodes />
+          <Categories>
+            <Category>Columns</Category>
+            <Category>Key columns</Category>
+          </Categories>
+          <SCOPE>All</SCOPE>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/text-string.properties">
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-22.068966">
+          <caret line="32" column="46" selection-start-line="32" selection-start-column="46" selection-end-line="32" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/UserDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="20" selection-start-line="87" selection-start-column="20" selection-end-line="88" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Publisher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/dispatcher-servlet.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.4893616">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/dao/BookDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/spring-aop-4.2.4.RELEASE-sources.jar!/org/springframework/aop/support/AopUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="301" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/spring-web-4.2.4.RELEASE-sources.jar!/org/springframework/web/filter/CharacterEncodingFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6243654">
+          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60907507">
+          <caret line="37" column="21" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/spring-aop-4.2.4.RELEASE-sources.jar!/org/springframework/aop/framework/ReflectiveMethodInvocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29048413">
+          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/book/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/book/book.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/annotation/PartialView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22346368">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/book/manage.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9586331">
+          <caret line="78" column="60" selection-start-line="78" selection-start-column="60" selection-end-line="78" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/static/less-style/index.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.923077">
+          <caret line="9" column="26" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/static/less-style/inc-index/global.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.307693">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookCopy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="87" column="41" selection-start-line="87" selection-start-column="41" selection-end-line="87" selection-end-column="41" />
+          <folding>
+            <element signature="e#1766#1767#0" expanded="true" />
+            <element signature="e#1823#1824#0" expanded="true" />
+            <element signature="e#1865#1866#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/BookController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="65" selection-start-line="60" selection-start-column="65" selection-end-line="60" selection-end-column="65" />
+          <folding>
+            <element signature="method#doAdd#0;class#BookController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/book/copiesPartial.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.3846154">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/book/commentPartial.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8584071">
+          <caret line="36" column="15" selection-start-line="36" selection-start-column="15" selection-end-line="36" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/book/detail.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39823008">
+          <caret line="16" column="63" selection-start-line="16" selection-start-column="63" selection-end-line="16" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5076142">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/static/style/index.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4602992">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/book/add.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17146145">
+          <caret line="109" column="61" selection-start-line="109" selection-start-column="61" selection-end-line="109" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30726257">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+          <folding>
+            <element signature="e#1255#1256#0" expanded="true" />
+            <element signature="e#1280#1281#0" expanded="true" />
+            <element signature="e#1313#1314#0" expanded="true" />
+            <element signature="e#1341#1342#0" expanded="true" />
+            <element signature="e#2444#2445#0" expanded="true" />
+            <element signature="e#2480#2481#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/viewmodel/BookAdd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9162011">
+          <caret line="65" column="18" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="18" />
+          <folding>
+            <element signature="e#1309#1310#0" expanded="false" />
+            <element signature="e#1340#1341#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/entity/BookComment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7150838">
+          <caret line="34" column="24" selection-start-line="34" selection-start-column="24" selection-end-line="34" selection-end-column="24" />
+          <folding>
+            <element signature="e#741#742#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/search/result.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3076923">
+          <caret line="3" column="45" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="19" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.47377327">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/service/BookServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.79695433">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1699#1700#0" expanded="true" />
+            <element signature="e#1726#1727#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/home/about.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1943,19 +1887,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/home/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-36.923077">
-          <caret line="142" column="42" selection-start-line="142" selection-start-column="42" selection-end-line="142" selection-end-column="42" />
+        <state vertical-scroll-proportion="-5.061947">
+          <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
           <folding>
             <element signature="n#c:if#0;n#layout:basic#0;n#jsp:attribute#0;n#layout:login#0;n#jsp:root#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/loan/status.jsp">
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1326352">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="489" column="40" selection-start-line="489" selection-start-column="40" selection-end-line="489" selection-end-column="40" />
+          <folding>
+            <element signature="method#index#0;class#UserController#0" expanded="false" />
+            <element signature="method#manage#0;class#UserController#0" expanded="false" />
+            <element signature="method#admin#0;class#UserController#0" expanded="false" />
+            <element signature="method#login#0;class#UserController#0" expanded="false" />
+            <element signature="method#doLogin#0;class#UserController#0" expanded="false" />
+            <element signature="method#logout#0;class#UserController#0" expanded="false" />
+            <element signature="method#register#0;class#UserController#0" expanded="false" />
+            <element signature="method#doRegister#0;class#UserController#0" expanded="false" />
+            <element signature="method#changePassword#0;class#UserController#0" expanded="false" />
+            <element signature="method#doChangePassword#0;class#UserController#0" expanded="false" />
+            <element signature="method#information#0;class#UserController#0" expanded="false" />
+            <element signature="method#doInformation#0;class#UserController#0" expanded="false" />
+            <element signature="e#9946#9962#0" expanded="false" />
+            <element signature="method#doChangeRoleAjax#0;class#UserController#0" expanded="false" />
+            <element signature="method#decodeRedirectUrlPara#0;class#UserController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/xjtu/se/jackq/libmgmt/controller/SearchController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/views/loan/user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38394415">
+          <caret line="63" column="14" selection-start-line="63" selection-start-column="14" selection-end-line="63" selection-end-column="14" />
+          <folding>
+            <element signature="e#544#3040#0#HTML" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
