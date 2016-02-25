@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -23,4 +24,52 @@ public class SearchController {
         model.addAttribute("ResultList", bookList);
         return "search/result";
     }
+
+    @RequestMapping("ajax")
+    @ResponseBody
+    public String searchAjax() {
+        List<Book> books = bookService.listBook();
+        return encodeJsonForSearch(books, true);
+    }
+
+
+    private String encodeJsonForSearch(List<Book> bookList, boolean status) {
+        StringBuilder stringBuilder = new StringBuilder();
+        // Prepend Status
+        stringBuilder.append("{\"success\":");
+        stringBuilder.append(status);
+        stringBuilder.append(",\"data\": [");
+        // Close JSON Data
+        if (status) {
+            for (Book book : bookList) {
+                // Start Object
+                stringBuilder.append("{");
+                // Book id
+                stringBuilder.append("\"id\": ");
+                stringBuilder.append(book.getId());
+                stringBuilder.append(", ");
+                // Book book code
+                stringBuilder.append("\"bookcode\": \"");
+                stringBuilder.append(book.getBookCode());
+                stringBuilder.append("\", ");
+                // Book book name
+                stringBuilder.append("\"bookname\": \"");
+                stringBuilder.append(book.getBookName());
+                stringBuilder.append("\"");
+                // Book ISBN
+                stringBuilder.append("\"isbn\": \"");
+                stringBuilder.append(book.getIsbn());
+                stringBuilder.append("\"");
+                // End Object
+                stringBuilder.append("},");
+            }
+            if (stringBuilder.lastIndexOf(",") == stringBuilder.length() - 1) {
+                stringBuilder.delete(stringBuilder.lastIndexOf(","), stringBuilder.lastIndexOf(",") + 1); // Remove extra comma
+            }
+        }
+        // Return String Value
+        stringBuilder.append("]}");
+        return stringBuilder.toString();
+    }
+
 }
