@@ -92,6 +92,7 @@
                     var isById = $("#user-search-id").prop("checked");
                     if (!isById && !isByName) {
                         $("#user-search-name").prop("checked", true);
+                        isByName = true;
                     }
                     if (query.length == 0) {
                         userSearch.focus();

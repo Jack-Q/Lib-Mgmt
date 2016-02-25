@@ -3,7 +3,7 @@
     font-style: normal;
     font-weight: 400;
     src: url(../font/MaterialIcons-Regular.eot);
-    src: local('Material Icons'), local('MaterialIcons-Regular'), url(../font/MaterialIcons-Regular.woff2) format('woff2'), url(../font/MaterialIcons-Regular.woff) format('woff'), url(../font/MaterialIcons-Regular.ttf) format('truetype');
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(../font/MaterialIcons-Regular.woff2) format('woff2'), url(../font/MaterialIcons-Regular.woff) format('woff'), url(../font/MaterialIcons-Regular.ttf) format('truetype')
 }
 
 .material-icons {
@@ -468,4 +468,38 @@ body.index-body {
 
 .page-lend .step-book .select-book.on + .select-book-placer, .page-return .step-book .select-book.on + .select-book-placer {
     height: 550px
+}
+
+.page-lend .step-book .select-candidate, .page-return .step-book .select-candidate {
+    display: block;
+    max-height: 300px;
+    overflow-y: auto
+}
+
+.page-lend .step-book .select-candidate span, .page-return .step-book .select-candidate span {
+    display: block;
+    border-radius: 0 13px 13px 0;
+    border-left: solid 3px #0ac;
+    line-height: 20px;
+    padding: 3px 10px;
+    margin: 8px auto;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: .9;
+    transition: all ease 300ms
+}
+
+.page-lend .step-book .select-candidate span:nth-child(2n+1), .page-return .step-book .select-candidate span:nth-child(2n+1) {
+    background-color: rgba(0, 120, 220, 0.2)
+}
+
+.page-lend .step-book .select-candidate span:nth-child(2n), .page-return .step-book .select-candidate span:nth-child(2n) {
+    background-color: rgba(0, 220, 120, 0.2)
+}
+
+.page-lend .step-book .select-candidate span:hover, .page-return .step-book .select-candidate span:hover {
+    opacity: 1;
+    box-shadow: 0 0 5px 2px rgba(0, 120, 120, 0.1)
 }

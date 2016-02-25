@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -36,6 +37,13 @@ public class LoanController {
         }
         model.addAttribute("CurrentUser", user);
         return "loan/lend";
+    }
+
+    @RequestMapping(value = "lendAjax", produces = "application/json; charset=utf-8")
+    @ResponseBody
+    public String doLend() {
+        int period = 30;
+        return "{\"success\": true, \"period\": " + period + "}";
     }
 
     @RequestMapping("return") // Since return is a keyword in Java, this method use returnBook as its name instead

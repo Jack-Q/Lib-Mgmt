@@ -27,7 +27,10 @@ public class SearchController {
 
     @RequestMapping(value = "ajax", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public String searchAjax() {
+    public String searchAjax(@RequestParam("q") String query,
+                             @RequestParam("byCode") boolean byCode,
+                             @RequestParam("byName") boolean byName,
+                             @RequestParam("byAuthor") boolean byAuthor) {
         List<Book> books = bookService.listBook();
         return encodeJsonForSearch(books, true);
 
@@ -53,6 +56,15 @@ public class SearchController {
                 stringBuilder.append("\"bookcode\": \"");
                 stringBuilder.append(book.getBookCode());
                 stringBuilder.append("\", ");
+
+                // Book author
+                stringBuilder.append("\"author\": \"");
+                stringBuilder.append(book.getAuthor());
+                stringBuilder.append("\", ");
+                // Book year
+                stringBuilder.append("\"year\": ");
+                stringBuilder.append(book.getYearOfPublish());
+                stringBuilder.append(", ");
                 // Book book name
                 stringBuilder.append("\"bookname\": \"");
                 stringBuilder.append(book.getBookName());
