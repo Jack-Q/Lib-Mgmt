@@ -67,6 +67,11 @@
             <option name="tagName" value="basic" />
             <option name="attributeName" value="pageTitle" />
           </SafeTagInfo>
+          <SafeTagInfo>
+            <option name="namespace" value="http://www.springframework.org/tags" />
+            <option name="tagName" value="url" />
+            <option name="attributeName" value="value" />
+          </SafeTagInfo>
         </list>
       </option>
     </inspection_tool>

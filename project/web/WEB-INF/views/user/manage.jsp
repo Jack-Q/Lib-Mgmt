@@ -170,7 +170,7 @@
                                                 try {
                                                     res = JSON.parse(res);
                                                 } catch (e) {
-                                                    res = false;
+                                                    res = {success: false};
                                                 }
                                             }
 
