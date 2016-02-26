@@ -40,7 +40,7 @@
                 <div class="amount-tip">
                     <span class="label label-info">
                         Holding
-                        <span class="num" id="num-current-holding">3</span>
+                        <span class="num" id="num-current-holding">${BookHoldingNum}</span>
                         books
                     </span>
                     <span class="label label-info">
@@ -50,7 +50,7 @@
                     </span>
                     <span class="label label-info">
                         Leaving
-                        <span class="num" id="num-current-leaving">7</span>
+                        <span class="num" id="num-current-leaving">${BookLeavingNum}</span>
                         books
                     </span>
                 </div>

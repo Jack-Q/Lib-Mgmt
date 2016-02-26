@@ -2,6 +2,7 @@ package cn.edu.xjtu.se.jackq.libmgmt.controller;
 
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.Auth;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.BookLoan;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.BookService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @Auth(userRoles = UserRole.LIBRARIAN)
@@ -44,7 +46,7 @@ public class LoanController {
         if (user == null || !user.getRoles().contains(UserRole.STUDENT)) {
             return "redirect:/loan/lend";
         }
-        int bookHoldingNum = 3;
+        int bookHoldingNum = bookService.listLoanBook(user, BookService.LIST_LOAN_CURR).size();
         model.addAttribute("CurrentUser", user);
         model.addAttribute("BookHoldingNum", bookHoldingNum);
         model.addAttribute("BookLeavingNum", BOOK_LIMIT - bookHoldingNum);
@@ -81,8 +83,11 @@ public class LoanController {
         if (user == null || !user.getRoles().contains(UserRole.STUDENT)) {
             return "redirect:/loan/return";
         }
+        List<BookLoan> bookLoanList = bookService.listLoanBook(user, BookService.LIST_LOAN_CURR);
         model.addAttribute("CurrentUser", user);
-        model.addAttribute("LoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_CURR));
+        model.addAttribute("LoanList", bookLoanList);
+        model.addAttribute("BookHoldingNum", bookLoanList.size());
+        model.addAttribute("BookLeavingNum", BOOK_LIMIT - bookLoanList.size());
         return "loan/return";
     }
 
