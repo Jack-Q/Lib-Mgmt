@@ -3,18 +3,19 @@ package cn.edu.xjtu.se.jackq.libmgmt.controller;
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.Auth;
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.PartialView;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.BookService;
+import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
+import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookAdd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -23,6 +24,9 @@ import java.util.regex.Pattern;
 public class BookController {
     @Autowired
     BookService bookService;
+
+    @Autowired
+    UserService userService;
 
     @RequestMapping({"", "index"})
     public String index() {
@@ -60,6 +64,24 @@ public class BookController {
         model.addAttribute("CurrentBook", book);
         model.addAttribute("BookComments", book.getBookComments());
         return "book/commentPartial";
+    }
+
+    @Auth
+    @RequestMapping(value = "comment/{BookId}", method = RequestMethod.POST)
+    public String doComment(@PathVariable("BookId") int bookId,
+                            @RequestParam("content") String content,
+                            HttpSession session,
+                            RedirectAttributes redirectAttributes) {
+        SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
+        User user = userService.getUser(sessionUser.getId());
+        Book book = bookService.getBook(bookId);
+        if (user != null && book != null) {
+            bookService.commentBook(book, user, content);
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.comment.success");
+        } else {
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.comment.failed");
+        }
+        return "redirect:/book/detail/" + bookId;
     }
 
     @RequestMapping("detail/{id}")

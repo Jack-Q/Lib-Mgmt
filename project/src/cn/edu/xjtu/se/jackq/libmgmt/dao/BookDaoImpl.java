@@ -1,6 +1,7 @@
 package cn.edu.xjtu.se.jackq.libmgmt.dao;
 
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.BookComment;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -87,5 +88,11 @@ public class BookDaoImpl implements BookDao {
         Query query = currentSession.createQuery(queryString);
         query.setParameter("search", "%" + search + "%");
         return query.list();
+    }
+
+    @Override
+    public void addComment(BookComment bookComment) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.persist(bookComment);
     }
 }

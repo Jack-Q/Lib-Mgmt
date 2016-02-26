@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
 
     <c:choose>
@@ -35,14 +37,27 @@
             </div>
         </c:otherwise>
     </c:choose>
-    <layout:role>
-        <jsp:attribute name="student">
-            <c:choose>
-                <c:when test="${true}">
-                    Add new comment
-                </c:when>
+    <c:choose>
+        <c:when test="${sessionScope.Auth.authorized}">
+            <div class="well well-lg">
+                <form class="form-horizontal" action="<spring:url value="/book/comment/${CurrentBook.id}"/>"
+                      method="post">
+                    <div>
+                        <label class="center-block">
+                            <textarea name="content" placeholder="Say something?" class="form-control"></textarea>
+                        </label>
+                    </div>
+                    <input class="btn btn-raised btn-primary" type="submit" value="Submit">
+                    <input class="btn btn-raised btn-default" type="reset" value="Clear">
+                    <span class="text-info">(You are logged in as <c:out value="${sessionScope.Auth.userName}"/>)</span>
+                </form>
+            </div>
+        </c:when>
+        <c:otherwise>
+            <div class="well well-lg">
+                Please login before leaving comment
+            </div>
+        </c:otherwise>
+    </c:choose>
 
-            </c:choose>
-        </jsp:attribute>
-    </layout:role>
 </div>

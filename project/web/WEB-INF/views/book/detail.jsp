@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <layout:basic pageTitle="Detail: ${CurrentBook.bookName}">
     <jsp:body>
@@ -43,6 +44,13 @@
             </div>
             <div class="book-comments">
                 <h4>Comments</h4>
+                    <%--@elvariable id="indexMessageId" type="java.lang.String"--%>
+                <c:if test="${(indexMessageId != null)}">
+                    <div class="alert-info alert alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <p><spring:message code="${fn:escapeXml(indexMessageId)}"/></p>
+                    </div>
+                </c:if>
                 <jsp:include page="/book/commentPartial/${CurrentBook.id}"/>
             </div>
         </div>

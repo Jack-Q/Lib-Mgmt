@@ -200,4 +200,16 @@ public class BookServiceImpl implements BookService {
         bookLoanDao.updateLoan(bookLoan);
         return true;
     }
+
+    @Override
+    public void commentBook(Book book, User user, String content) {
+
+        BookComment bookComment = new BookComment();
+        bookComment.setBook(book);
+        bookComment.setUser(user);
+        bookComment.setContent(content);
+        bookComment.setDateOfComment(new Date());
+        bookDao.addComment(bookComment);
+    }
+
 }
