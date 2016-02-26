@@ -71,6 +71,9 @@
                         newCandidates.forEach(function (candidate) {
                             candidates.append("<span data-id='" + candidate.id + "'>" + candidate.name + "(" + candidate.username + ")</span>");
                         });
+                        if (newCandidates.length == 0) {
+                            candidates.append("<div class='well well-lg'>No matched user found ~</div>")
+                        }
                     }).fadeIn(300);
                 };
                 // Ensure that at least one option is selected
@@ -92,6 +95,7 @@
                     var isById = $("#user-search-id").prop("checked");
                     if (!isById && !isByName) {
                         $("#user-search-name").prop("checked", true);
+                        isByName = true;
                     }
                     if (query.length == 0) {
                         userSearch.focus();

@@ -459,8 +459,8 @@ public class UserController {
                              @RequestParam("byId") boolean isById,
                              @RequestParam("byName") boolean isByName) {
         // return "{\"success\":" + isByName + "}" + isById + queryString;
-
-        return encodeJsonForSearch(userService.listUser(), true);
+        List<User> searchResult = userService.searchUser(queryString, isByName, isById);
+        return encodeJsonForSearch(searchResult, true);
     }
 
     private String encodeJsonForSearch(List<User> userList, boolean status) {

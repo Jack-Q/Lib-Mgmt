@@ -168,6 +168,11 @@ public class UserServiceImpl implements UserService {
         return updateUser(user);
     }
 
+    @Override
+    public List<User> searchUser(String queryString, boolean isByName, boolean isById) {
+        return userDao.searchUser(queryString, isByName, isById);
+    }
+
     public void signIn(User user) {
 
         user.getUserName();

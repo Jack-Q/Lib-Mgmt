@@ -1,7 +1,19 @@
 package cn.edu.xjtu.se.jackq.libmgmt.dao;
 
-/**
- * Created by Jack on 2/14/2016.
- */
+import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.BookLoan;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
+
+import java.util.List;
+
 public interface BookLoanDao {
+    BookLoan add(BookLoan bookLoan);
+
+    int LIST_LOAN_ALL = 1;
+    int LIST_LOAN_CURR = 2;
+    int LIST_LOAN_FINISH = 3;
+    List<BookLoan> listLoanByUser(User user, int listPolicy);
+
+
+    List<Book> searchBookToLend(User user, String query, boolean byCode, boolean byName, boolean byAuthor);
 }

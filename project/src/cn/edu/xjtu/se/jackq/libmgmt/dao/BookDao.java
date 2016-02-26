@@ -5,9 +5,6 @@ import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
 
 import java.util.List;
 
-/**
- * Created by Jack on 2/14/2016.
- */
 public interface BookDao {
     Book addBook(Book book);
 
@@ -21,5 +18,9 @@ public interface BookDao {
     List<Book> listBook();
 
     boolean AddCopy(BookCopy bookCopy);
+
+    boolean updateBookCopy(BookCopy bookCopy);
+
+    List<Book> searchBook(String query, boolean byCode, boolean byName, boolean byAuthor);
 
 }

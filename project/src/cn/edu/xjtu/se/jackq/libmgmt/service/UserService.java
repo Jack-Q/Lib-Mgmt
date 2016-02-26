@@ -39,4 +39,6 @@ public interface UserService{
     boolean isInRole(int userId, UserRole userRole);
 
     boolean setRole(int userId, UserRole userRole);
+
+    List<User> searchUser(String queryString, boolean isByName, boolean isById);
 }

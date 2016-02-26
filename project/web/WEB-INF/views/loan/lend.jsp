@@ -33,24 +33,23 @@
                 </div>
             </div>
             <div class="step step-book">
-
                 <div class="step-title">
                     Books
                 </div>
                 <div class="amount-tip">
                     <span class="label label-info">
                         Holding
-                        <span class="num" id="num-current-holding">3</span>
+                        <span class="num" id="num-current-holding">${BookHoldingNum}</span>
                         books
                     </span>
                     <span class="label label-info">
                         Renting
-                        <span class="num" id="num-current-renting">0</span>
+                        <span class="num" id="num-current-renting"></span>
                         books
                     </span>
                     <span class="label label-info">
                         Leaving
-                        <span class="num" id="num-current-leaving">7</span>
+                        <span class="num" id="num-current-leaving"></span>
                         books
                     </span>
                 </div>
@@ -60,14 +59,10 @@
                 </div>
                 <div class="lend-action row">
                     <div class="col-sm-4 col-lg-3">
-
-                        <button data-toggle="tooltip"
-                                onclick="$('.select-book').toggleClass('on')"
+                        <button data-toggle="tooltip" id="book-lend-toggle"
                                 class="btn btn-raised btn-lg btn-primary"
                                 title="search for a book and lend it to current user">Lend a book
                         </button>
-
-
                     </div>
                     <div class="col-sm-4 col-lg-3">
                         <a class="btn btn-raised btn-primary"
@@ -79,11 +74,10 @@
                         <div class="form-group label-floating">
 
                             <label class="control-label" for="book-search">Search for a book</label>
-
                             <div class="input-group">
                                 <input type="text" id="book-search" class="form-control">
                               <span class="input-group-btn">
-                                <button type="button" class="btn btn-fab btn-fab-mini">
+                                <button type="button" id="book-search-btn" class="btn btn-fab btn-fab-mini">
                                     <i class="material-icons">search</i>
                                 </button>
                               </span>
@@ -114,10 +108,6 @@
                             </div>
                         </div>
                         <div id="book-candidate" class="select-candidate">
-                            <span>Java Web Application, Somebody, 2015 [TP312JA0002]</span>
-                            <span>Java Web Application, Somebody, 2015 [TP312JA0002]</span>
-                            <span>Java Web Application, Somebody, 2015 [TP312JA0002]</span>
-                            <span>Java Web Application, Somebody, 2015 [TP312JA0002]</span>
                         </div>
                     </div>
                 </div>
@@ -132,13 +122,8 @@
                             <th>Loan Period</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Java Programming Language</td>
-                            <td>TP312JA-0001</td>
-                            <td>60</td>
-                        </tr>
+                        <tbody id="lend-table-body">
+
                         </tbody>
                     </table>
                 </div>
@@ -160,5 +145,150 @@
                 </p>
             </div>
         </div>
+        <script>
+            // search/loanAjax?q=123&byCode=1&byName=0&byAuthor=1&userId=1
+            $(function () {
+                var currentUserId = ${CurrentUser.id};
+                var currentBookLimit = ${BookLeavingNum};
+                var currentLending = 0;
+
+                var loanBookData = [];
+                var currentListData = [];
+                var candidates = $(".select-candidate");
+                var bookSearch = $("#book-search");
+
+                // Update Lend Status
+                var updateLendStatus = function () {
+                    $("#num-current-leaving").text(currentBookLimit - currentLending);
+                    $("#num-current-renting").text(currentLending);
+                    // Lend table
+                    $(".lend-list").css({"display": currentLending > 0 ? "block" : "none"});
+
+                    // Button
+                    $("#book-lend-toggle").attr("disabled", currentBookLimit - currentLending == 0);
+
+                    $('.select-book').removeClass('on');
+
+                    // Limit Tip
+                    (currentBookLimit - currentLending > 0) ?
+                            $(".limit-tip").hide() : $(".limit-tip").show();
+                };
+                updateLendStatus(); // Setup init state;
+
+                // Book Lent Toggle
+                $("#book-lend-toggle").click(function () {
+                    if (currentBookLimit - currentLending == 0) {
+                        return;
+                    }
+
+                    $('.select-book').toggleClass('on');
+                    candidates.empty();
+                    // Call change to trigger Material Float style detector
+                    bookSearch.val("").change();
+                });
+
+                // Book Lent box
+                var updateCandidates = function (newCandidates) {
+
+                    candidates.fadeOut(100, function () {
+                        candidates.empty();
+                        currentListData = newCandidates;
+                        newCandidates.forEach(function (candidate) {
+                            candidates.append("<span data-id='" + candidate.id + "'>"
+                                    + candidate.bookname + "," + candidate.author + ","
+                                    + candidate.year + "[" + candidate.bookcode + "][" + candidate.isbn + "]</span>");
+                        });
+                    }).fadeIn(100);
+                };
+                var retrieveCandidates = function () {
+                    var query = bookSearch.val();
+                    var isByName = $("#book-search-code").prop("checked");
+                    var isByCode = $("#book-search-code").prop("checked");
+                    var isByAuthor = $("#book-search-author").prop("checked");
+                    if (!isByCode && !isByName && !isByAuthor) {
+                        $("#book-search-name").prop("checked", true);
+                        isByName = true;
+                    }
+                    if (query.length == 0) {
+                        bookSearch.focus();
+                        return;
+                    }
+                    $.get("<spring:url value="/search/loanAjax" />", {
+                        q: query,
+                        byCode: isByCode,
+                        byAuthor: isByAuthor,
+                        byName: isByName,
+                        userId: currentUserId
+                    }, function (res) {
+                        if (typeof res === 'string') {
+                            try {
+                                res = JSON.parse(res);
+                            } catch (e) {
+                                res = {success: false};
+                            }
+                        }
+
+                        if (res.success && res.data) {
+                            updateCandidates(res.data);
+                        }
+
+                    });
+                };
+                $("#book-search-btn").click(retrieveCandidates);
+                bookSearch.bind("keydown", function (e) {
+                    if (e.keyCode == 13 /* Key Code for Enter*/) {
+                        retrieveCandidates();
+                    }
+                })
+                candidates.click(function (e) {
+                    var id = parseInt($(e.target).data("id"));
+                    if (!id) {
+                        return;
+                    }
+                    var book;
+                    currentListData.forEach(function (b) {
+                        if (b.id === id) {
+                            book = b;
+                        }
+                    });
+                    if (!book) {
+                        return;
+                    }
+                    selectBook(book);
+
+                });
+
+                // Select book
+                var selectBook = function (book) {
+                    $.post("<spring:url value="/loan/lendAjax" />", {
+                        userId: currentUserId,
+                        bookId: book.id
+                    }, function (res) {
+                        if (typeof res === 'string') {
+                            try {
+                                res = JSON.parse(res);
+                            } catch (e) {
+                                res = {success: false};
+                            }
+                        }
+                        if (res.success) {
+                            currentLending++;
+                            loanBookData.push(book);
+                            var $row = $("<tr>");
+                            $row.append($("<td>").text(book.id));
+                            $row.append($("<td>").text(book.bookname));
+                            $row.append($("<td>").text(book.bookcode));
+                            $row.append($("<td>").text(res.period));
+                            $("#lend-table-body").append($row);
+                            updateLendStatus();
+                        }
+                    }).fail(function () {
+
+                    });
+                };
+
+
+            });
+        </script>
     </jsp:body>
 </layout:basic>
