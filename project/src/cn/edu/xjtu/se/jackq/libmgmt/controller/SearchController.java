@@ -1,7 +1,11 @@
 package cn.edu.xjtu.se.jackq.libmgmt.controller;
 
+import cn.edu.xjtu.se.jackq.libmgmt.annotation.Auth;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.BookService;
+import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +21,9 @@ public class SearchController {
     @Autowired
     BookService bookService;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping("")
     public String search(@RequestParam("q") String query, Model model) {
         List<Book> bookList = bookService.findBook(query);
@@ -31,9 +38,24 @@ public class SearchController {
                              @RequestParam("byCode") boolean byCode,
                              @RequestParam("byName") boolean byName,
                              @RequestParam("byAuthor") boolean byAuthor) {
-        List<Book> books = bookService.listBook();
+        List<Book> books = bookService.searchBook(query, byCode, byName, byAuthor);
         return encodeJsonForSearch(books, true);
+    }
 
+    @RequestMapping(value = "loanAjax", produces = "application/json; charset=utf-8")
+    @ResponseBody
+    @Auth(userRoles = UserRole.LIBRARIAN)
+    public String searchToLendAjax(@RequestParam("q") String query,
+                                   @RequestParam("byCode") boolean byCode,
+                                   @RequestParam("byName") boolean byName,
+                                   @RequestParam("byAuthor") boolean byAuthor,
+                                   @RequestParam("userId") int userId) {
+        User user = userService.getUser(userId);
+        if (user == null) {
+            return encodeJsonForSearch(null, false);
+        }
+        List<Book> books = bookService.searchBookToLend(user, query, byCode, byName, byAuthor);
+        return encodeJsonForSearch(books, true);
     }
 
 

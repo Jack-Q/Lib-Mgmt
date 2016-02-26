@@ -30,4 +30,9 @@ public interface BookService {
     int LIST_LOAN_FINISH = 3;
 
     List<BookLoan> listLoanBook(User user, int listPolicy);
+
+
+    List<Book> searchBook(String query, boolean byCode, boolean byName, boolean byAuthor);
+
+    List<Book> searchBookToLend(User user, String query, boolean byCode, boolean byName, boolean byAuthor);
 }

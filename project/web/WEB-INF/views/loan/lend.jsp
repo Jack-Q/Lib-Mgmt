@@ -146,7 +146,7 @@
             </div>
         </div>
         <script>
-            // search/ajax?q=123&byCode=1&byName=0&byAuthor=1
+            // search/loanAjax?q=123&byCode=1&byName=0&byAuthor=1&userId=1
             $(function () {
                 var currentUserId = ${CurrentUser.id};
                 var currentBookLimit = ${BookLeavingNum};
@@ -213,11 +213,12 @@
                         bookSearch.focus();
                         return;
                     }
-                    $.get("<spring:url value="/search/ajax" />", {
+                    $.get("<spring:url value="/search/loanAjax" />", {
                         q: query,
                         byCode: isByCode,
                         byAuthor: isByAuthor,
-                        byName: isByName
+                        byName: isByName,
+                        userId: currentUserId
                     }, function (res) {
                         if (typeof res === 'string') {
                             try {

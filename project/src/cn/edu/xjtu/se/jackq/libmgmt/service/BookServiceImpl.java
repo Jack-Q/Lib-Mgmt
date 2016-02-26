@@ -7,10 +7,7 @@ import cn.edu.xjtu.se.jackq.libmgmt.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 
 @Service
@@ -121,4 +118,21 @@ public class BookServiceImpl implements BookService {
         }
         return bookLoans;
     }
+
+    @Override
+    public List<Book> searchBook(String query, boolean byCode, boolean byName, boolean byAuthor) {
+        if (!(byCode || byAuthor || byName)) {
+            return new ArrayList<>();
+        }
+        return bookDao.searchBook(query, byCode, byName, byAuthor);
+    }
+
+    @Override
+    public List<Book> searchBookToLend(User user, String query, boolean byCode, boolean byName, boolean byAuthor) {
+        if (!(byCode || byAuthor || byName)) {
+            return new ArrayList<>();
+        }
+        return bookLoanDao.searchBookToLend(user, query, byCode, byName, byAuthor);
+    }
+
 }

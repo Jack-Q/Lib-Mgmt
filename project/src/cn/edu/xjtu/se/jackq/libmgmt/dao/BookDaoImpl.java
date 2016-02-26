@@ -11,9 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * Created by Jack on 2/14/2016.
- */
 @Repository
 @Transactional
 public class BookDaoImpl implements BookDao {
@@ -75,5 +72,20 @@ public class BookDaoImpl implements BookDao {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.update(bookCopy);
         return true;
+    }
+
+    @Override
+    public List<Book> searchBook(String search, boolean byCode, boolean byName, boolean byAuthor) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        String queryString = "from Book b where " +
+                (byCode ? "b.id in (select id from Book book where book.bookCode like :search order by yearOfPublish) " : "") +
+                (byCode && byName ? "or " : "") +
+                (byName ? "b.id in (select id from Book book where book.bookName like :search  order by yearOfPublish) " :
+                        (byCode && byAuthor ? "or " : "")) +
+                (byName && byAuthor ? "or " : "") +
+                (byAuthor ? "b.id in (select id from Book book where book.author like :search  order by yearOfPublish) " : "");
+        Query query = currentSession.createQuery(queryString);
+        query.setParameter("search", "%" + search + "%");
+        return query.list();
     }
 }
