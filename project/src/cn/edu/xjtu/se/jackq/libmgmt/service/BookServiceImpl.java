@@ -105,7 +105,20 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<BookLoan> listLoanBook(User user) {
-        return bookLoanDao.listLoanByUser(user, 1);
+    public List<BookLoan> listLoanBook(User user, int listPolicy) {
+        List<BookLoan> bookLoans;
+        switch (listPolicy) {
+            case LIST_LOAN_CURR:
+                bookLoans = bookLoanDao.listLoanByUser(user, BookLoanDao.LIST_LOAN_CURR);
+                break;
+            case LIST_LOAN_FINISH:
+                bookLoans = bookLoanDao.listLoanByUser(user, BookLoanDao.LIST_LOAN_FINISH);
+                break;
+            case LIST_LOAN_ALL:
+            default:
+                bookLoans = bookLoanDao.listLoanByUser(user, BookLoanDao.LIST_LOAN_ALL);
+                break;
+        }
+        return bookLoans;
     }
 }

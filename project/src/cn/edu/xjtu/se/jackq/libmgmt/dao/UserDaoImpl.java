@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -98,6 +99,40 @@ public class UserDaoImpl implements UserDao {
         }
 
         return userList;
+    }
+
+    @Override
+    public List<User> searchUser(String searchString, boolean isByName, boolean isById) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        if (searchString.isEmpty() || !(isById || isByName)) {
+            return new ArrayList<>();
+        }
+        String queryStringByName =
+                isByName ? " u.id in (select id from User user where lower(user.userName) like lower(:searchStr) order by userName ) "
+                        : "";
+        String queryStringById =
+                isById ? " u.id in (select id from User user where user.id = :search order by id ) "
+                        : "";
+        String queryString = "from User u join u.roles role where role in ( :roleList  ) and ("
+                + queryStringById
+                + (isById && isByName ? " or " : "")
+                + queryStringByName + ")";
+
+
+        Query query = currentSession.createQuery(queryString);
+        query.setParameterList("roleList", Collections.singletonList(UserRole.STUDENT));
+        if (isById) {
+            int id = 0;
+            try {
+                id = Integer.parseInt(searchString);
+            } catch (Exception ignored) {
+            }
+            query.setParameter("search", id);
+        }
+        if (isByName) {
+            query.setParameter("searchStr", "%" + searchString + "%");
+        }
+        return query.list();
     }
 
 }

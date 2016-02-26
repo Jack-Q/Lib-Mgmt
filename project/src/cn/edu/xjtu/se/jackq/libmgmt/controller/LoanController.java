@@ -82,15 +82,21 @@ public class LoanController {
             return "redirect:/loan/return";
         }
         model.addAttribute("CurrentUser", user);
-        model.addAttribute("LoanList", bookService.listLoanBook(user));
+        model.addAttribute("LoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_CURR));
         return "loan/return";
     }
 
     @RequestMapping("status")
     @Auth(userRoles = UserRole.STUDENT)
-    public String status(HttpSession httpSession) {
+    public String status(HttpSession httpSession, Model model) {
         SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
         int userId = sessionUser.getId();
+
+        User user = userService.getUser(userId);
+
+        model.addAttribute("CurrentLoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_CURR));
+        model.addAttribute("FinishedLoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_FINISH));
+
         return "loan/status";
     }
 }

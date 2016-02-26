@@ -11,6 +11,9 @@ import java.util.List;
 public interface BookLoanDao {
     BookLoan add(BookLoan bookLoan);
 
+    int LIST_LOAN_ALL = 1;
+    int LIST_LOAN_CURR = 2;
+    int LIST_LOAN_FINISH = 3;
     List<BookLoan> listLoanByUser(User user, int listPolicy);
 
 

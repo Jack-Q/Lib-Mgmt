@@ -21,4 +21,5 @@ public interface UserDao {
 
     List<User> listUser(int listPolicy);
 
+    List<User> searchUser(String queryString, boolean isByName, boolean isById);
 }

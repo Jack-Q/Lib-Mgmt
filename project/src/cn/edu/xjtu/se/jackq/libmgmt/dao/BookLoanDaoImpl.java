@@ -30,8 +30,23 @@ public class BookLoanDaoImpl implements BookLoanDao {
     @Override
     public List<BookLoan> listLoanByUser(User user, int listPolicy) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Query query = currentSession.createQuery("from BookLoan bookLoan where bookLoan.user.id = :user ");
+        String queryString = "from BookLoan bookLoan where bookLoan.user.id = :user ";
+
+        switch (listPolicy) {
+            case LIST_LOAN_CURR:
+                queryString += " and bookLoan.finished = false order by deadlineOfReturning ";
+                break;
+            case LIST_LOAN_FINISH:
+                queryString += " and bookLoan.finished = true order by dateOfBorrowing desc";
+                break;
+            case LIST_LOAN_ALL:
+            default:
+                queryString += " order by dateOfBorrowing desc";
+                break;
+        }
+        Query query = currentSession.createQuery(queryString);
         query.setParameter("user", user.getId());
+
         return query.list();
 
     }

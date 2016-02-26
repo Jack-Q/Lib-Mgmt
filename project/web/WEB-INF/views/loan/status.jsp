@@ -36,10 +36,79 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active fade in" id="reading">
-                        List to show books I'm reading
+                        <c:choose>
+                            <c:when test="${CurrentLoanList.size() > 0 }">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Book Name</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${CurrentLoanList}" var="CurrentLoan">
+                                            <tr>
+                                                <td>${CurrentLoan.id}</td>
+                                                <td>
+                                                    <a href="<spring:url value="/book/detail/${CurrentLoan.bookCopy.book.id}"/>">
+                                                        <c:out value="${CurrentLoan.bookCopy.book.bookName}"/>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="well well-lg">
+                                    No book in this list ~
+                                    <br>
+                                    Visit home page to search for more books
+                                    <a class="btn btn-primary btn-raised" href="<spring:url value="/"/>">Home Page</a>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="tab-pane fade" id="read">
-                        List to show the books I've read
+                        <c:choose>
+                            <c:when test="${FinishedLoanList.size() > 0 }">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Book Name</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${FinishedLoanList}" var="FinishedLoan">
+                                            <tr>
+                                                <td>${FinishedLoan.id}</td>
+                                                <td>
+                                                    <a href="<spring:url value="/book/detail/${FinishedLoan.bookCopy.book.id}"/>">
+                                                        <c:out value="${FinishedLoan.bookCopy.book.bookName}"/>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="well well-lg">
+                                    It seems that you've not finished reading any books ~
+
+                                    <br>
+                                    Visit home page to search for more books
+                                    <a class="btn btn-primary btn-raised" href="<spring:url value="/"/>">Home Page</a>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
 

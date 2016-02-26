@@ -24,5 +24,10 @@ public interface BookService {
 
     boolean lendBook(User user, Book book, int days);
 
-    List<BookLoan> listLoanBook(User user);
+
+    int LIST_LOAN_ALL = 1;
+    int LIST_LOAN_CURR = 2;
+    int LIST_LOAN_FINISH = 3;
+
+    List<BookLoan> listLoanBook(User user, int listPolicy);
 }
