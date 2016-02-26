@@ -35,4 +35,14 @@ public interface BookService {
     List<Book> searchBook(String query, boolean byCode, boolean byName, boolean byAuthor);
 
     List<Book> searchBookToLend(User user, String query, boolean byCode, boolean byName, boolean byAuthor);
+
+    boolean returnBook(int loanId);
+
+    boolean returnBookFined(int loanId, double finedAmount);
+
+    boolean returnBookBroken(int loanId);
+
+    boolean returnBookLost(int loanId);
+
+    boolean extendBookLoan(int loanId, int loanPeriod);
 }

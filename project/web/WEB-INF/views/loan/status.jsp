@@ -81,7 +81,8 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Book Name</th>
-
+                                            <th>Finished Date</th>
+                                            <th>Note</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -92,6 +93,12 @@
                                                     <a href="<spring:url value="/book/detail/${FinishedLoan.bookCopy.book.id}"/>">
                                                         <c:out value="${FinishedLoan.bookCopy.book.bookName}"/>
                                                     </a>
+                                                </td>
+                                                <td>
+                                                    <c:out value="${FinishedLoan.dateOfReturning}"/>
+                                                </td>
+                                                <td>
+                                                    <c:out value="${FinishedLoan.note}"/>
                                                 </td>
                                             </tr>
                                         </c:forEach>

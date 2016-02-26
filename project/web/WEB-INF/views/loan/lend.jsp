@@ -198,6 +198,9 @@
                                     + candidate.bookname + "," + candidate.author + ","
                                     + candidate.year + "[" + candidate.bookcode + "][" + candidate.isbn + "]</span>");
                         });
+                        if (newCandidates.length == 0) {
+                            candidates.append("<div class='alert alert-inverse  '>no book satisfying current creteria can be lend to current reader</div>");
+                        }
                     }).fadeIn(100);
                 };
                 var retrieveCandidates = function () {

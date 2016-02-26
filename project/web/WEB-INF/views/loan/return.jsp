@@ -40,12 +40,12 @@
                 <div class="amount-tip">
                     <span class="label label-info">
                         Holding
-                        <span class="num" id="num-current-holding">${BookHoldingNum}</span>
+                        <span class="num" id="num-current-holding"></span>
                         books
                     </span>
                     <span class="label label-info">
-                        Renting
-                        <span class="num" id="num-current-renting">0</span>
+                        Returning
+                        <span class="num" id="num-current-returning"></span>
                         books
                     </span>
                     <span class="label label-info">
@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="lend-list table-responsive">
-                    <table class="table table-hover">
+                    <table class="table table-hover" style="margin-bottom: 150px;">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -74,21 +74,165 @@
                         </thead>
                         <tbody>
                         <c:forEach var="Loan" items="${LoanList}">
-                            <tr>
+                            <tr data-loan-row="${Loan.id}">
                                 <td>${Loan.id}</td>
                                 <td><c:out value="${Loan.bookCopy.book.bookName}"/></td>
                                 <td><c:out value="${Loan.bookCopy.book.bookCode}"/></td>
                                 <td><c:out value="${Loan.loanPeriod}"/></td>
-                                <td><c:out value="${Loan.deadlineOfReturning}"/></td>
                                 <td>
-                                    <button data-loan-id="${Loan.id}" class="btn btn-primary btn-raised">Return</button>
+                                    <c:if test="${Loan.deadlineOfReturning.before(DateTimeNow)}">
+                                        <span class="label label-danger center-block">
+                                            PASSED: Fined for
+                                            <fmt:formatNumber type="currency"
+                                                              pattern="$0.00"
+                                                              value="${0.1 * (DateTimeNow.time - Loan.deadlineOfReturning.time)/86400000}"/>
+                                        </span>
+                                    </c:if>
+                                    <c:out value="${Loan.deadlineOfReturning}"/>
+                                </td>
+                                <td>
+                                    <div class="btn-group">
+                                        <button data-action="return" data-id="${Loan.id}"
+                                                class="load-operation-btn btn btn-primary btn-raised">
+                                            <c:if test="${Loan.deadlineOfReturning.before(DateTimeNow)}">Pay & </c:if>
+                                            Return
+                                        </button>
+                                        <button type="button" class="btn btn-raised btn-primary dropdown-toggle"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <span class="caret"></span>
+                                            <span class="sr-only">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li class="dropdown-header">Other Scenarios</li>
+                                            <li>
+                                                <button data-action="broken" data-id="${Loan.id}"
+                                                        class="load-operation-btn btn">Book Broken
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button data-action="lost" data-id="${Loan.id}"
+                                                        class="load-operation-btn btn">Book Lost
+                                                </button>
+                                            </li>
+                                            <li role="separator" class="divider"></li>
+                                            <li class="dropdown-header">Options</li>
+                                            <li>
+                                                <button data-action="extend" data-id="${Loan.id}"
+                                                        class="load-operation-btn btn">Extend Period
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </td>
                             </tr>
                         </c:forEach>
                         </tbody>
                     </table>
                 </div>
+                <div class="loan-empty-tip well well-lg">
+                    No book is held by current user currently ~
+                </div>
             </div>
+            <div class="modal fade" id="message-modal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p id="message-modal-message">
+
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-raised" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary btn-raised" data-action="do">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function () {
+                    var currentReturning = 0;
+                    var currentHolding = ${BookHoldingNum};
+                    // Update Lend Status
+                    var updateLendStatus = function () {
+                        $("#num-current-holding").text(currentHolding);
+                        $("#num-current-returning").text(currentReturning);
+                        // Lend table
+                        $(".lend-list").css({"display": currentHolding > 0 ? "block" : "none"});
+
+                        // Tip
+                        $(".loan-empty-tip").css({"display": currentHolding == 0 ? "block" : "none"});
+                    };
+                    updateLendStatus(); // Setup init state;
+
+                    var operationList = {
+                        'lost': {
+                            url: "<spring:url value="/loan/returnAjax/" />",
+                            message: "Sure to mark this book as lost?"
+                        },
+                        'extend': {
+                            url: "<spring:url value="/loan/returnAjax/" />",
+                            message: "Sure to extend the loan period of this book?"
+                        },
+                        'broken': {
+                            url: "<spring:url value="/loan/returnAjax/" />",
+                            message: "Sure to mark this book as broken?"
+                        },
+                        'return': {
+                            url: "<spring:url value="/loan/returnAjax/" />",
+                            message: "Sure to return this book?"
+                        }
+                    };
+
+                    var doModal = function () {
+                        var modal = $("#message-modal");
+                        var currentCallback;
+                        var modalMessage = $("#message-modal-message");
+                        modal.find("button").click(function () {
+                            var action = this.dataset.action;
+                            if (action == "do") {
+                                modal.modal('hide');
+
+                                currentCallback && setTimeout(currentCallback, 420);
+                            }
+                        });
+                        return function (callback, message) {
+                            modalMessage.text(message);
+                            modal.modal('show');
+                            currentCallback = callback;
+                        }
+                    }();
+
+                    var doProgressingPost = function (url, option, callback) {
+                        $.post(url, option, function (data) {
+                            callback && callback(data);
+                        }).fail(function (data) {
+                            callback && callback(data);
+                        });
+                    };
+
+                    $(".load-operation-btn").on('click', function () {
+                        var id = parseInt(this.dataset.id);
+                        var operation = this.dataset.action;
+                        doModal(function () {
+                            doProgressingPost(operationList[operation].url, {
+                                id: id,
+                                action: operation
+                            }, function (data) {
+                                if (data.success) {
+                                    doModal(null, "Operation finished");
+                                    $("tr[data-loan-row='" + id + "']").fadeOut();
+                                    currentHolding--;
+                                    currentReturning++;
+                                    updateLendStatus();
+                                } else {
+                                    doModal(null, "Operation failed");
+                                }
+
+                            })
+                        }, operationList[operation].message)
+                    });
+                });
+            </script>
             <div class="step step-finish">
 
                 <div class="step-title">

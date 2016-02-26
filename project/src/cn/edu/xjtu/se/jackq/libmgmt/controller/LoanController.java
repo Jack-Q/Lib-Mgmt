@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -88,8 +89,33 @@ public class LoanController {
         model.addAttribute("LoanList", bookLoanList);
         model.addAttribute("BookHoldingNum", bookLoanList.size());
         model.addAttribute("BookLeavingNum", BOOK_LIMIT - bookLoanList.size());
+        model.addAttribute("DateTimeNow", new Date());  // Use current time to compare the deadline
         return "loan/return";
     }
+
+    @RequestMapping("returnAjax")
+    public String doReturnBook(@RequestParam("id") int loanId, @RequestParam("action") String action) {
+        boolean result = false;
+        switch (action) {
+            case "return":
+                result = bookService.returnBook(loanId);
+                break;
+            case "broken":
+                result = bookService.returnBookBroken(loanId);
+                break;
+            case "extend":
+                result = bookService.extendBookLoan(loanId, LOAN_PERIOD);
+                break;
+            case "lost":
+                result = bookService.returnBookLost(loanId);
+                break;
+        }
+        if (!result) {
+            return "{\"success\": false}";
+        }
+        return "{\"success\": true}";
+    }
+
 
     @RequestMapping("status")
     @Auth(userRoles = UserRole.STUDENT)
