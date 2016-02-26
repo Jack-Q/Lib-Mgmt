@@ -3,9 +3,13 @@ package cn.edu.xjtu.se.jackq.libmgmt.controller;
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.Auth;
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.PartialView;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.BookService;
+import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookAdd;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookEdit;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserEdit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -133,5 +138,78 @@ public class BookController {
         return "redirect:/book/manage";
     }
 
+
+    @RequestMapping(value = "edit/{BookId}", method = RequestMethod.GET)
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String edit(@PathVariable("BookId") int bookId,
+                       @ModelAttribute("BookEdit") BookEdit bookEdit,
+                       Model model) {
+//        User user = userService.getUser(userId);
+//        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
+//            return "redirect:/error/argument";
+//        }
+//
+//        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+//
+//        // Librarian cannot change his password
+//        if (user.getRoles().contains(UserRole.LIBRARIAN) && !sessionUser.getRoles().contains(UserRole.ADMIN)) {
+//            return "redirect:/error/denied";
+//        }
+
+
+        userEdit.setName(user.getName());
+        userEdit.setEmail(user.getEmail());
+        userEdit.setPhoneNumber(user.getPhoneNumber());
+        userEdit.setDateOfBirth(user.getDateOfBirth());
+
+        bookEdit.setName(book.getName());
+
+
+        model.addAttribute("CurrentUser", user);
+        return "user/edit";
+    }
+
+
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    @RequestMapping(value = "edit/{BookId}", method = RequestMethod.POST)
+    public String doEdit(@PathVariable("UserId") int userId,
+                         @ModelAttribute("UserEdit") UserEdit userEdit,
+                         HttpSession httpSession,
+                         Model model,
+                         RedirectAttributes redirectAttributes) {
+
+        User user = userService.getUser(userId);
+        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:error/argument";
+        }
+
+        model.addAttribute("CurrentUser", user);
+
+        if (userEdit.getName() == null) {
+            model.addAttribute("errorMessageId", "user.edit.error.name");
+
+            return "user/edit";
+        }
+
+
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+
+        // Librarian cannot change his password
+        if (user.getRoles().contains(UserRole.LIBRARIAN) && !sessionUser.getRoles().contains(UserRole.ADMIN)) {
+            return "redirect:/error/denied";
+        }
+
+        user.setName(userEdit.getName());
+        user.setEmail(userEdit.getEmail());
+        user.setDateOfBirth(userEdit.getDateOfBirth());
+        user.setPhoneNumber(userEdit.getPhoneNumber());
+
+        if (!userService.updateUser(user)) {
+            model.addAttribute("errorMessageId", "user.edit.error.failed");
+            return "user/edit";
+        }
+        redirectAttributes.addFlashAttribute("indexMessageId", "user.edit.success");
+        return "redirect:/user/manage";
+    }
 
 }
