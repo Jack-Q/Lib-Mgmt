@@ -65,8 +65,8 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public List<Book> findBook(String query) {
-        return null;
+    public List<Book> searchBook(String query) {
+        return searchBook(query, true, true, true);
     }
 
     @Override

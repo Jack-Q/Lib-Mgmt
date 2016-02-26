@@ -20,7 +20,7 @@ public interface BookService {
 
     List<Book> listBook();
 
-    List<Book> findBook(String query);
+    List<Book> searchBook(String query);
 
     boolean lendBook(User user, Book book, int days);
 

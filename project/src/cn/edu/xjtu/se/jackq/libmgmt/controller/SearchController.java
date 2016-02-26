@@ -26,7 +26,7 @@ public class SearchController {
 
     @RequestMapping("")
     public String search(@RequestParam("q") String query, Model model) {
-        List<Book> bookList = bookService.findBook(query);
+        List<Book> bookList = bookService.searchBook(query);
         model.addAttribute("QueryString", query);
         model.addAttribute("ResultList", bookList);
         return "search/result";
