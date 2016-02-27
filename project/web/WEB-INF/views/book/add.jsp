@@ -38,7 +38,7 @@
                                     <input type="text" name="bookName" id="form-book-name"
                                            placeholder="Java Web Application"
                                            value="<c:out value="${BookAdd.bookName}"/>"
-                                           required class="form-control" title="Book name"/>
+                                           required class="form-control" title="Book Name"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -61,12 +61,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-3" for="form-note">Extra Note</label>
+                                <label class="control-label col-xs-3" for="form-note">Book Note</label>
                                 <div class="col-xs-9">
                                     <input type="text"
                                            value="<c:out value="${BookAdd.bookNote}"/>"
                                            placeholder="" id="form-note"
-                                           name="bookNote" class="form-control" title="Publisher"/>
+                                           name="bookNote" class="form-control" title="Book Note"/>
                                 </div>
                             </div>
                         </fieldset>
@@ -78,11 +78,11 @@
                                 <div class="col-xs-9">
                                     <input type="text" id="form-author" name="author"
                                            value="<c:out value="${BookAdd.author}"/>" class="form-control"
-                                           title="author" placeholder="Peter"/>
+                                           title="Author" placeholder="Peter"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-3" for="form-publisher">Phulisher</label>
+                                <label class="control-label col-xs-3" for="form-publisher">Publisher</label>
                                 <div class="col-xs-9">
                                     <input type="text"
                                            value="<c:out value="${BookAdd.publisher}"/>"
@@ -107,7 +107,7 @@
                                 <div class="col-xs-9">
                                     <textarea
                                             placeholder="" id="form-description"
-                                            name="description" class="form-control" title="Publisher"><c:out
+                                            name="description" class="form-control" title="Description"><c:out
                                             value="${BookAdd.description}"/></textarea>
                                 </div>
                             </div>

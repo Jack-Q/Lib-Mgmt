@@ -1,7 +1,5 @@
 package cn.edu.xjtu.se.jackq.libmgmt.entity;
 
-import org.hibernate.annotations.NaturalId;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
@@ -14,7 +12,6 @@ public class Book implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @NaturalId
     @Column(name = "BookCode", unique = true, nullable = false)
     private String bookCode;
 
@@ -35,7 +32,7 @@ public class Book implements Serializable {
     private String author;
 
 
-    @Column(name = "Description", length = 2000)
+    @Column(name = "Description", length = 5000)
     private String description;
 
     @Column(name = "YearOfPublish")

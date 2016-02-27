@@ -9,6 +9,7 @@ import cn.edu.xjtu.se.jackq.libmgmt.service.BookService;
 import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookAdd;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookEdit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -147,10 +148,10 @@ public class BookController {
             return "book/add";
         }
 
-        if (null != bookService.getBook(bookCode)) {
-            model.addAttribute("errorMessageId", "book.add.error.bookCodeConflict");
-            return "book/add";
-        }
+//        if (null != bookService.getBook(bookCode)) {
+//            model.addAttribute("errorMessageId", "book.add.error.bookCodeConflict");
+//            return "book/add";
+//        }
 
         Book book = new Book();
         book.setBookName(bookAdd.getBookName());
@@ -173,5 +174,63 @@ public class BookController {
         return "redirect:/book/manage";
     }
 
+
+    @RequestMapping(value = "edit/{BookId}", method = RequestMethod.GET)
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String edit(@PathVariable("BookId") int bookId,
+                       @ModelAttribute("BookEdit") BookEdit bookEdit,
+                       Model model) {
+        Book book = bookService.getBook(bookId);
+        if (book == null) {
+            return "redirect:/error/argument";
+        }
+
+        bookEdit.setBookName(book.getBookName());
+        bookEdit.setAuthor(book.getAuthor());
+        bookEdit.setBookCode(book.getBookCode());
+        bookEdit.setIsbn(book.getIsbn());
+        bookEdit.setPublisher(book.getPublisher());
+        bookEdit.setYearOfPublish(book.getYearOfPublish());
+        bookEdit.setBookNote(book.getBookNote());
+        bookEdit.setDescription(book.getDescription());
+
+
+        model.addAttribute("CurrentBook", book);
+        return "book/edit";
+    }
+
+
+    @RequestMapping(value = "edit/{BookId}", method = RequestMethod.POST)
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String doEdit(@PathVariable("BookId") int bookId,
+                         @ModelAttribute("BookEdit") BookEdit bookEdit,
+                         HttpSession httpSession,
+                         Model model,
+                         RedirectAttributes redirectAttributes) {
+
+        Book book = bookService.getBook(bookId);
+        if (book == null) {
+            return "redirect:error/argument";
+        }
+
+        model.addAttribute("CurrentBook", book);
+
+        book.setBookName(bookEdit.getBookName());
+        book.setAuthor(bookEdit.getAuthor());
+        book.setBookCode(bookEdit.getBookCode());
+        book.setIsbn(bookEdit.getIsbn());
+        book.setPublisher(bookEdit.getPublisher());
+        book.setYearOfPublish(bookEdit.getYearOfPublish());
+        book.setBookNote(bookEdit.getBookNote());
+        book.setDescription(bookEdit.getDescription());
+
+
+        if (!bookService.updateBook(book)) {
+            model.addAttribute("errorMessageId", "book.edit.error.failed");
+            return "book/edit";
+        }
+        redirectAttributes.addFlashAttribute("indexMessageId", "book.edit.success");
+        return "redirect:/book/manage";
+    }
 
 }
