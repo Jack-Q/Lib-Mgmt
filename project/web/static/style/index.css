@@ -503,3 +503,138 @@ body.index-body {
     opacity: 1;
     box-shadow: 0 0 5px 2px rgba(0, 120, 120, 0.1)
 }
+
+.comment-block .comment-item {
+    transition: all ease 300ms;
+    margin: 20px 0
+}
+
+.comment-block .comment-item:hover {
+    background-color: rgba(255, 255, 255, 0.6)
+}
+
+.comment-block .comment-rate {
+    width: 90px;
+    padding: 0
+}
+
+.comment-block .comment-rate:hover .comment-star i {
+    text-shadow: 1px 1px 3px #222;
+    opacity: .8
+}
+
+.comment-block .comment-rate .comment-star {
+    position: relative;
+    height: 75px;
+    width: 60px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 75px;
+    color: #efe
+}
+
+.comment-block .comment-rate .comment-star i {
+    color: #fd4;
+    text-shadow: 0 0 3px rgba(85, 85, 85, 0.3);
+    display: block;
+    position: absolute;
+    opacity: .6;
+    top: 0;
+    left: 0;
+    height: 75px;
+    line-height: 75px;
+    width: 60px;
+    text-align: center;
+    font-size: 60px;
+    transition: all ease 300ms
+}
+
+.comment-block .comment-rate .comment-star span.rate-value {
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 15px;
+    font-weight: 800;
+    text-shadow: 0 0 1px #555
+}
+
+.comment-block .comment-rate .comment-star-rater {
+    display: block;
+    border-radius: 10px;
+    height: 20px;
+    width: 90px;
+    border: solid 1px #999;
+    overflow: hidden
+}
+
+.comment-block .comment-rate .comment-star-rater a {
+    display: block;
+    float: left;
+    width: 44px;
+    text-align: center;
+    height: 18px;
+    line-height: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all ease 300ms
+}
+
+.comment-block .comment-rate .comment-star-rater a + a {
+    border-left: solid 1px #999
+}
+
+.comment-block .comment-rate .comment-star-rater a.star-down:hover {
+    color: #ddd;
+    background-color: #c32
+}
+
+.comment-block .comment-rate .comment-star-rater a.star-up:hover {
+    color: #333;
+    background-color: #fd4
+}
+
+.comment-block .comment-main .comment-content {
+    font-size: 1.2em;
+    font-family: "Segoe Script", "Microsoft YaHei UI", sans-serif
+}
+
+.comment-block .comment-main .comment-meta {
+    text-align: right;
+    font-size: .8em;
+    font-style: italic;
+    font-weight: 600;
+    opacity: .6;
+    background-color: rgba(120, 120, 120, 0.3);
+    padding: 0 10px;
+    width: auto;
+    float: right;
+    position: relative;
+    height: 18px;
+    line-height: 18px;
+    border-right: solid 3px #0fb2fc
+}
+
+.comment-block .comment-main .comment-meta::before {
+    top: 0;
+    left: -18px;
+    display: block;
+    content: " ";
+    width: 0;
+    height: 0;
+    position: absolute;
+    border: solid 9px transparent;
+    border-right-color: rgba(120, 120, 120, 0.3)
+}
+
+.comment-block .comment-edit-area {
+    opacity: .6;
+    transition: all ease 300ms;
+    border-radius: 20px !important
+}
+
+.comment-block .comment-edit-area:hover, .comment-block .comment-edit-area:focus, .comment-block .comment-edit-area:active {
+    opacity: 1
+}

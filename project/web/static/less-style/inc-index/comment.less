@@ -1,0 +1,130 @@
+.comment-block {
+  .comment-item {
+    transition: all ease 300ms;
+    margin: 20px 0;
+    &:hover {
+
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+  }
+  .comment-rate {
+    width: 90px;
+    padding: 0;
+    &:hover {
+      .comment-star i {
+        text-shadow: 1px 1px 3px #222;
+        opacity: 0.8;
+      }
+
+    }
+    .comment-star {
+      position: relative;
+      height: 75px;
+      width: 60px;
+      margin: 0 auto;
+      text-align: center;
+      line-height: 75px;
+      color: #efe;
+      i {
+        color: #ffdd44;
+        text-shadow: 0 0 3px rgba(85, 85, 85, 0.3);
+        display: block;
+        position: absolute;
+        opacity: 0.6;
+
+        top: 0;
+        left: 0;
+        height: 75px;
+        line-height: 75px;
+        width: 60px;
+        text-align: center;
+        font-size: 60px;
+        transition: all ease 300ms;
+
+      }
+      span.rate-value {
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 15px;
+        font-weight: 800;
+        text-shadow: 0 0 1px #555;
+      }
+    }
+    .comment-star-rater {
+      display: block;
+      border-radius: 10px;
+      height: 20px;
+      width: 90px;
+      border: solid 1px #999;
+      overflow: hidden;
+      a {
+        display: block;
+        float: left;
+        width: 44px;
+        text-align: center;
+        height: 18px;
+        line-height: 18px;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all ease 300ms;
+
+        & + a {
+          border-left: solid 1px #999;
+        }
+        &.star-down:hover {
+          color: #ddd;
+          background-color: #c32;
+        }
+        &.star-up:hover {
+          color: #333;
+          background-color: #fd4;
+        }
+      }
+    }
+  }
+  .comment-main {
+    .comment-content {
+
+      font-size: 1.2em;
+      font-family: "Segoe Script", "Microsoft YaHei UI", sans-serif;
+    }
+    .comment-meta {
+      text-align: right;
+      font-size: 0.8em;
+      font-style: italic;
+      font-weight: 600;
+      opacity: 0.6;
+      background-color: rgba(120, 120, 120, 0.3);
+      padding: 0 10px;
+      width: auto;
+      float: right;
+      position: relative;
+      height: 18px;
+      line-height: 18px;
+      border-right: solid 3px #0fb2fc;
+      &::before {
+        top: 0;
+        left: -18px;
+        display: block;
+        content: " ";
+        width: 0;
+        height: 0;
+        position: absolute;
+        border: solid 9px transparent;
+        border-right-color: rgba(120, 120, 120, 0.3);
+      }
+    }
+  }
+  .comment-edit-area {
+    opacity: 0.6;
+    transition: all ease 300ms;
+    border-radius: 20px !important;
+    &:hover, &:focus, &:active {
+      opacity: 1;
+    }
+  }
+}

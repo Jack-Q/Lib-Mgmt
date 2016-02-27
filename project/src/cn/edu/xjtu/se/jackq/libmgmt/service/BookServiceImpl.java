@@ -212,4 +212,17 @@ public class BookServiceImpl implements BookService {
         bookDao.addComment(bookComment);
     }
 
+    @Override
+    public boolean rateComment(int commentId, int rateChange) {
+        if (rateChange != 1 && rateChange != -1) {
+            return false;
+        }
+        BookComment bookComment = bookDao.getComment(commentId);
+        if (bookComment == null) {
+            return false;
+        }
+        bookComment.setStars(bookComment.getStars() + rateChange);
+        return bookDao.updateBookComment(bookComment);
+    }
+
 }

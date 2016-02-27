@@ -84,6 +84,24 @@ public class BookController {
         return "redirect:/book/detail/" + bookId;
     }
 
+    @Auth
+    @ResponseBody
+    @RequestMapping(value = "commentRateAjax", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public String doCommentRate(@RequestParam("id") int commentId, @RequestParam("action") String action) {
+        boolean result = false;
+
+        switch (action) {
+            case "up":
+                result = bookService.rateComment(commentId, 1);
+                break;
+            case "down":
+                result = bookService.rateComment(commentId, -1);
+                break;
+        }
+        return result ?
+                "{\"success\":true}" : "{\"success\":false}";
+    }
+
     @RequestMapping("detail/{id}")
     public String detail(@PathVariable("id") int id, Model model) {
         Book book = bookService.getBook(id);

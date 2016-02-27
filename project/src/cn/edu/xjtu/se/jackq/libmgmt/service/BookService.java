@@ -47,4 +47,6 @@ public interface BookService {
     boolean extendBookLoan(int loanId, int loanPeriod);
 
     void commentBook(Book book, User user, String content);
+
+    boolean rateComment(int commentId, int rateChange);
 }

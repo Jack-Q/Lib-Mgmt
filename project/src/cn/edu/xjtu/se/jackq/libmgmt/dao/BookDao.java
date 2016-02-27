@@ -25,4 +25,8 @@ public interface BookDao {
     List<Book> searchBook(String query, boolean byCode, boolean byName, boolean byAuthor);
 
     void addComment(BookComment bookComment);
+
+    BookComment getComment(int commentId);
+
+    boolean updateBookComment(BookComment bookComment);
 }

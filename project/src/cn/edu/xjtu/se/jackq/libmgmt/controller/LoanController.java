@@ -11,10 +11,7 @@ import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Date;
@@ -93,7 +90,8 @@ public class LoanController {
         return "loan/return";
     }
 
-    @RequestMapping("returnAjax")
+    @RequestMapping(value = "returnAjax", produces = "application/json; charset=utf-8", method = RequestMethod.POST)
+    @ResponseBody
     public String doReturnBook(@RequestParam("id") int loanId, @RequestParam("action") String action) {
         boolean result = false;
         switch (action) {
