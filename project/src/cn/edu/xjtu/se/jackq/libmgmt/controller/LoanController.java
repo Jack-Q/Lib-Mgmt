@@ -133,4 +133,18 @@ public class LoanController {
 
         return "loan/status";
     }
+
+    @RequestMapping("status/{userId}")
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String statusUser(@PathVariable("userId") int userId, Model model) {
+
+        User user = userService.getUser(userId);
+
+        model.addAttribute("DateTimeNow", new Date());  // Use current time to compare the deadline
+        model.addAttribute("CurrentUser", user);
+        model.addAttribute("CurrentLoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_CURR));
+        model.addAttribute("FinishedLoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_FINISH));
+        model.addAttribute("ManageView", true);
+        return "loan/status";
+    }
 }

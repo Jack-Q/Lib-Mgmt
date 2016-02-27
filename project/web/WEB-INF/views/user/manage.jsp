@@ -88,6 +88,12 @@
                                                     </button>
                                                     <ul class="dropdown-menu">
                                                         <li>
+                                                            <a href="<spring:url value="/loan/status/${Reader.id}"/> ">
+                                                                Loan Status
+                                                            </a>
+                                                        </li>
+                                                        <li class="divider"></li>
+                                                        <li>
                                                             <a href="<spring:url value="/user/resetPassword/${Reader.id}"/>">
                                                                 Reset Password
                                                             </a>

@@ -11,9 +11,17 @@
     <jsp:body>
         <div class="container page-lend">
             <h1>
-                My Loan Status
+                <c:out value="${ ManageView ? CurrentUser.name : 'My' }"/> Loan Status
             </h1>
-            <a href="<spring:url value="/" />"> &#8810; Return to Index page </a>
+            <c:choose>
+                <c:when test="${ManageView}">
+                    <a href="<spring:url value="/user/manage" />"> &#8810; Return to Manage page </a>
+                </c:when>
+                <c:otherwise>
+
+                    <a href="<spring:url value="/" />"> &#8810; Return to Index page </a>
+                </c:otherwise>
+            </c:choose>
                 <%--@elvariable id="indexMessageId" type="java.lang.String"--%>
             <c:if test="${(indexMessageId != null)}">
                 <div class="alert-info alert alert-dismissible">
@@ -27,8 +35,10 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-pills">
                     <li role="presentation" class="active"><a href="#reading" aria-controls="home" role="tab"
-                                                              data-toggle="tab">I'm Reading</a></li>
-                    <li role="presentation"><a href="#read" aria-controls="profile" role="tab" data-toggle="tab">I've
+                                                              data-toggle="tab"> ${ ManageView? "" : "I\'m " }
+                        Reading</a></li>
+                    <li role="presentation"><a href="#read" aria-controls="profile" role="tab"
+                                               data-toggle="tab">${ ManageView? "" : "I\'ve " }
                         Read</a>
                     </li>
                 </ul>
@@ -85,9 +95,12 @@
                             <c:otherwise>
                                 <div class="well well-lg">
                                     No book in this list ~
-                                    <br>
-                                    Visit home page to search for more books
-                                    <a class="btn btn-primary btn-raised" href="<spring:url value="/"/>">Home Page</a>
+                                    <c:if test="${!ManageView}">
+                                        <br>
+                                        Visit home page to search for more books
+                                        <a class="btn btn-primary btn-raised" href="<spring:url value="/"/>">Home
+                                            Page</a>
+                                    </c:if>
                                 </div>
                             </c:otherwise>
                         </c:choose>
@@ -133,11 +146,21 @@
                             </c:when>
                             <c:otherwise>
                                 <div class="well well-lg">
-                                    It seems that you've not finished reading any books ~
+                                    <c:choose>
+                                        <c:when test="${ManageView}">
+                                            No book in this list ~
+                                        </c:when>
+                                        <c:otherwise>
 
-                                    <br>
-                                    Visit home page to search for more books
-                                    <a class="btn btn-primary btn-raised" href="<spring:url value="/"/>">Home Page</a>
+                                            It seems that you've not finished reading any books ~
+
+                                            <br>
+                                            Visit home page to search for more books
+                                            <a class="btn btn-primary btn-raised" href="<spring:url value="/"/>">Home
+                                                Page</a>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </div>
                             </c:otherwise>
                         </c:choose>
