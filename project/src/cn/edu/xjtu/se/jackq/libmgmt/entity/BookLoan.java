@@ -122,4 +122,10 @@ public class BookLoan implements Serializable {
     public void setNote(String note) {
         this.note = note;
     }
+
+
+    public double calcLoanFinedAmount(Date returnDate) {
+        if (returnDate == null) returnDate = new Date();
+        return getDeadlineOfReturning().before(returnDate) ? 0.2 * (getDeadlineOfReturning().getTime() - returnDate.getTime()) / 86400000 : 0;
+    }
 }

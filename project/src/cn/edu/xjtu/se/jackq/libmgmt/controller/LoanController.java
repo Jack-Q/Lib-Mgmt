@@ -94,9 +94,13 @@ public class LoanController {
     @ResponseBody
     public String doReturnBook(@RequestParam("id") int loanId, @RequestParam("action") String action) {
         boolean result = false;
+        String response = "{\"success\": true}";
         switch (action) {
             case "return":
                 result = bookService.returnBook(loanId);
+                break;
+            case "returnFined":
+                result = bookService.returnBookFined(loanId);
                 break;
             case "broken":
                 result = bookService.returnBookBroken(loanId);
@@ -111,7 +115,7 @@ public class LoanController {
         if (!result) {
             return "{\"success\": false}";
         }
-        return "{\"success\": true}";
+        return response;
     }
 
 

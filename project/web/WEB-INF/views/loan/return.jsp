@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="lend-list table-responsive">
-                    <table class="table table-hover" style="margin-bottom: 150px;">
+                    <table class="table table-hover" style="margin-bottom: 190px;">
                         <thead>
                         <tr>
                             <th>#</th>
@@ -78,21 +78,22 @@
                                 <td>${Loan.id}</td>
                                 <td><c:out value="${Loan.bookCopy.book.bookName}"/></td>
                                 <td><c:out value="${Loan.bookCopy.book.bookCode}"/></td>
-                                <td><c:out value="${Loan.loanPeriod}"/></td>
-                                <td>
+                                <td class="data-period"><c:out value="${Loan.loanPeriod}"/></td>
+                                <td class="data-deadline">
                                     <c:if test="${Loan.deadlineOfReturning.before(DateTimeNow)}">
                                         <span class="label label-danger center-block">
                                             PASSED: Fined for
                                             <fmt:formatNumber type="currency"
                                                               pattern="$0.00"
-                                                              value="${0.1 * (DateTimeNow.time - Loan.deadlineOfReturning.time)/86400000}"/>
+                                                              value="${Loan.calcLoanFinedAmount(null)}"/>
                                         </span>
                                     </c:if>
                                     <c:out value="${Loan.deadlineOfReturning}"/>
                                 </td>
                                 <td>
                                     <div class="btn-group">
-                                        <button data-action="return" data-id="${Loan.id}"
+                                        <button data-action="${Loan.deadlineOfReturning.before(DateTimeNow)?"returnFined":"return" }"
+                                                data-id="${Loan.id}"
                                                 class="load-operation-btn btn btn-primary btn-raised">
                                             <c:if test="${Loan.deadlineOfReturning.before(DateTimeNow)}">Pay & </c:if>
                                             Return
@@ -104,21 +105,28 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li class="dropdown-header">Other Scenarios</li>
+                                            <c:if test="${Loan.deadlineOfReturning.before(DateTimeNow)}">
+                                            <li>
+                                                <button data-action="return" data-id="${Loan.id}"
+                                                        class="load-operation-btn btn btn-block">Return without fined.
+                                                </button>
+                                            </li>
+                                            </c:if>
                                             <li>
                                                 <button data-action="broken" data-id="${Loan.id}"
-                                                        class="load-operation-btn btn">Book Broken
+                                                        class="load-operation-btn btn btn-block">Book Broken
                                                 </button>
                                             </li>
                                             <li>
                                                 <button data-action="lost" data-id="${Loan.id}"
-                                                        class="load-operation-btn btn">Book Lost
+                                                        class="load-operation-btn btn btn-block">Book Lost
                                                 </button>
                                             </li>
                                             <li role="separator" class="divider"></li>
                                             <li class="dropdown-header">Options</li>
                                             <li>
                                                 <button data-action="extend" data-id="${Loan.id}"
-                                                        class="load-operation-btn btn">Extend Period
+                                                        class="load-operation-btn btn btn-block">Extend Period
                                                 </button>
                                             </li>
                                         </ul>
@@ -167,19 +175,50 @@
                     var operationList = {
                         'lost': {
                             url: "<spring:url value="/loan/returnAjax/" />",
-                            message: "Sure to mark this book as lost?"
+                            message: "Sure to mark this book as lost?",
+                            finish: function (id) {
+                                $("tr[data-loan-row='" + id + "']").fadeOut();
+                                currentHolding--;
+                                currentReturning++;
+                            }
                         },
                         'extend': {
                             url: "<spring:url value="/loan/returnAjax/" />",
-                            message: "Sure to extend the loan period of this book?"
+                            message: "Sure to extend the loan period of this book?",
+                            finish: function (id, data) {
+                                var row = $("tr[data-loan-row='" + id + "']");
+                                var newPeriod = data.period || "Refresh to update";
+                                var newDeadline = data.deadline || "Refresh to update";
+                                row.find(".data-period").text(newPeriod);
+                                row.find(".data-deadline").text(newDeadline)
+                            }
                         },
                         'broken': {
                             url: "<spring:url value="/loan/returnAjax/" />",
-                            message: "Sure to mark this book as broken?"
+                            message: "Sure to mark this book as broken?",
+                            finish: function (id) {
+                                $("tr[data-loan-row='" + id + "']").fadeOut();
+                                currentHolding--;
+                                currentReturning++;
+                            }
                         },
                         'return': {
                             url: "<spring:url value="/loan/returnAjax/" />",
-                            message: "Sure to return this book?"
+                            message: "Sure to return this book?",
+                            finish: function (id) {
+                                $("tr[data-loan-row='" + id + "']").fadeOut();
+                                currentHolding--;
+                                currentReturning++;
+                            }
+                        },
+                        'returnFined': {
+                            url: "<spring:url value="/loan/returnAjax/" />",
+                            message: "Sure to return this book ? (The reader will be fined! )",
+                            finish: function (id) {
+                                $("tr[data-loan-row='" + id + "']").fadeOut();
+                                currentHolding--;
+                                currentReturning++;
+                            }
                         }
                     };
 
@@ -220,9 +259,7 @@
                             }, function (data) {
                                 if (data.success) {
                                     doModal(null, "Operation finished");
-                                    $("tr[data-loan-row='" + id + "']").fadeOut();
-                                    currentHolding--;
-                                    currentReturning++;
+                                    operationList[operation].finish(id, data);
                                     updateLendStatus();
                                 } else {
                                     doModal(null, "Operation failed");

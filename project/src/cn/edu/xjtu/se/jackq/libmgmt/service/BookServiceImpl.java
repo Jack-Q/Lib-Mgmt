@@ -142,7 +142,7 @@ public class BookServiceImpl implements BookService {
         return bookLoanDao.searchBookToLend(user, query, byCode, byName, byAuthor);
     }
 
-    private boolean returnBook(int loanId, boolean isLost, boolean isBroken, boolean isFined, double finedAmount) {
+    private boolean returnBook(int loanId, boolean isLost, boolean isBroken, boolean isFined) {
         BookLoan bookLoan = bookLoanDao.getLoan(loanId);
         if (bookLoan == null || bookLoan.isFinished()) {
             return false;
@@ -152,8 +152,18 @@ public class BookServiceImpl implements BookService {
         bookCopy.setLoanable(!isLost);
         bookCopy.setStatus(isLost ? BookCopyStatus.UNAVAILABLE : BookCopyStatus.ON_SHELF);
 
-        bookLoan.setNote(isLost ? "Book Lost" : isBroken ? "Book Broken" : isFined ? "Fined" : "");
-        bookLoan.setDateOfReturning(new Date());
+        Date returnDate = new Date();
+        boolean isRequireFined = false;
+        double finedAmount = 0;
+        if (isFined) {
+            if (bookLoan.getDeadlineOfReturning().before(returnDate)) {
+                isRequireFined = true;
+                finedAmount = bookLoan.calcLoanFinedAmount(returnDate);
+            }
+        }
+
+        bookLoan.setNote(isLost ? "Book Lost" : isBroken ? "Book Broken" : isFined && isRequireFined ? "Fined" : "");
+        bookLoan.setDateOfReturning(returnDate);
         bookLoan.setFinedAmount(finedAmount);
         bookLoan.setFinished(true);
 
@@ -162,26 +172,27 @@ public class BookServiceImpl implements BookService {
         return true;
     }
 
+
     @Override
     public boolean returnBook(int loanId) {
-        return returnBook(loanId, false, false, false, 0);
+        return returnBook(loanId, false, false, true);
     }
 
     @Override
-    public boolean returnBookFined(int loanId, double finedAmount) {
-        return returnBook(loanId, false, false, true, finedAmount);
+    public boolean returnBookFined(int loanId) {
+        return returnBook(loanId, false, false, true);
 
     }
 
     @Override
     public boolean returnBookBroken(int loanId) {
-        return returnBook(loanId, false, true, false, 0);
+        return returnBook(loanId, false, true, false);
 
     }
 
     @Override
     public boolean returnBookLost(int loanId) {
-        return returnBook(loanId, true, false, false, 0);
+        return returnBook(loanId, true, false, false);
 
     }
 
