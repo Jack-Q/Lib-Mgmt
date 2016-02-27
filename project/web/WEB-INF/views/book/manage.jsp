@@ -81,14 +81,6 @@
                                                                 Manage Copies
                                                             </a>
                                                         </li>
-
-                                                        <li class="divider"></li>
-                                                        <li>
-                                                            <a href="<spring:url value="/book/delete/${Book.id}"/>"
-                                                               class=" alert-link">
-                                                                Delete book
-                                                            </a>
-                                                        </li>
                                                     </ul>
                                                 </div>
                                             </td>
