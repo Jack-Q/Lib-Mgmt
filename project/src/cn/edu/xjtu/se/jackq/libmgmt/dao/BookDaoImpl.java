@@ -110,4 +110,11 @@ public class BookDaoImpl implements BookDao {
         currentSession.update(bookComment);
         return true;
     }
+
+    @Override
+    public BookCopy getBookCopy(int id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        BookCopy bookCopy = (BookCopy) currentSession.get(BookCopy.class, id);
+        return bookCopy;
+    }
 }

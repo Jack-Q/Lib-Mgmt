@@ -24,6 +24,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public BookCopy getBookCopy(int id) {
+        return bookDao.getBookCopy(id);
+    }
+
+    @Override
     public Book getBook(String bookCode) {
         return bookDao.getBookByBookCode(bookCode);
     }
@@ -224,6 +229,16 @@ public class BookServiceImpl implements BookService {
         }
         bookComment.setStars(bookComment.getStars() + rateChange);
         return bookDao.updateBookComment(bookComment);
+    }
+
+    @Override
+    public boolean deleteBookCopy(BookCopy bookCopy) {
+        bookCopy.setStatus(BookCopyStatus.UNAVAILABLE);
+        bookCopy.setNote("The copy is deleted");
+        bookCopy.setLoanable(false);
+
+        bookDao.updateBookCopy(bookCopy);
+        return true;
     }
 
 }

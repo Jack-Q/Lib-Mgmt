@@ -29,4 +29,6 @@ public interface BookDao {
     BookComment getComment(int commentId);
 
     boolean updateBookComment(BookComment bookComment);
+
+    BookCopy getBookCopy(int id);
 }
