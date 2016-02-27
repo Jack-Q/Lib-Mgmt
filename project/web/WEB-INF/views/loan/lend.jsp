@@ -205,7 +205,7 @@
                 };
                 var retrieveCandidates = function () {
                     var query = bookSearch.val();
-                    var isByName = $("#book-search-code").prop("checked");
+                    var isByName = $("#book-search-name").prop("checked");
                     var isByCode = $("#book-search-code").prop("checked");
                     var isByAuthor = $("#book-search-author").prop("checked");
                     if (!isByCode && !isByName && !isByAuthor) {
