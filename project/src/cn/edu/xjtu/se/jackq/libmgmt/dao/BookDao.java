@@ -14,7 +14,6 @@ public interface BookDao {
     boolean removeBook(Book book);
 
     Book getBookById(int id);
-    Book getBookByBookCode(String bookCode);
 
     List<Book> listBook();
 
@@ -29,4 +28,8 @@ public interface BookDao {
     BookComment getComment(int commentId);
 
     boolean updateBookComment(BookComment bookComment);
+
+    boolean isBookCodeAvailable(String bookCode);
+
+
 }

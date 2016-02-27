@@ -29,10 +29,6 @@ public class BookController {
     @Autowired
     UserService userService;
 
-    @RequestMapping({"", "index"})
-    public String index() {
-        return "book/index";
-    }
 
     @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
     @RequestMapping("manage")
@@ -148,10 +144,10 @@ public class BookController {
             return "book/add";
         }
 
-//        if (null != bookService.getBook(bookCode)) {
-//            model.addAttribute("errorMessageId", "book.add.error.bookCodeConflict");
-//            return "book/add";
-//        }
+        if (!bookService.isBookCodeAvailable(bookAdd.getBookCode())) {
+            model.addAttribute("errorMessageId", "book.add.error.bookCodeConflict");
+            return "book/add";
+        }
 
         Book book = new Book();
         book.setBookName(bookAdd.getBookName());

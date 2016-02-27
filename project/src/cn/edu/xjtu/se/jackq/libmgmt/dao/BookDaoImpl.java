@@ -46,12 +46,7 @@ public class BookDaoImpl implements BookDao {
         return book;
     }
 
-    @Override
-    public Book getBookByBookCode(String bookCode) {
-        Session currentSession = sessionFactory.getCurrentSession();
-        Book book = (Book) currentSession.bySimpleNaturalId(Book.class).load(bookCode);
-        return book;
-    }
+
 
     @Override
     public List<Book> listBook() {
@@ -109,5 +104,16 @@ public class BookDaoImpl implements BookDao {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.update(bookComment);
         return true;
+    }
+
+    @Override
+    public boolean isBookCodeAvailable(String bookCode) {
+
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("select count(id) from Book b where b.bookCode = :code");
+        query.setParameter("code", bookCode);
+        long num = (long) query.uniqueResult();
+        return num == 0;
+
     }
 }

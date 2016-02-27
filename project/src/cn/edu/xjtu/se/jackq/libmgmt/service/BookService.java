@@ -10,7 +10,6 @@ import java.util.List;
 public interface BookService {
     Book getBook(int id);
 
-    Book getBook(String bookCode);
 
     Book addBook(Book book);
 
@@ -49,4 +48,7 @@ public interface BookService {
     void commentBook(Book book, User user, String content);
 
     boolean rateComment(int commentId, int rateChange);
+
+    boolean isBookCodeAvailable(String bookCode);
+
 }

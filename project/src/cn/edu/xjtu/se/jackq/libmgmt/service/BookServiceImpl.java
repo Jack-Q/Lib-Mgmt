@@ -23,10 +23,6 @@ public class BookServiceImpl implements BookService {
         return bookDao.getBookById(id);
     }
 
-    @Override
-    public Book getBook(String bookCode) {
-        return bookDao.getBookByBookCode(bookCode);
-    }
 
     @Override
     public Book addBook(Book book) {
@@ -235,6 +231,11 @@ public class BookServiceImpl implements BookService {
         }
         bookComment.setStars(bookComment.getStars() + rateChange);
         return bookDao.updateBookComment(bookComment);
+    }
+
+    @Override
+    public boolean isBookCodeAvailable(String bookCode) {
+        return bookDao.isBookCodeAvailable(bookCode);
     }
 
 }
