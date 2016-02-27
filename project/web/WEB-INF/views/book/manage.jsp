@@ -45,7 +45,7 @@
                                         <th>Code</th>
                                         <th>Author</th>
                                         <th>ISBN</th>
-                                        <th>
+                                        <th width="180">
                                             <div class="sr-only">Operations</div>
                                         </th>
                                     </tr>
@@ -79,14 +79,6 @@
                                                         <li>
                                                             <a href="<spring:url value="/book/copies/${Book.id}"/>">
                                                                 Manage Copies
-                                                            </a>
-                                                        </li>
-
-                                                        <li class="divider"></li>
-                                                        <li>
-                                                            <a href="<spring:url value="/book/delete/${Book.id}"/>"
-                                                               class=" alert-link">
-                                                                Delete book
                                                             </a>
                                                         </li>
                                                     </ul>

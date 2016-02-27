@@ -29,7 +29,7 @@
                                cssClass="form-horizontal">
                         <%-- This form use standard HTML5 tags to utilize the new features in HTML 5 --%>
                         <%-- As a result, I need to manually bind data to related input element --%>
-                        ========================
+
                         <div class="form-group">
                             <label class="control-label col-xs-3" for="form-bookName">Book Name</label>
                             <div class="col-xs-9">

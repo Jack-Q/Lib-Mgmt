@@ -2,9 +2,7 @@ package cn.edu.xjtu.se.jackq.libmgmt.controller;
 
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.Auth;
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.PartialView;
-import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
-import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
-import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.*;
 import cn.edu.xjtu.se.jackq.libmgmt.service.BookService;
 import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
@@ -17,7 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 @Controller
@@ -28,6 +29,7 @@ public class BookController {
 
     @Autowired
     UserService userService;
+    private Comparator<BookCopy> bookCopyComparator;
 
 
     @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
@@ -49,7 +51,10 @@ public class BookController {
     public String copiesPartial(@PathVariable int id, Model model) {
         Book book = bookService.getBook(id);
         model.addAttribute("CurrentBook", book);
-        model.addAttribute("BookCopies", book.getBookCopies());
+        Set<BookCopy> bookCopiesSet = book.getBookCopies();
+        List<BookCopy> bookCopies = new ArrayList<>(bookCopiesSet);
+        bookCopies.sort(bookCopyComparator);
+        model.addAttribute("BookCopies", bookCopies);
         return "book/copiesPartial";
     }
 
@@ -227,6 +232,67 @@ public class BookController {
         }
         redirectAttributes.addFlashAttribute("indexMessageId", "book.edit.success");
         return "redirect:/book/manage";
+    }
+
+    @RequestMapping(value = "copies/{BookId}")
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String copies(@PathVariable("BookId") int bookId,
+                         HttpSession httpSession,
+                         Model model,
+                         RedirectAttributes redirectAttributes) {
+        Book book = bookService.getBook(bookId);
+        if (book == null) {
+            return "redirect:error/argument";
+        }
+
+        model.addAttribute("CurrentBook", book);
+        model.addAttribute("CurrentBookCopyList", book.getBookCopies());
+
+        return "book/copies";
+    }
+
+    @RequestMapping(value = "deleteCopy/{BookCopyId}")
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String deleteCopy(@PathVariable("BookCopyId") int bookCopyId,
+                             RedirectAttributes redirectAttributes) {
+        BookCopy bookCopy = bookService.getBookCopy(bookCopyId);
+        if (bookCopy == null) {
+            return "redirect:error/argument";
+        }
+
+        if (bookCopy.getStatus() == BookCopyStatus.AWAY) {
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.manageCopy.delete.failed");
+            return "redirect:/book/copies/" + bookCopy.getBook().getId();
+        }
+
+        boolean result = bookService.deleteBookCopy(bookCopy);
+
+        if (result) {
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.manageCopy.delete.success");
+        } else {
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.manageCopy.delete.failed");
+        }
+        return "redirect:/book/copies/" + bookCopy.getBook().getId();
+    }
+
+    @RequestMapping(value = "addCopies")
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String addCopies(@RequestParam("bookId") int bookId,
+                            @RequestParam("numOfNewCopies") int numOfNewCopies,
+                            RedirectAttributes redirectAttributes) {
+        Book book = bookService.getBook(bookId);
+        if (book == null) {
+            return "redirect:error/argument";
+        }
+
+        boolean result = bookService.addBookCopies(bookId, numOfNewCopies);
+
+        if (result) {
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.manageCopy.add.success");
+        } else {
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.manageCopy.add.failed");
+        }
+        return "redirect:/book/copies/" + bookId;
     }
 
 }

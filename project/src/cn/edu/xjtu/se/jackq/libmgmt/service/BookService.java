@@ -2,6 +2,7 @@ package cn.edu.xjtu.se.jackq.libmgmt.service;
 
 
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookLoan;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 
@@ -10,6 +11,9 @@ import java.util.List;
 public interface BookService {
     Book getBook(int id);
 
+    BookCopy getBookCopy(int id);
+
+    Book getBook(String bookCode);
 
     Book addBook(Book book);
 
@@ -51,4 +55,6 @@ public interface BookService {
 
     boolean isBookCodeAvailable(String bookCode);
 
+
+    boolean deleteBookCopy(BookCopy bookCopy);
 }

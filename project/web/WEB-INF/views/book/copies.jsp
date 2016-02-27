@@ -2,15 +2,22 @@
 <%@ taglib prefix="layout" tagdir="/WEB-INF/tags/layout" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<layout:basic pageTitle="Detail: ${CurrentBook.bookName}">
+
+<layout:basic pageTitle="Manage Copies">
     <jsp:body>
         <div class="container">
             <h1>
-                <c:out value="${CurrentBook.bookName}"/>
+                Manage Copies
             </h1>
+
+            <h3>
+                <c:out value="${CurrentBook.bookName}"/>
+            </h3>
             <div>
                 <c:if test="${CurrentBook.author != null && CurrentBook.author.length() > 0 }">
                     By <span class="book-author"><c:out value="${CurrentBook.author}"/></span>,
@@ -33,26 +40,28 @@
                     <dd><c:out value="${CurrentBook.bookNote}"/></dd>
                 </dl>
             </div>
-            <div class="book-copies">
-                <h4>Book Copies</h4>
-                <jsp:include page="/book/copiesPartial/${CurrentBook.id}"/>
-            </div>
-            <div class="book-detail">
-                <div class="book-description">
-                    <c:out value="${CurrentBook.description}"/>
+
+                <%--@elvariable id="indexMessageId" type="java.lang.String"--%>
+            <c:if test="${(indexMessageId != null)}">
+                <div class="alert-info alert alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <p><spring:message code="${fn:escapeXml(indexMessageId)}"/></p>
                 </div>
-            </div>
-            <div class="book-comments">
-                <h4>Comments</h4>
-                    <%--@elvariable id="indexMessageId" type="java.lang.String"--%>
-                <c:if test="${(indexMessageId != null)}">
-                    <div class="alert-info alert alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <p><spring:message code="${fn:escapeXml(indexMessageId)}"/></p>
-                    </div>
-                </c:if>
-                <jsp:include page="/book/commentPartial/${CurrentBook.id}"/>
-            </div>
+            </c:if>
+
+            <form class="row" action="<spring:url value="/book/addCopies" />" method="POST" target="_self">
+                <input type="hidden" name="bookId" value="${CurrentBook.id}">
+                <div class=" col-sm-2" style="margin-top: -18px;">
+                    <input class="form-control" type="number" min="1" max="16" step="1" name="numOfNewCopies"
+                           placeholder="1~16" required>
+                </div>
+                <div>
+                    <input class="btn btn-raised btn-primary" type="submit" value="Add new copies">
+                </div>
+            </form>
+
+            <jsp:include page="/book/copiesPartial/${CurrentBook.id}"/>
+
         </div>
     </jsp:body>
 </layout:basic>

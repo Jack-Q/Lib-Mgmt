@@ -107,6 +107,13 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
+    public BookCopy getBookCopy(int id) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        BookCopy bookCopy = (BookCopy) currentSession.get(BookCopy.class, id);
+        return bookCopy;
+    }
+
+    @Override
     public boolean isBookCodeAvailable(String bookCode) {
 
         Session currentSession = sessionFactory.getCurrentSession();
