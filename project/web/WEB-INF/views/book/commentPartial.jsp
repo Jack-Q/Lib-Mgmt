@@ -12,14 +12,14 @@
                 <div class="comment well-lg row comment-item">
                     <div class="col-xs-2 col-md-1 comment-rate">
                         <div class="comment-star">
-                            <i class="material-icons">star_rate</i>
+                            <i class="material-icons">&#xE885;</i>
                              <span class="rate-value" data-value="${Comment.stars}" data-id="${Comment.id}">
                                      ${Comment.stars}
                              </span>
                         </div>
                         <layout:login>
                             <jsp:attribute name="whenLogin">
-                            <div class="comment-star-rater">
+                            <div class="comment-star-rater" data-id="${Comment.id}">
                                 <a class="star-down" href="#" data-action="down" data-id="${Comment.id}">-1</a>
                                 <a class="star-up" href="#" data-action="up" data-id="${Comment.id}">+1</a>
                             </div>
@@ -89,6 +89,7 @@
                             var curVal = parseInt(data.data("value"));
                             var newVal = curVal + (action == "up" ? 1 : -1);
                             data.text(newVal).data("value", newVal);
+                            $(".comment-star-rater[data-id=" + id + "]").empty().text("Thanks");
                         }
                     })
 

@@ -16,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
@@ -29,7 +28,6 @@ public class BookController {
 
     @Autowired
     UserService userService;
-    private Comparator<BookCopy> bookCopyComparator;
 
 
     @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
@@ -53,7 +51,7 @@ public class BookController {
         model.addAttribute("CurrentBook", book);
         Set<BookCopy> bookCopiesSet = book.getBookCopies();
         List<BookCopy> bookCopies = new ArrayList<>(bookCopiesSet);
-        bookCopies.sort(bookCopyComparator);
+        bookCopies.sort((a, b) -> a.getId() - b.getId());
         model.addAttribute("BookCopies", bookCopies);
         return "book/copiesPartial";
     }
@@ -64,7 +62,12 @@ public class BookController {
         Book book = bookService.getBook(id);
 
         model.addAttribute("CurrentBook", book);
-        model.addAttribute("BookComments", book.getBookComments());
+        Set<BookComment> bookCommentSet = book.getBookComments();
+        ArrayList<BookComment> bookCommentList = new ArrayList<>(bookCommentSet);
+        bookCommentList.sort((a, b) -> a.getStars() - b.getStars() == 0 ?
+                (int) (a.getDateOfComment().getTime() / 10000 - b.getDateOfComment().getTime() / 10000)
+                : b.getStars() - a.getStars());
+        model.addAttribute("BookComments", bookCommentList);
         return "book/commentPartial";
     }
 
