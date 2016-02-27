@@ -53,7 +53,7 @@
                             <div class="col-xs-9">
                                 <input type="text" value="<c:out value="${BookEdit.bookCode}"/>"
                                        placeholder="TP312JA.1698" id="form-bookCode"
-                                       name="bookCode" class="form-control" title="Phone Number"/>
+                                       name="bookCode" required class="form-control" title="Phone Number"/>
                             </div>
                         </div>
 
@@ -63,7 +63,7 @@
                                 <input type="text" pattern="\d{10}(\d{3})?"
                                        value="<c:out value="${BookEdit.isbn}"/>"
                                        placeholder="9787302384496/7302384496" id="form-isbn"
-                                       name="isbn" class="form-control" title="ISBN"/>
+                                       name="isbn" required class="form-control" title="ISBN"/>
                             </div>
                         </div>
 
@@ -82,7 +82,7 @@
                                 <input type="number" min="1960" step="1" max="2020"
                                        value="<c:out value="${BookEdit.yearOfPublish}"/>"
                                        placeholder="2016" id="form-yearOfPublish"
-                                       name="yearOfPublish" class="form-control" title="Year of Publish"/>
+                                       name="yearOfPublish" required class="form-control" title="Year of Publish"/>
                             </div>
                         </div>
 
@@ -90,7 +90,7 @@
                             <label class="control-label col-xs-3" for="form-bookNote">Book Note</label>
                             <div class="col-xs-9">
                                 <input type="text" id="form-bookNote" name="bookNote"
-                                       value="<c:out value="${BookEdit.bookNote}"/>" required class="form-control"
+                                       value="<c:out value="${BookEdit.bookNote}"/>" class="form-control"
                                        title="Book Note" placeholder=""/>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                             <label class="control-label col-xs-3" for="form-description">Description</label>
                             <div class="col-xs-9">
                                 <input type="text" id="form-description" name="description"
-                                       value="<c:out value="${BookEdit.description}"/>" required class="form-control"
+                                       value="<c:out value="${BookEdit.description}"/>" class="form-control"
                                        title="Description" placeholder="some brief introduction of the book"/>
                             </div>
                         </div>
