@@ -28,10 +28,6 @@ public class BookServiceImpl implements BookService {
         return bookDao.getBookCopy(id);
     }
 
-    @Override
-    public Book getBook(String bookCode) {
-        return bookDao.getBookByBookCode(bookCode);
-    }
 
     @Override
     public Book addBook(Book book) {

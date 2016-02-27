@@ -13,7 +13,6 @@ public interface BookService {
 
     BookCopy getBookCopy(int id);
 
-    Book getBook(String bookCode);
 
     Book addBook(Book book);
 
