@@ -123,6 +123,7 @@ public class LoanController {
 
         User user = userService.getUser(userId);
 
+        model.addAttribute("DateTimeNow", new Date());  // Use current time to compare the deadline
         model.addAttribute("CurrentLoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_CURR));
         model.addAttribute("FinishedLoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_FINISH));
 

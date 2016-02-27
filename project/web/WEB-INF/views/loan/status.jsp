@@ -44,7 +44,9 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Book Name</th>
-
+                                            <th>Date of borrowing</th>
+                                            <th>Deadline of returning</th>
+                                            <th>Note</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -55,6 +57,24 @@
                                                     <a href="<spring:url value="/book/detail/${CurrentLoan.bookCopy.book.id}"/>">
                                                         <c:out value="${CurrentLoan.bookCopy.book.bookName}"/>
                                                     </a>
+                                                </td>
+                                                <td>
+                                                    <fmt:formatDate value="${CurrentLoan.dateOfBorrowing}"
+                                                                    pattern="yyyy-MM-dd hh:mm:ss"/>
+                                                </td>
+                                                <td>
+                                                    <c:if test="${CurrentLoan.deadlineOfReturning.before(DateTimeNow) }">
+                                                        <span class="center-block label label-danger">FINED: will be fined for
+                                                            <fmt:formatNumber type="currency"
+                                                                              pattern="$0.00"
+                                                                              value="${0.1 * (DateTimeNow.time - CurrentLoan.deadlineOfReturning.time)/86400000}"/>
+                                                        </span>
+                                                    </c:if>
+                                                    <fmt:formatDate value="${CurrentLoan.deadlineOfReturning}"
+                                                                    pattern="yyyy-MM-dd hh:mm:ss"/>
+                                                </td>
+                                                <td>
+                                                    <c:out value="${CurrentLoan.note}"/>
                                                 </td>
                                             </tr>
                                         </c:forEach>
