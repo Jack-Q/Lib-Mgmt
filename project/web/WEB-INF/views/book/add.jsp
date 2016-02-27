@@ -82,7 +82,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-xs-3" for="form-publisher">Phulisher</label>
+                                <label class="control-label col-xs-3" for="form-publisher">Publisher</label>
                                 <div class="col-xs-9">
                                     <input type="text"
                                            value="<c:out value="${BookAdd.publisher}"/>"
