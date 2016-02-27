@@ -3,13 +3,10 @@ package cn.edu.xjtu.se.jackq.libmgmt.controller;
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.Auth;
 import cn.edu.xjtu.se.jackq.libmgmt.annotation.PartialView;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
-import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.UserRole;
 import cn.edu.xjtu.se.jackq.libmgmt.service.BookService;
-import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookAdd;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookEdit;
-import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.UserEdit;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -144,72 +141,63 @@ public class BookController {
     public String edit(@PathVariable("BookId") int bookId,
                        @ModelAttribute("BookEdit") BookEdit bookEdit,
                        Model model) {
-//        User user = userService.getUser(userId);
-//        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
-//            return "redirect:/error/argument";
-//        }
-//
-//        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
-//
-//        // Librarian cannot change his password
-//        if (user.getRoles().contains(UserRole.LIBRARIAN) && !sessionUser.getRoles().contains(UserRole.ADMIN)) {
-//            return "redirect:/error/denied";
-//        }
+        Book book = bookService.getBook(bookId);
+        if (book == null) {
+            return "redirect:/error/argument";
+        }
+
+        bookEdit.setBookName(book.getBookName());
+        bookEdit.setAuthor(book.getAuthor());
+        bookEdit.setBookCode(book.getBookCode());
+        bookEdit.setIsbn(book.getIsbn());
+        bookEdit.setPublisher(book.getPublisher());
+        bookEdit.setYearOfPublish(book.getYearOfPublish());
+        bookEdit.setBookNote(book.getBookNote());
+        bookEdit.setDescription(book.getDescription());
 
 
-        userEdit.setName(user.getName());
-        userEdit.setEmail(user.getEmail());
-        userEdit.setPhoneNumber(user.getPhoneNumber());
-        userEdit.setDateOfBirth(user.getDateOfBirth());
-
-        bookEdit.setName(book.getName());
-
-
-        model.addAttribute("CurrentUser", user);
-        return "user/edit";
+        model.addAttribute("CurrentBook", book);
+        return "book/edit";
     }
 
 
-    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
     @RequestMapping(value = "edit/{BookId}", method = RequestMethod.POST)
-    public String doEdit(@PathVariable("UserId") int userId,
-                         @ModelAttribute("UserEdit") UserEdit userEdit,
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String doEdit(@PathVariable("BookId") int bookId,
+                         @ModelAttribute("BookEdit") BookEdit bookEdit,
                          HttpSession httpSession,
                          Model model,
                          RedirectAttributes redirectAttributes) {
 
-        User user = userService.getUser(userId);
-        if (user == null || user.getRoles().contains(UserRole.ADMIN)) {
+        Book book = bookService.getBook(bookId);
+        if (book == null) {
             return "redirect:error/argument";
         }
 
-        model.addAttribute("CurrentUser", user);
+        model.addAttribute("CurrentBook", book);
+//
+//        if (userEdit.getName() == null) {
+//            model.addAttribute("errorMessageId", "user.edit.error.name");
+//
+//            return "user/edit";
+//        }
 
-        if (userEdit.getName() == null) {
-            model.addAttribute("errorMessageId", "user.edit.error.name");
+        book.setBookName(bookEdit.getBookName());
+        book.setAuthor(bookEdit.getAuthor());
+        book.setBookCode(bookEdit.getBookCode());
+        book.setIsbn(bookEdit.getIsbn());
+        book.setPublisher(bookEdit.getPublisher());
+        book.setYearOfPublish(bookEdit.getYearOfPublish());
+        book.setBookNote(bookEdit.getBookNote());
+        book.setDescription(bookEdit.getDescription());
 
-            return "user/edit";
+
+        if (!bookService.updateBook(book)) {
+            model.addAttribute("errorMessageId", "book.edit.error.failed");
+            return "book/edit";
         }
-
-
-        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
-
-        // Librarian cannot change his password
-        if (user.getRoles().contains(UserRole.LIBRARIAN) && !sessionUser.getRoles().contains(UserRole.ADMIN)) {
-            return "redirect:/error/denied";
-        }
-
-        user.setName(userEdit.getName());
-        user.setEmail(userEdit.getEmail());
-        user.setDateOfBirth(userEdit.getDateOfBirth());
-        user.setPhoneNumber(userEdit.getPhoneNumber());
-
-        if (!userService.updateUser(user)) {
-            model.addAttribute("errorMessageId", "user.edit.error.failed");
-            return "user/edit";
-        }
-        redirectAttributes.addFlashAttribute("indexMessageId", "user.edit.success");
-        return "redirect:/user/manage";
+        redirectAttributes.addFlashAttribute("indexMessageId", "book.edit.success");
+        return "redirect:/book/manage";
     }
 
 }

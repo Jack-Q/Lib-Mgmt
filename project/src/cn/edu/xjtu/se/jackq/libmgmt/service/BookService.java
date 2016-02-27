@@ -14,7 +14,7 @@ public interface BookService {
 
     Book addBook(Book book);
 
-    Book updateBook(Book book);
+    boolean updateBook(Book book);
 
     boolean addBookCopies(int bookId, int count);
 

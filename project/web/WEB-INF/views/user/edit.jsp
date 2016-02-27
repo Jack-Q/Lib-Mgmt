@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-xs-3" for="form-name">Phone Number</label>
+                            <label class="control-label col-xs-3" for="form-phone-number">Phone Number</label>
                             <div class="col-xs-9">
                                 <input type="text" pattern="(\d{4})?\d{7}|\d{3}?\d{8}"
                                        value="<c:out value="${UserEdit.phoneNumber}"/>"
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-xs-3" for="form-name">Email</label>
+                            <label class="control-label col-xs-3" for="form-email">Email</label>
                             <div class="col-xs-9">
                                 <input type="email" id="form-email" name="email" class="form-control"
                                        value="<c:out value="${UserEdit.email}"/>"
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-xs-3" for="form-name">Date of Birth</label>
+                            <label class="control-label col-xs-3" for="form-date-of-birth">Date of Birth</label>
                             <div class="col-xs-9">
                                 <input type="date" id="form-date-of-birth"
                                        name="dateOfBirth" class="form-control"
