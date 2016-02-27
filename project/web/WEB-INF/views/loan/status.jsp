@@ -67,7 +67,7 @@
                                                         <span class="center-block label label-danger">FINED: will be fined for
                                                             <fmt:formatNumber type="currency"
                                                                               pattern="$0.00"
-                                                                              value="${0.1 * (DateTimeNow.time - CurrentLoan.deadlineOfReturning.time)/86400000}"/>
+                                                                              value="${CurrentLoan.calcLoanFinedAmount(null)}"/>
                                                         </span>
                                                     </c:if>
                                                     <fmt:formatDate value="${CurrentLoan.deadlineOfReturning}"
@@ -118,6 +118,11 @@
                                                     <c:out value="${FinishedLoan.dateOfReturning}"/>
                                                 </td>
                                                 <td>
+                                                    <c:if test="${FinishedLoan.finedAmount > 0}">
+                                                        <span class="label label-danger">Fined: <fmt:formatNumber
+                                                                value="${FinishedLoan.finedAmount}"
+                                                                pattern="$0.00"/></span>
+                                                    </c:if>
                                                     <c:out value="${FinishedLoan.note}"/>
                                                 </td>
                                             </tr>

@@ -38,7 +38,7 @@ public interface BookService {
 
     boolean returnBook(int loanId);
 
-    boolean returnBookFined(int loanId, double finedAmount);
+    boolean returnBookFined(int loanId);
 
     boolean returnBookBroken(int loanId);
 
