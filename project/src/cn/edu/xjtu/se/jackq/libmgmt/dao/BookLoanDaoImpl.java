@@ -70,4 +70,18 @@ public class BookLoanDaoImpl implements BookLoanDao {
         query.setParameter("user", user);
         return query.list();
     }
+
+    @Override
+    public BookLoan getLoan(int loanId) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        return (BookLoan) currentSession.get(BookLoan.class, loanId);
+
+    }
+
+    @Override
+    public boolean updateLoan(BookLoan bookLoan) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.update(bookLoan);
+        return true;
+    }
 }

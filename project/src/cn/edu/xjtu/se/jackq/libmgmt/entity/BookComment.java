@@ -26,7 +26,7 @@ public class BookComment implements Serializable{
     @Column(name = "DateOfComment")
     private Date dateOfComment;
 
-    @Column(name = "Content")
+    @Column(name = "Content", length = 1200)
     private String content;
 
     @Column(name = "Stars")

@@ -1,6 +1,7 @@
 package cn.edu.xjtu.se.jackq.libmgmt.dao;
 
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.BookComment;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
 
 import java.util.List;
@@ -23,4 +24,9 @@ public interface BookDao {
 
     List<Book> searchBook(String query, boolean byCode, boolean byName, boolean byAuthor);
 
+    void addComment(BookComment bookComment);
+
+    BookComment getComment(int commentId);
+
+    boolean updateBookComment(BookComment bookComment);
 }

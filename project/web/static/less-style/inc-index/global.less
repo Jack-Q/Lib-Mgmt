@@ -84,6 +84,29 @@ body {
   padding-top: 50px;
 }
 
+legend, h4 {
+
+  font-size: 18px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: rgba(120, 120, 120, 0.4);
+  text-shadow: 0 0 3px rgba(140, 140, 140, 0.4);
+  position: relative;
+  padding-bottom: 10px;
+  &::after {
+    position: absolute;
+    height: 3px;
+    width: 25px;
+    background-color: rgba(0, 170, 154, 0.6);
+    content: ' ';
+    bottom: 4px;
+    left: 0;
+    z-index: 100;
+  }
+}
+
+// Global Styles
+
 .main-header {
   height: 50px;
   ul.nav > li > .btn {

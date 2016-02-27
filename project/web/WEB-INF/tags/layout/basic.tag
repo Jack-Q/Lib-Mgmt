@@ -57,30 +57,41 @@
                             </li>
                         </ul>
                     </li>
+                    <li>
+                        <a href="<spring:url value="/book/manage" />">Book</a>
+                    </li>
                 </c:if>
-                <c:if test="${sessionScope.get('Auth').librarian}">
+                <layout:role>
+                    <jsp:attribute name="librarian">
                     <li>
                         <a href="<spring:url value="/user/manage" />">User</a>
                     </li>
-                </c:if>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"
-                       data-toggle="dropdown" role="button"
-                       aria-haspopup="true"
-                       aria-expanded="false">Book list <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-header">Public List</li>
-                        <li><a href="#">Recent Update</a></li>
-                        <li><a href="#">Most Popular</a></li>
-                        <li><a href="#">Recommendation</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Your Flavor</li>
-                        <li><a href="#">Your Flavor</a></li>
-                        <li><a href="#">Pre-ordered</a></li>
-                        <li><a href="#">Borrowed</a></li>
-                        <li><a href="#">History</a></li>
-                    </ul>
-                </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="<spring:url value="/book/manage" />">Book Management</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="<spring:url value="/loan/lend"/>">Lend Books</a>
+                            </li>
+                            <li>
+                                <a href="<spring:url value="/loan/return"/>">Return Books</a>
+                            </li>
+                        </ul>
+                    </li>
+                    </jsp:attribute>
+                </layout:role>
+                <layout:role>
+                    <jsp:attribute name="student">
+                    <li>
+                        <a href="<spring:url value="/loan/status" />">Loan Status</a>
+                    </li>
+                    </jsp:attribute>
+                </layout:role>
                 <jsp:invoke fragment="pageHeader"/>
             </ul>
 

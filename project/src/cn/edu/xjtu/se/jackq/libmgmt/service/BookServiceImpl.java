@@ -92,6 +92,7 @@ public class BookServiceImpl implements BookService {
         instance.add(Calendar.DAY_OF_MONTH, period);
         bookLoan.setDeadlineOfReturning(instance.getTime());
         bookLoan.setUser(user);
+        bookLoan.setLoanPeriod(period);
 
         bookCopyToLend.setStatus(BookCopyStatus.AWAY);
         bookCopyToLend.setLoanable(false);
@@ -134,6 +135,95 @@ public class BookServiceImpl implements BookService {
             return new ArrayList<>();
         }
         return bookLoanDao.searchBookToLend(user, query, byCode, byName, byAuthor);
+    }
+
+    private boolean returnBook(int loanId, boolean isLost, boolean isBroken, boolean isFined, double finedAmount) {
+        BookLoan bookLoan = bookLoanDao.getLoan(loanId);
+        if (bookLoan == null || bookLoan.isFinished()) {
+            return false;
+        }
+        BookCopy bookCopy = bookLoan.getBookCopy();
+        bookCopy.setNote(isLost ? "Lost" : isBroken ? "Broken" : "");
+        bookCopy.setLoanable(!isLost);
+        bookCopy.setStatus(isLost ? BookCopyStatus.UNAVAILABLE : BookCopyStatus.ON_SHELF);
+
+        bookLoan.setNote(isLost ? "Book Lost" : isBroken ? "Book Broken" : isFined ? "Fined" : "");
+        bookLoan.setDateOfReturning(new Date());
+        bookLoan.setFinedAmount(finedAmount);
+        bookLoan.setFinished(true);
+
+        bookDao.updateBookCopy(bookCopy);
+        bookLoanDao.updateLoan(bookLoan);
+        return true;
+    }
+
+    @Override
+    public boolean returnBook(int loanId) {
+        return returnBook(loanId, false, false, false, 0);
+    }
+
+    @Override
+    public boolean returnBookFined(int loanId, double finedAmount) {
+        return returnBook(loanId, false, false, true, finedAmount);
+
+    }
+
+    @Override
+    public boolean returnBookBroken(int loanId) {
+        return returnBook(loanId, false, true, false, 0);
+
+    }
+
+    @Override
+    public boolean returnBookLost(int loanId) {
+        return returnBook(loanId, true, false, false, 0);
+
+    }
+
+    @Override
+    public boolean extendBookLoan(int loanId, int loanPeriod) {
+
+        BookLoan bookLoan = bookLoanDao.getLoan(loanId);
+        if (bookLoan == null || bookLoan.isFinished()) {
+            return false;
+        }
+
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(bookLoan.getDeadlineOfReturning());
+        instance.add(Calendar.DAY_OF_MONTH, loanPeriod);
+        bookLoan.setDeadlineOfReturning(instance.getTime());
+        bookLoan.setLoanPeriod(bookLoan.getLoanPeriod() + loanPeriod);
+        bookLoan.setNote("Loan Extended");
+        BookCopy bookCopy = bookLoan.getBookCopy();
+        bookCopy.setNote("Return @ " + instance.getTime().toString());
+
+        bookDao.updateBookCopy(bookCopy);
+        bookLoanDao.updateLoan(bookLoan);
+        return true;
+    }
+
+    @Override
+    public void commentBook(Book book, User user, String content) {
+
+        BookComment bookComment = new BookComment();
+        bookComment.setBook(book);
+        bookComment.setUser(user);
+        bookComment.setContent(content);
+        bookComment.setDateOfComment(new Date());
+        bookDao.addComment(bookComment);
+    }
+
+    @Override
+    public boolean rateComment(int commentId, int rateChange) {
+        if (rateChange != 1 && rateChange != -1) {
+            return false;
+        }
+        BookComment bookComment = bookDao.getComment(commentId);
+        if (bookComment == null) {
+            return false;
+        }
+        bookComment.setStars(bookComment.getStars() + rateChange);
+        return bookDao.updateBookComment(bookComment);
     }
 
 }

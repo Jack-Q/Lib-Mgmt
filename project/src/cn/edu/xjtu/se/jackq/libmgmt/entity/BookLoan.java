@@ -35,7 +35,7 @@ public class BookLoan implements Serializable {
     private Date dateOfReturning;
 
     @Column(name = "FinedAmount")
-    private int finedAmount;
+    private double finedAmount;
 
     @Column(name = "Finished")
     private boolean finished;
@@ -99,11 +99,11 @@ public class BookLoan implements Serializable {
         this.dateOfReturning = dateOfReturning;
     }
 
-    public int getFinedAmount() {
+    public double getFinedAmount() {
         return finedAmount;
     }
 
-    public void setFinedAmount(int finedAmount) {
+    public void setFinedAmount(double finedAmount) {
         this.finedAmount = finedAmount;
     }
 

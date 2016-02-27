@@ -11,12 +11,10 @@ import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -88,8 +86,34 @@ public class LoanController {
         model.addAttribute("LoanList", bookLoanList);
         model.addAttribute("BookHoldingNum", bookLoanList.size());
         model.addAttribute("BookLeavingNum", BOOK_LIMIT - bookLoanList.size());
+        model.addAttribute("DateTimeNow", new Date());  // Use current time to compare the deadline
         return "loan/return";
     }
+
+    @RequestMapping(value = "returnAjax", produces = "application/json; charset=utf-8", method = RequestMethod.POST)
+    @ResponseBody
+    public String doReturnBook(@RequestParam("id") int loanId, @RequestParam("action") String action) {
+        boolean result = false;
+        switch (action) {
+            case "return":
+                result = bookService.returnBook(loanId);
+                break;
+            case "broken":
+                result = bookService.returnBookBroken(loanId);
+                break;
+            case "extend":
+                result = bookService.extendBookLoan(loanId, LOAN_PERIOD);
+                break;
+            case "lost":
+                result = bookService.returnBookLost(loanId);
+                break;
+        }
+        if (!result) {
+            return "{\"success\": false}";
+        }
+        return "{\"success\": true}";
+    }
+
 
     @RequestMapping("status")
     @Auth(userRoles = UserRole.STUDENT)
@@ -99,6 +123,7 @@ public class LoanController {
 
         User user = userService.getUser(userId);
 
+        model.addAttribute("DateTimeNow", new Date());  // Use current time to compare the deadline
         model.addAttribute("CurrentLoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_CURR));
         model.addAttribute("FinishedLoanList", bookService.listLoanBook(user, BookService.LIST_LOAN_FINISH));
 
