@@ -148,10 +148,10 @@ public class BookController {
             return "book/add";
         }
 
-        if (null != bookService.getBook(bookCode)) {
-            model.addAttribute("errorMessageId", "book.add.error.bookCodeConflict");
-            return "book/add";
-        }
+//        if (null != bookService.getBook(bookCode)) {
+//            model.addAttribute("errorMessageId", "book.add.error.bookCodeConflict");
+//            return "book/add";
+//        }
 
         Book book = new Book();
         book.setBookName(bookAdd.getBookName());
@@ -214,12 +214,6 @@ public class BookController {
         }
 
         model.addAttribute("CurrentBook", book);
-//
-//        if (userEdit.getName() == null) {
-//            model.addAttribute("errorMessageId", "user.edit.error.name");
-//
-//            return "user/edit";
-//        }
 
         book.setBookName(bookEdit.getBookName());
         book.setAuthor(bookEdit.getAuthor());
