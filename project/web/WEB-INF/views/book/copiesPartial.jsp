@@ -24,7 +24,7 @@
                             <td><fmt:formatDate value="${BookCopy.dateOfRecord}" pattern="yyyy-MM-dd"/></td>
                             <td><c:out value="${BookCopy.note}"/></td>
                             <td><c:if
-                                    test="${(sessionScope.Auth.admin or sessionScope.Auth.librarian)and(BookCopy.note!='The copy is deleted')}"><a
+                                    test="${(sessionScope.Auth.admin or sessionScope.Auth.librarian)and(BookCopy.note!='The copy is deleted')and(BookCopy.status!='AWAY')}"><a
                                     class="btn btn-sm btn-raised btn-primary"
                                     href="<spring:url value="/book/deleteCopy/${BookCopy.id}" />">Delete</a></c:if></td>
                         </tr>

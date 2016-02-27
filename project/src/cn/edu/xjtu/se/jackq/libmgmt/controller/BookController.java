@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 @Controller
@@ -26,6 +29,7 @@ public class BookController {
 
     @Autowired
     UserService userService;
+    private Comparator<BookCopy> bookCopyComparator;
 
     @RequestMapping({"", "index"})
     public String index() {
@@ -51,7 +55,10 @@ public class BookController {
     public String copiesPartial(@PathVariable int id, Model model) {
         Book book = bookService.getBook(id);
         model.addAttribute("CurrentBook", book);
-        model.addAttribute("BookCopies", book.getBookCopies());
+        Set<BookCopy> bookCopiesSet = book.getBookCopies();
+        List<BookCopy> bookCopies = new ArrayList<>(bookCopiesSet);
+        bookCopies.sort(bookCopyComparator);
+        model.addAttribute("BookCopies", bookCopies);
         return "book/copiesPartial";
     }
 
@@ -270,6 +277,26 @@ public class BookController {
             redirectAttributes.addFlashAttribute("indexMessageId", "book.manageCopy.delete.failed");
         }
         return "redirect:/book/copies/" + bookCopy.getBook().getId();
+    }
+
+    @RequestMapping(value = "addCopies")
+    @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
+    public String addCopies(@RequestParam("bookId") int bookId,
+                            @RequestParam("numOfNewCopies") int numOfNewCopies,
+                            RedirectAttributes redirectAttributes) {
+        Book book = bookService.getBook(bookId);
+        if (book == null) {
+            return "redirect:error/argument";
+        }
+
+        boolean result = bookService.addBookCopies(bookId, numOfNewCopies);
+
+        if (result) {
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.manageCopy.add.success");
+        } else {
+            redirectAttributes.addFlashAttribute("indexMessageId", "book.manageCopy.add.failed");
+        }
+        return "redirect:/book/copies/" + bookId;
     }
 
 }

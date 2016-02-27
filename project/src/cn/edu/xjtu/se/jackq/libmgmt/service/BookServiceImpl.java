@@ -62,7 +62,7 @@ public class BookServiceImpl implements BookService {
                 return false;
             }
         }
-        return false;
+        return true;
     }
 
     @Override

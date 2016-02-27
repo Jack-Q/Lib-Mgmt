@@ -45,7 +45,7 @@
                                         <th>Code</th>
                                         <th>Author</th>
                                         <th>ISBN</th>
-                                        <th>
+                                        <th width="180">
                                             <div class="sr-only">Operations</div>
                                         </th>
                                     </tr>

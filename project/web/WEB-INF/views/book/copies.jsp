@@ -48,6 +48,18 @@
                     <p><spring:message code="${fn:escapeXml(indexMessageId)}"/></p>
                 </div>
             </c:if>
+
+            <form class="row" action="<spring:url value="/book/addCopies" />" method="POST" target="_self">
+                <input type="hidden" name="bookId" value="${CurrentBook.id}">
+                <div class=" col-sm-2" style="margin-top: -18px;">
+                    <input class="form-control" type="number" min="1" max="16" step="1" name="numOfNewCopies"
+                           placeholder="1~16" required>
+                </div>
+                <div>
+                    <input class="btn btn-raised btn-primary" type="submit" value="Add new copies">
+                </div>
+            </form>
+
             <jsp:include page="/book/copiesPartial/${CurrentBook.id}"/>
 
         </div>

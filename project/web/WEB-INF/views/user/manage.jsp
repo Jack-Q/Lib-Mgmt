@@ -53,7 +53,7 @@
                                         <th>Email</th>
                                         <th>Date of Birth</th>
                                         <th>Phone Number</th>
-                                        <th>
+                                        <th width="170">
                                             <div class="sr-only">Operations</div>
                                         </th>
                                     </tr>
