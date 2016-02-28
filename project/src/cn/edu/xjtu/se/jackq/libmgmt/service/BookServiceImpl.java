@@ -34,6 +34,21 @@ public class BookServiceImpl implements BookService {
         return bookDao.addBook(book);
     }
 
+    public void addBookAndCopy(String name, String code, String author, String isbn, String publisher, Integer yearOfPublish, String description, Integer copy) {
+        Book book = new Book();
+        book.setAuthor(author);
+        book.setBookName(name);
+        book.setBookCode(code);
+        book.setIsbn(isbn);
+        book.setPublisher(publisher);
+        if (yearOfPublish != null) {
+            book.setYearOfPublish(yearOfPublish);
+        }
+        book.setDescription(description);
+        addBook(book);
+        addBookCopies(book.getId(), copy == null || copy <= 0 ? 3 : copy);
+    }
+
     @Override
     public boolean updateBook(Book book) {
         bookDao.updateBook(book);

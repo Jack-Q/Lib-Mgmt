@@ -16,6 +16,8 @@ public interface BookService {
 
     Book addBook(Book book);
 
+    void addBookAndCopy(String name, String code, String author, String isbn, String publisher, Integer yearOfPublish, String description, Integer copy);
+
     boolean updateBook(Book book);
 
     boolean addBookCopies(int bookId, int count);
