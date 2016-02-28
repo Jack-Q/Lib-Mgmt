@@ -105,13 +105,13 @@
                                                         </li>
 
                                                         <c:if test="${sessionScope.get('Auth').admin}">
-                                                        <li class="divider"></li>
-                                                        <li>
-                                                            <a href="<spring:url value="/user/selectLibrarian/${Reader.id}"/>"
-                                                               class=" alert-link">
-                                                                Mark as Librarian
-                                                            </a>
-                                                        </li>
+                                                            <li class="divider"></li>
+                                                            <li>
+                                                                <a href="<spring:url value="/user/selectLibrarian/${Reader.id}"/>"
+                                                                   class=" alert-link">
+                                                                    Mark as Librarian
+                                                                </a>
+                                                            </li>
                                                         </c:if>
                                                     </ul>
                                                 </div>

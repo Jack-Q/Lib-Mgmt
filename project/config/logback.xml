@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- This file provides configuration items for slf4j -->
 <configuration>
-    <jmxConfigurator />
+    <jmxConfigurator/>
 
     <!-- Console Appender -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
@@ -53,9 +53,9 @@
 
     <!--Set Log Level -->
     <root level="TRACE">
-        <appender-ref ref="STDOUT" />
-        <appender-ref ref="FILE" />
-        <appender-ref ref="FILE-ERROR" />
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="FILE-ERROR"/>
     </root>
 
 </configuration>

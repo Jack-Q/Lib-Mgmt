@@ -42,17 +42,15 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Book getBookById(int id) {
         Session currentSession = sessionFactory.getCurrentSession();
-        Book book = (Book) currentSession.get(Book.class, id);
-        return book;
+        return (Book) currentSession.get(Book.class, id);
     }
-
 
 
     @Override
     public List<Book> listBook() {
         Session currentSession = sessionFactory.getCurrentSession();
         Query query = currentSession.createQuery("from Book");
-        List bookList = query.list();
+        @SuppressWarnings("unchecked") List<Book> bookList = query.list();
         return bookList;
     }
 
@@ -82,7 +80,9 @@ public class BookDaoImpl implements BookDao {
                 (byAuthor ? "b.id in (select id from Book book where book.author like :search  order by yearOfPublish) " : "");
         Query query = currentSession.createQuery(queryString);
         query.setParameter("search", "%" + search + "%");
-        return query.list();
+
+        @SuppressWarnings("unchecked") List<Book> list = query.list();
+        return list;
     }
 
     @Override
@@ -94,8 +94,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public BookComment getComment(int commentId) {
         Session currentSession = sessionFactory.getCurrentSession();
-        BookComment bookComment = (BookComment) currentSession.get(BookComment.class, commentId);
-        return bookComment;
+        return (BookComment) currentSession.get(BookComment.class, commentId);
     }
 
     @Override
@@ -109,8 +108,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public BookCopy getBookCopy(int id) {
         Session currentSession = sessionFactory.getCurrentSession();
-        BookCopy bookCopy = (BookCopy) currentSession.get(BookCopy.class, id);
-        return bookCopy;
+        return (BookCopy) currentSession.get(BookCopy.class, id);
     }
 
     @Override

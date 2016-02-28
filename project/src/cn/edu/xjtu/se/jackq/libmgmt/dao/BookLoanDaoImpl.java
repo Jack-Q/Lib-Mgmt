@@ -48,8 +48,8 @@ public class BookLoanDaoImpl implements BookLoanDao {
         Query query = currentSession.createQuery(queryString);
         query.setParameter("user", user.getId());
 
-        return query.list();
-
+        @SuppressWarnings("unchecked") List<BookLoan> list = query.list();
+        return list;
     }
 
     @Override
@@ -68,7 +68,8 @@ public class BookLoanDaoImpl implements BookLoanDao {
         Query query = currentSession.createQuery(queryString);
         query.setParameter("search", "%" + search + "%");
         query.setParameter("user", user);
-        return query.list();
+        @SuppressWarnings("unchecked") List<Book> list = query.list();
+        return list;
     }
 
     @Override

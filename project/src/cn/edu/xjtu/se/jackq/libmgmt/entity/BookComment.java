@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 @Entity
-public class BookComment implements Serializable{
+public class BookComment implements Serializable {
 
     private static final long serialVersionUID = 4241484351518832841L;
 

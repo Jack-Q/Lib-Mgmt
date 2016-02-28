@@ -19,7 +19,7 @@ import java.util.Base64;
 public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
     private String authPageUrl = "/user/login";
-    private String userProfileUrl ="/user/index";
+    private String userProfileUrl = "/user/index";
     private String indexPageUrl = "/home/index";
     private String authDeniedUrl = "/error/denied";
 
@@ -54,6 +54,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
     public void setAuthDeniedUrl(String authDeniedUrl) {
         this.authDeniedUrl = authDeniedUrl;
     }
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
@@ -82,14 +83,14 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
     boolean checkAuth(SessionUser sessionUser, Auth authAnnotation, HttpServletRequest request, HttpServletResponse response) throws IOException {
         // For Anonymous, return to handler directly
-        if(authAnnotation.allowAnonymous()){
+        if (authAnnotation.allowAnonymous()) {
             return true;
         }
 
         // If no user logged in, Redirect to Auth page
-        if(sessionUser== null || !sessionUser.isAuthorized()){
+        if (sessionUser == null || !sessionUser.isAuthorized()) {
             String redirectUri = getAuthPageUrl();
-            switch (authAnnotation.redirectPolicy()){
+            switch (authAnnotation.redirectPolicy()) {
                 case TO_CURRENT_PAGE:
                     redirectUri += "?returnTo=" + encodeParameter(getRedirectUrl(request));
                     break;
@@ -154,13 +155,13 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         return false;
     }
 
-    String encodeParameter(String rawUri){
+    String encodeParameter(String rawUri) {
         return Base64.getEncoder().encodeToString(rawUri.getBytes());
     }
 
-    String getRedirectUrl(HttpServletRequest request){
-        String url= request.getRequestURI();
-        if(null != request.getQueryString() ){
+    String getRedirectUrl(HttpServletRequest request) {
+        String url = request.getRequestURI();
+        if (null != request.getQueryString()) {
             url += "?" + request.getQueryString();
         }
         return url;

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Application-Name: Lib-Mgmt
+Application-Description: Library Management System based on Spring MVC framework by Team Thinker &amp; Performer
+Application-Version: 1.0.0
+Created-By: Thinker & Performer

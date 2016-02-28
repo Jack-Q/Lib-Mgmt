@@ -141,7 +141,7 @@
     </div>
     <div class="page-copyright">
 
-        2016 &copy; Lib-Mgmt | <a href="<spring:url value="/home/about" />">About</a>
+        Lib-Mgmt, 2016 &copy; Thinker &amp; Performer | <a href="<spring:url value="/home/about" />">About</a>
 
     </div>
 </div>

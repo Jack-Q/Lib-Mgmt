@@ -2,9 +2,6 @@ package cn.edu.xjtu.se.jackq.libmgmt.viewmodel;
 
 import java.util.Date;
 
-/**
- * Created by Jack on 2/7/2016.
- */
 public class UserRegister {
     private String userName;
     private String password;

@@ -242,7 +242,7 @@
                     if (e.keyCode == 13 /* Key Code for Enter*/) {
                         retrieveCandidates();
                     }
-                })
+                });
                 candidates.click(function (e) {
                     var id = parseInt($(e.target).data("id"));
                     if (!id) {

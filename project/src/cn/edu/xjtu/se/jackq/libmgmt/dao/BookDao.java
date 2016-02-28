@@ -32,6 +32,5 @@ public interface BookDao {
     boolean isBookCodeAvailable(String bookCode);
 
 
-
     BookCopy getBookCopy(int id);
 }

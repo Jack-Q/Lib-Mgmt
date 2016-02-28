@@ -108,7 +108,7 @@
     <div class="index-footer-wrapper">
 
         <div class="index-footer">
-            2016 &copy; Lib-Mgmt
+            Lib-Mgmt, 2016 &copy; Thinker &amp; Performer | <a href="<spring:url value="/home/about" />">About</a>
         </div>
     </div>
 </div>

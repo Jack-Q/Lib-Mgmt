@@ -54,15 +54,6 @@ public class UserDaoImpl implements UserDao {
         return (User) currentSession.bySimpleNaturalId(User.class).load(name);
     }
 
-    @Override
-    public void updateNameById(int id, String newName) {
-
-    }
-
-    @Override
-    public void updatePasswordById(int id, String password) {
-
-    }
 
     @Override
     public boolean updateUser(User user) {
@@ -132,7 +123,9 @@ public class UserDaoImpl implements UserDao {
         if (isByName) {
             query.setParameter("searchStr", "%" + searchString + "%");
         }
-        return query.list();
+
+        @SuppressWarnings("unchecked") List<User> list = query.list();
+        return list;
     }
 
 }

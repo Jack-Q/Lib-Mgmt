@@ -7,13 +7,15 @@ import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import java.util.List;
 
 
-public interface UserService{
+public interface UserService {
     User addUser(String username, String password, String name);
 
     User getUser(String userName);
 
     User getUser(int id);
+
     void remove(User user);
+
     List<User> listUser();
 
     List<User> listReader();

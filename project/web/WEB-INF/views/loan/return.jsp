@@ -106,11 +106,12 @@
                                         <ul class="dropdown-menu">
                                             <li class="dropdown-header">Other Scenarios</li>
                                             <c:if test="${Loan.deadlineOfReturning.before(DateTimeNow)}">
-                                            <li>
-                                                <button data-action="return" data-id="${Loan.id}"
-                                                        class="load-operation-btn btn btn-block">Return without fined.
-                                                </button>
-                                            </li>
+                                                <li>
+                                                    <button data-action="return" data-id="${Loan.id}"
+                                                            class="load-operation-btn btn btn-block">Return without
+                                                        fined.
+                                                    </button>
+                                                </li>
                                             </c:if>
                                             <li>
                                                 <button data-action="broken" data-id="${Loan.id}"

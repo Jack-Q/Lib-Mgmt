@@ -28,10 +28,11 @@ public @interface Auth {
     UserRole[] deniedUserRoles() default {};
 
     boolean allowAnonymous() default false;
+
     RedirectPolicy redirectPolicy() default RedirectPolicy.TO_CURRENT_PAGE;
 
 
-    enum RedirectPolicy{
+    enum RedirectPolicy {
         TO_CURRENT_PAGE,
         TO_USER_PROFILE,
         TO_INDEX

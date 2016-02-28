@@ -14,13 +14,13 @@ public class HomeController {
 
 
     @RequestMapping({"/", "/index"})
-    public String index(Model model){
+    public String index(Model model) {
         logger.debug("Requesting Home Page: Home - Index");
         return "home/index";
     }
 
     @RequestMapping(value = "/about")
-    public String about(){
+    public String about() {
         return "home/about";
     }
 }

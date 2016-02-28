@@ -7,11 +7,12 @@ import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 import java.util.List;
 
 public interface BookLoanDao {
-    BookLoan add(BookLoan bookLoan);
-
     int LIST_LOAN_ALL = 1;
     int LIST_LOAN_CURR = 2;
     int LIST_LOAN_FINISH = 3;
+
+    BookLoan add(BookLoan bookLoan);
+
     List<BookLoan> listLoanByUser(User user, int listPolicy);
 
 

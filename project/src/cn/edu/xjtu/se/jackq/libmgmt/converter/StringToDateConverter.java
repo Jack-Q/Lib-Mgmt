@@ -12,7 +12,7 @@ public class StringToDateConverter implements Converter<String, Date> {
     @Override
     public Date convert(String s) {
         // Null Date
-        if(null == s || s.isEmpty()){
+        if (null == s || s.isEmpty()) {
             return null;
         }
         SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);

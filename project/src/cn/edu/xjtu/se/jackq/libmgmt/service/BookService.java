@@ -9,10 +9,13 @@ import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
 import java.util.List;
 
 public interface BookService {
+    int LIST_LOAN_ALL = 1;
+    int LIST_LOAN_CURR = 2;
+    int LIST_LOAN_FINISH = 3;
+
     Book getBook(int id);
 
     BookCopy getBookCopy(int id);
-
 
     Book addBook(Book book);
 
@@ -27,11 +30,6 @@ public interface BookService {
     List<Book> searchBook(String query);
 
     boolean lendBook(User user, Book book, int days);
-
-
-    int LIST_LOAN_ALL = 1;
-    int LIST_LOAN_CURR = 2;
-    int LIST_LOAN_FINISH = 3;
 
     List<BookLoan> listLoanBook(User user, int listPolicy);
 

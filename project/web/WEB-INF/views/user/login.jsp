@@ -27,16 +27,16 @@
 
                     <c:if test="${(errorMessageId != null)}">
                         <div class="alert alert-dismissible alert-danger">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <h4>Error!</h4>
-                        <p><spring:message code="${fn:escapeXml(errorMessageId)}" /></p>
-                    </div>
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <h4>Error!</h4>
+                            <p><spring:message code="${fn:escapeXml(errorMessageId)}"/></p>
+                        </div>
                     </c:if>
 
                     <form:form action="/user/login?returnTo=${returnTo}" modelAttribute="UserLogin" method="post">
                         <div class="form-group">
                             <label class="control-label" for="form-username">User Name</label>
-                            <form:input path="userName" id="form-username" cssClass="form-control" title="User name"  />
+                            <form:input path="userName" id="form-username" cssClass="form-control" title="User name"/>
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="form-password">Password</label>
