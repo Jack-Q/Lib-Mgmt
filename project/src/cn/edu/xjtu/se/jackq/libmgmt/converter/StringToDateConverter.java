@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class StringToDateConverter implements Converter<String, Date> {
-    private String pattern = "yyyy-mm-dd";
+    private String pattern = "yyyy-MM-dd";
 
     @Override
     public Date convert(String s) {

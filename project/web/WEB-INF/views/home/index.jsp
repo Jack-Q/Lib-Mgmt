@@ -165,7 +165,7 @@
                         if (searchValue == "") {
                             return false;
                         }
-                        window.location = "/search?q=" + searchValue;
+                        window.location = "/search?q=" + encodeURIComponent(searchValue);
                         return true;
                     };
                     search.bind('focus blur change', function () {
