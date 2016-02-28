@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,7 +82,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String hashPassword(String password) {
-        return password;
+        // Password hash digest
+        // reference to http://stackoverflow.com/questions/3103652/hash-string-via-sha-256-in-java
+        try {
+            MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+            messageDigest.update(password.getBytes("UTF-8"));
+            byte[] digest = messageDigest.digest();
+            return String.format("%064x", new BigInteger(1, digest));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error occurred while create hashed password, fallback to plain password");
+            return password;
+        }
     }
 
     @Override
@@ -173,8 +186,4 @@ public class UserServiceImpl implements UserService {
         return userDao.searchUser(queryString, isByName, isById);
     }
 
-    public void signIn(User user) {
-
-        user.getUserName();
-    }
 }
