@@ -126,6 +126,6 @@ public class BookLoan implements Serializable {
 
     public double calcLoanFinedAmount(Date returnDate) {
         if (returnDate == null) returnDate = new Date();
-        return getDeadlineOfReturning().before(returnDate) ? 0.2 * (getDeadlineOfReturning().getTime() - returnDate.getTime()) / 86400000 : 0;
+        return getDeadlineOfReturning().before(returnDate) ? 0.2 * (returnDate.getTime() - getDeadlineOfReturning().getTime()) / 86400000 : 0;
     }
 }
