@@ -7,12 +7,14 @@
 <layout:basic pageTitle="About">
    <div class="container">
        <h1>
-           About us
+           About Lib-Mgmt
        </h1>
        <div>
-           <p>
-               Some introduction goes here.
-           </p>
+           <p>The Library provides people with a rich, diverse and enduring source of knowledge to inform, inspire and
+               engage them and support their intellectual and creative endeavors.</p>
+           <p>Welcome you to this vast online treasure trove of materials and services. Whether you wish to explore the
+               collections online, seek academic information, register a copyright, access programs or plan a visit, we
+               are glad you are here and invite you to return often.</p>
        </div>
    </div>
     <div class="index-section">
