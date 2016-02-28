@@ -7,11 +7,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <layout:basic pageTitle="User Register">
-    <jsp:attribute name="pageFooter">
-        <div>
-            Need Help for login? Refer to Help Center.
-        </div>
-    </jsp:attribute>
     <jsp:body>
 
         <div class="container">
