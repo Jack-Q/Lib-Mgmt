@@ -9,7 +9,7 @@ import java.net.URL;
 
 
 public class StaticResourceAccessibilityInterceptor extends HandlerInterceptorAdapter {
-    private String errorPageUrl = "error/resource";
+    private String errorPageUrl = "/error/resource";
 
     public String getErrorPageUrl() {
         return errorPageUrl;
@@ -32,7 +32,7 @@ public class StaticResourceAccessibilityInterceptor extends HandlerInterceptorAd
                     return true;
                 }
             }
-            response.sendRedirect(getErrorPageUrl());
+            response.sendRedirect(request.getContextPath() + getErrorPageUrl());
             return false;
         }
         return super.preHandle(request, response, handler);

@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.Base64;
@@ -70,8 +71,9 @@ public class UserController {
                           @ModelAttribute("returnTo") String returnToUrlPara,
                           RedirectAttributes redirectAttributes,
                           HttpSession session,
+                          HttpServletRequest request,
                           Model model) {
-        String returnToUrl = decodeRedirectUrlPara(returnToUrlPara);
+        String returnToUrl = decodeRedirectUrlPara(returnToUrlPara, request.getContextPath());
         SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
         if (sessionUser == null) {
             sessionUser = new SessionUser();
@@ -114,9 +116,10 @@ public class UserController {
                              @ModelAttribute("returnTo") String returnToUrlPara,
                              Model model,
                              HttpSession session,
+                             HttpServletRequest request,
                              RedirectAttributes redirectAttributes) {
 
-        String returnToUrl = decodeRedirectUrlPara(returnToUrlPara);
+        String returnToUrl = decodeRedirectUrlPara(returnToUrlPara, request.getContextPath());
 
         // Validate Data
         String username = userRegister.getUserName();
@@ -498,7 +501,7 @@ public class UserController {
         return stringBuilder.toString();
     }
 
-    private String decodeRedirectUrlPara(String redirectToUrPara) {
+    private String decodeRedirectUrlPara(String redirectToUrPara, String contextPath) {
         System.out.println("Return to Url " + redirectToUrPara);
         String returnToUrl;
         try {
@@ -511,6 +514,10 @@ public class UserController {
             if (returnToUrl.charAt(0) != '/') {
                 returnToUrl = "/";
             }
+            if (!returnToUrl.startsWith(contextPath)) {
+                returnToUrl = "/";
+            }
+            returnToUrl = returnToUrl.substring(contextPath.length());
         } catch (Exception e) {
             returnToUrl = "/";
         }

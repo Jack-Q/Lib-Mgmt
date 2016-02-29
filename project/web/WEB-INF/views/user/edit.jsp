@@ -25,7 +25,8 @@
                         </div>
                     </c:if>
 
-                    <form:form action="/user/edit/${CurrentUser.id}" modelAttribute="UserEdit" method="post"
+                    <form:form action="${ pageContext.request.contextPath }/user/edit/${CurrentUser.id}"
+                               modelAttribute="UserEdit" method="post"
                                cssClass="form-horizontal">
                         <%-- This form use standard HTML5 tags to utilize the new features in HTML 5 --%>
                         <%-- As a result, I need to manually bind data to related input element --%>

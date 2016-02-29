@@ -46,9 +46,11 @@
                         <dd><fmt:formatDate value="${CurrentUser.dateOfBirth}" type="Date" pattern="yyyy-MM-dd"/></dd>
                     </dl>
 
-                    <form:form action="/user/resetPassword/${CurrentUser.id}" modelAttribute="UserChangePasswrd"
-                               method="post"
-                               cssClass="form-horizontal">
+                            <form:form
+                                    action="${ pageContext.request.contextPath }/user/resetPassword/${CurrentUser.id}"
+                                    modelAttribute="UserChangePasswrd"
+                                    method="post"
+                                    cssClass="form-horizontal">
                         <%-- This form use standard HTML5 tags to utilize the new features in HTML 5 --%>
                         <%-- As a result, I need to manually bind data to related input element --%>
                         <div class="form-group">

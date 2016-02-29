@@ -28,7 +28,8 @@
                         </div>
                     </c:if>
 
-                    <form:form action="/user/login?returnTo=${returnTo}" modelAttribute="UserLogin" method="post">
+                    <form:form action="${ pageContext.request.contextPath }/user/login?returnTo=${returnTo}"
+                               modelAttribute="UserLogin" method="post">
                         <div class="form-group">
                             <label class="control-label" for="form-username">User Name</label>
                             <form:input path="userName" id="form-username" cssClass="form-control" title="User name"/>

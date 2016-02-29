@@ -87,6 +87,8 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             return true;
         }
 
+        String contextPath = request.getContextPath();
+
         // If no user logged in, Redirect to Auth page
         if (sessionUser == null || !sessionUser.isAuthorized()) {
             String redirectUri = getAuthPageUrl();
@@ -102,7 +104,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
                     break;
             }
 
-            response.sendRedirect(redirectUri);
+            response.sendRedirect(contextPath + redirectUri);
             return false;
         }
 
@@ -114,7 +116,7 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
 
         // Name policy is priority
         if (deniedUserNames.length > 0 && isInUserNames(sessionUser, deniedUserNames)) {
-            response.sendRedirect(getAuthDeniedUrl());
+            response.sendRedirect(contextPath + getAuthDeniedUrl());
             return false;
         }
 
@@ -128,13 +130,13 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         }
 
         if (deniedUserRoles.length > 0 && isInUserRoles(sessionUser, deniedUserRoles)) {
-            response.sendRedirect(getAuthDeniedUrl());
+            response.sendRedirect(contextPath + getAuthDeniedUrl());
             return false;
         }
 
         // Not in white-list
         if (userNames.length > 0 || userRoles.length > 0) {
-            response.sendRedirect(getAuthDeniedUrl());
+            response.sendRedirect(contextPath + getAuthDeniedUrl());
             return false;
         }
 

@@ -165,7 +165,7 @@
                         if (searchValue == "") {
                             return false;
                         }
-                        window.location = "/search?q=" + encodeURIComponent(searchValue);
+                        window.location = "<spring:url value="/search" />?q=" + encodeURIComponent(searchValue);
                         return true;
                     };
                     search.bind('focus blur change', function () {
@@ -259,7 +259,7 @@
             if (searchValue == "") {
                 return false;
             }
-            window.location = "/search?q=" + encodeURIComponent(searchValue);
+            window.location = "<spring:url value="/search" />?q=" + encodeURIComponent(searchValue);
             return true;
         };
         search.bind('focus blur change', function () {
