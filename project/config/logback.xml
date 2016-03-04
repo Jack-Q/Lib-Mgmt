@@ -14,7 +14,7 @@
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
 
-        <File>c:\server-log.log</File>
+        <File>server-log.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <FileNamePattern>server-log.log.%i.bak</FileNamePattern>
             <MinIndex>1</MinIndex>

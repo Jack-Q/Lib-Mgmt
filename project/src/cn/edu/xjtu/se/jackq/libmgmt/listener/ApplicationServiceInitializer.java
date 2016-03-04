@@ -31,7 +31,7 @@ public class ApplicationServiceInitializer implements ApplicationListener<Contex
 
         // Add Default Librarian Account
         if (null == userService.getUser(getLibrarianAccountUserName())) {
-            User librarian = userService.addUser(getLibrarianAccountUserName(), getAdminAccountPassword(), "Librarian");
+            User librarian = userService.addUser(getLibrarianAccountUserName(), getLibrarianAccountPassword(), "Librarian");
             userService.setRole(librarian.getId(), UserRole.LIBRARIAN);
         }
     }

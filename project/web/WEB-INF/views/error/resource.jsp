@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<layout:basic pageTitle="Authentication Denied">
+<layout:basic pageTitle="Resource Access Denied">
     <div class="container">
         <h1>
             Resource Access Denied

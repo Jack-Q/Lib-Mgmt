@@ -11,7 +11,7 @@
     <jsp:body>
         <div class="container page-return">
             <h1>
-                Lend books
+                Return books
             </h1>
             <a href="<spring:url value="/" />"> &#8810; Return to Index page </a>
                 <%--@elvariable id="indexMessageId" type="java.lang.String"--%>

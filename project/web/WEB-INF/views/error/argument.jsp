@@ -4,7 +4,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<layout:basic pageTitle="Authentication Denied">
+<layout:basic pageTitle="Request Argument Error">
     <div class="container">
         <h1>
             Error occurred during parsing request argument
