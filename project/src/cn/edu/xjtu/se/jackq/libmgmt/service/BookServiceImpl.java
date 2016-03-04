@@ -4,6 +4,7 @@ package cn.edu.xjtu.se.jackq.libmgmt.service;
 import cn.edu.xjtu.se.jackq.libmgmt.dao.BookDao;
 import cn.edu.xjtu.se.jackq.libmgmt.dao.BookLoanDao;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.*;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -261,6 +262,12 @@ public class BookServiceImpl implements BookService {
 
         bookDao.updateBookCopy(bookCopy);
         return true;
+    }
+
+    @Override
+    public PageList<Book> listBookByPage(int page) {
+        int itemsPerPage = 15;
+        return bookDao.listBook(itemsPerPage, page);
     }
 
     @Override

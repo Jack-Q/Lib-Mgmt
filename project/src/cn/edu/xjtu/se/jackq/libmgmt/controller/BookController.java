@@ -8,6 +8,7 @@ import cn.edu.xjtu.se.jackq.libmgmt.service.UserService;
 import cn.edu.xjtu.se.jackq.libmgmt.session.SessionUser;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookAdd;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.BookEdit;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.PageList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,8 +40,9 @@ public class BookController {
     @Auth(userRoles = {UserRole.ADMIN, UserRole.LIBRARIAN})
     @RequestMapping("manage/{page}")
     public String manage(@PathVariable(value = "page") int page, Model model) {
-        List<Book> bookList = bookService.listBook();
-        model.addAttribute("BookList", bookList);
+
+        PageList<Book> bookPageList = bookService.listBookByPage(page);
+        model.addAttribute("BookPageList", bookPageList);
         return "book/manage";
     }
 

@@ -15,7 +15,6 @@ public interface BookLoanDao {
 
     List<BookLoan> listLoanByUser(User user, int listPolicy);
 
-
     List<Book> searchBookToLend(User user, String query, boolean byCode, boolean byName, boolean byAuthor);
 
     BookLoan getLoan(int loanId);

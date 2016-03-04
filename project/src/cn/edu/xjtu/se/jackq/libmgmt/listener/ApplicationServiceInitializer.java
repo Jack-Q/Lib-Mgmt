@@ -459,6 +459,7 @@ public class ApplicationServiceInitializer implements ApplicationListener<Contex
             bookService.addBookAndCopy("The Early Modern Englishwoman A Facsimile Library of Essential Works \\Reply of the Most Illustrious Cardinal of Peron\\\" by Elizabeth Cary", "17735643", "\\\"Rule of the Most Blessed Father Saint Benedict\\\" by Alexia Grey; \\\"Reply of the Most Illustrious Cardinal of Peron\\\" by Elizabeth Cary", "9781840142266", "", null, "", 3);
             bookService.addBookAndCopy("Deutsche Reichstagsakten Unter Kaiser Friedrich III. Achte Abteilung, Teil 1", "17951159", "Most-Kolbe, Ingeborg", "9783525352021", "", null, "", 3);
             bookService.addBookAndCopy("Translation from the Original Greek of a Pamphlet Entitled", "16877728", "and of the Most Holy Patriarchs", "9781278896953", "", null, "", 3);
+            // Add books data
         } catch (Exception ignore) {
         }
     }

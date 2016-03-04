@@ -3,6 +3,7 @@ package cn.edu.xjtu.se.jackq.libmgmt.dao;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookComment;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.PageList;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -109,6 +110,22 @@ public class BookDaoImpl implements BookDao {
     public BookCopy getBookCopy(int id) {
         Session currentSession = sessionFactory.getCurrentSession();
         return (BookCopy) currentSession.get(BookCopy.class, id);
+    }
+
+    @Override
+    public PageList<Book> listBook(int itemsPerPage, int page) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query query = currentSession.createQuery("from Book");
+        query.setMaxResults(itemsPerPage);
+        query.setFirstResult((page - 1) * itemsPerPage);
+        int uniqueResult = Integer.parseInt(currentSession.createQuery("select count(id) from Book ").list().get(0).toString());
+        System.out.println(uniqueResult);
+
+        PageList<Book> bookList = new PageList<>(query.list());
+        bookList.setCurrentPage(page);
+        bookList.setTotalPage((itemsPerPage - 1 + uniqueResult) / itemsPerPage);
+        bookList.setItemsPerPage(itemsPerPage);
+        return bookList;
     }
 
     @Override

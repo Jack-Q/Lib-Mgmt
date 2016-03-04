@@ -169,5 +169,4 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         return url;
     }
 
-
 }

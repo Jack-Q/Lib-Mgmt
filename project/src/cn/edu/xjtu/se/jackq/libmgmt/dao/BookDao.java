@@ -3,6 +3,7 @@ package cn.edu.xjtu.se.jackq.libmgmt.dao;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookComment;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.PageList;
 
 import java.util.List;
 
@@ -31,6 +32,8 @@ public interface BookDao {
 
     boolean isBookCodeAvailable(String bookCode);
 
-
     BookCopy getBookCopy(int id);
+
+    PageList<Book> listBook(int itemsPerPage, int offset);
+
 }

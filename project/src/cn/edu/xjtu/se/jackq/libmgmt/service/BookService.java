@@ -5,6 +5,7 @@ import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.BookLoan;
 import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
+import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.PageList;
 
 import java.util.List;
 
@@ -54,6 +55,7 @@ public interface BookService {
 
     boolean isBookCodeAvailable(String bookCode);
 
-
     boolean deleteBookCopy(BookCopy bookCopy);
+
+    PageList<Book> listBookByPage(int page);
 }

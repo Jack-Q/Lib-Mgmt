@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <c:choose>
-                        <c:when test="${BookList.size() == 0}">
+                        <c:when test="${BookPageList.size == 0}">
                             <%--Empty List--%>
                             No Books found ~
                         </c:when>
@@ -51,7 +51,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:forEach items="${BookList}" var="Book">
+                                    <c:forEach items="${BookPageList.items}" var="Book">
                                         <tr>
                                             <td><c:out value="${Book.id}"/></td>
                                             <td><c:out value="${Book.bookName}"/></td>
@@ -89,8 +89,29 @@
                                     </c:forEach>
                                     </tbody>
                                 </table>
-                            </div>
+                                <c:if test="${BookPageList.totalPage > 1}">
 
+
+                                    <div class="text-center">
+                                        <ul class="pagination pagination-lg">
+                                            <li <c:if test="${BookPageList.currentPage == 1}">class="disabled"</c:if>><a
+                                                    href="<spring:url value="/book/manage/1" />">« </a></li>
+                                            <c:forEach var="page" begin="1" end="${BookPageList.totalPage}" step="1">
+
+                                                <li
+                                                        <c:if test="${page == BookPageList.currentPage}">class="active" </c:if>>
+                                                    <a href="<spring:url value="/book/manage/${page}"/> "><c:out
+                                                            value="${page}"/></a>
+                                                </li>
+                                            </c:forEach>
+                                            <li
+                                                    <c:if test="${BookPageList.currentPage == BookPageList.totalPage}">class="disabled"</c:if>>
+                                                <a href="<spring:url value="/book/manage/${BookPageList.totalPage}" />">»</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </c:if>
+                            </div>
                         </c:otherwise>
 
                     </c:choose>
