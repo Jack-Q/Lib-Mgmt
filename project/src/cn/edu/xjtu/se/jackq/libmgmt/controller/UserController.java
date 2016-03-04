@@ -110,6 +110,17 @@ public class UserController {
         return "user/register";
     }
 
+    /**
+     * Register new user
+     *
+     * @param userRegister       View model for register page
+     * @param returnToUrlPara    Base64 encoded URL where user will be redirected to after register
+     * @param model              Spring Model object to pass attributes to JSP
+     * @param session            Current HTTP session
+     * @param request            Current HTTP request
+     * @param redirectAttributes Spring RedirectAttributes object used to pass variable to another page
+     * @return JSP view or redirect directive
+     */
     @Auth(allowAnonymous = true)
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public String doRegister(@ModelAttribute("UserRegister") UserRegister userRegister,
@@ -118,7 +129,8 @@ public class UserController {
                              HttpSession session,
                              HttpServletRequest request,
                              RedirectAttributes redirectAttributes) {
-
+        // Decode Base64 encoded redirect URL and check whether the URL is pointing to
+        // a page in this site
         String returnToUrl = decodeRedirectUrlPara(returnToUrlPara, request.getContextPath());
 
         // Validate Data
@@ -157,22 +169,21 @@ public class UserController {
         user.setDateOfBirth(userRegister.getDateOfBirth());
         userService.updateUser(user);
 
-        // Login user
+        // Get session data
         SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
         if (sessionUser == null) {
             sessionUser = new SessionUser();
             session.setAttribute("Auth", sessionUser);
         }
 
-
+        // Login user
         boolean loginResult = userService.doLogin(username, password, sessionUser);
         if (!loginResult) {
-
             model.addAttribute("errorMessageId", "user.register.error.create");
             return "user/register";
         }
 
-        // Redirect to index
+        // Redirect to index page or a page set by ReturnUrl HTTP parameter
         redirectAttributes.addFlashAttribute("indexMessageId", "user.register.success");
         return "redirect:" + returnToUrl;
     }

@@ -71,10 +71,6 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
             Auth controllerAnnotation = (Auth) targetController.getDeclaredAnnotation(Auth.class);
 
             if (methodAnnotation != null || controllerAnnotation != null) {
-                System.out.println("=====================================================================");
-                System.out.println("Interceptor: Auth Check: " + getRedirectUrl(request));
-                System.out.println("=====================================================================");
-
                 return checkAuth(sessionUser, methodAnnotation != null ? methodAnnotation : controllerAnnotation, request, response);
             }
         }
