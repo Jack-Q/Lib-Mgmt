@@ -51,6 +51,8 @@ public interface BookService {
 
     void commentBook(Book book, User user, String content);
 
+    void commentBook(Book book, User user, String content, boolean isAnonymous);
+
     boolean rateComment(int commentId, int rateChange);
 
     boolean isBookCodeAvailable(String bookCode);

@@ -32,6 +32,9 @@ public class BookComment implements Serializable {
     @Column(name = "Stars")
     private int stars = 0;
 
+    @Column(name = "Anonymous")
+    private boolean anonymous = false;
+
     public int getId() {
         return id;
     }
@@ -78,5 +81,13 @@ public class BookComment implements Serializable {
 
     public void setStars(int stars) {
         this.stars = stars;
+    }
+
+    public boolean isAnonymous() {
+        return anonymous;
+    }
+
+    public void setAnonymous(boolean anonymous) {
+        this.anonymous = anonymous;
     }
 }

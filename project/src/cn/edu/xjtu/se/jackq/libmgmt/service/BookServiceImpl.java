@@ -232,11 +232,17 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void commentBook(Book book, User user, String content) {
+        commentBook(book, user, content, false);
+    }
+
+    @Override
+    public void commentBook(Book book, User user, String content, boolean isAnonymous) {
 
         BookComment bookComment = new BookComment();
         bookComment.setBook(book);
         bookComment.setUser(user);
         bookComment.setContent(content);
+        bookComment.setAnonymous(isAnonymous);
         bookComment.setDateOfComment(new Date());
         bookDao.addComment(bookComment);
     }

@@ -32,7 +32,13 @@
                             <c:out value="${Comment.content}"/>
                         </div>
                         <div class="comment-meta">
-                            By <c:out value="${Comment.user.name}"/> @ <fmt:formatDate
+                            <c:if test="${!Comment.anonymous}">
+                                By <c:out value="${Comment.user.name}"/>
+                            </c:if>
+                            <c:if test="${Comment.anonymous && Comment.user.id == sessionScope.Auth.id}">
+                                <span>Your Anonymous Comment</span>
+                            </c:if>
+                            @ <fmt:formatDate
                                 value="${Comment.dateOfComment}" pattern="yyyy-MM-dd hh:mm:ss"/>
                         </div>
                     </div>
@@ -56,9 +62,20 @@
                             <textarea name="content" placeholder="Say something?" class="form-control"></textarea>
                         </label>
                     </div>
-                    <input class="btn btn-raised btn-primary" type="submit" value="Submit">
-                    <input class="btn btn-raised btn-default" type="reset" value="Clear">
-                    <span class="text-info">(You are logged in as <c:out value="${sessionScope.Auth.userName}"/>)</span>
+                    <div class="togglebutton">
+                        <label>
+                            <input type="checkbox" name="anonymous"> Anonymous Comment
+                        </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input class="btn btn-raised btn-primary" type="submit" value="Submit">
+                            <input class="btn btn-raised btn-default" type="reset" value="Clear">
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="text-info">(You are logged in as <c:out value="${sessionScope.Auth.userName}"/>)</span>
+                        </div>
+                    </div>
                 </form>
             </div>
         </jsp:attribute>

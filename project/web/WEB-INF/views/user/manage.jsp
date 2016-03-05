@@ -42,7 +42,7 @@
                         <c:otherwise>
                             <%--Nonempty List--%>
                             <%--Extra bottom padding to contain the drop down menu--%>
-                            <div class="table-responsive" style="padding-bottom: 100px;">
+                            <div class="table-responsive" style="padding-bottom: 150px;">
                                 <table class="table  table-hover">
                                     <thead>
                                     <tr>

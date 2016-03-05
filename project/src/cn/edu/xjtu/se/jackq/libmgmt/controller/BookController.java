@@ -77,13 +77,14 @@ public class BookController {
     @RequestMapping(value = "comment/{BookId}", method = RequestMethod.POST)
     public String doComment(@PathVariable("BookId") int bookId,
                             @RequestParam("content") String content,
+                            @RequestParam(value = "anonymous", required = false, defaultValue = "false") boolean isAnonymous,
                             HttpSession session,
                             RedirectAttributes redirectAttributes) {
         SessionUser sessionUser = (SessionUser) session.getAttribute("Auth");
         User user = userService.getUser(sessionUser.getId());
         Book book = bookService.getBook(bookId);
         if (user != null && book != null) {
-            bookService.commentBook(book, user, content);
+            bookService.commentBook(book, user, content, isAnonymous);
             redirectAttributes.addFlashAttribute("indexMessageId", "book.comment.success");
         } else {
             redirectAttributes.addFlashAttribute("indexMessageId", "book.comment.failed");
