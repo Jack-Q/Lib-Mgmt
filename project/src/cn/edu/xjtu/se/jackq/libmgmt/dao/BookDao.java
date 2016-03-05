@@ -36,4 +36,5 @@ public interface BookDao {
 
     PageList<Book> listBook(int itemsPerPage, int offset);
 
+    boolean deleteComment(int commentId);
 }

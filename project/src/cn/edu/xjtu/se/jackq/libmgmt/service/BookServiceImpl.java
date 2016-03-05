@@ -277,6 +277,16 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public BookComment getBookComment(int commentId) {
+        return bookDao.getComment(commentId);
+    }
+
+    @Override
+    public boolean deleteComment(int commentId) {
+        return bookDao.deleteComment(commentId);
+    }
+
+    @Override
     public boolean isBookCodeAvailable(String bookCode) {
         return bookDao.isBookCodeAvailable(bookCode);
     }

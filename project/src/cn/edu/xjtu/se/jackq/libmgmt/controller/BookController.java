@@ -110,6 +110,26 @@ public class BookController {
                 "{\"success\":true}" : "{\"success\":false}";
     }
 
+
+    @Auth
+    @ResponseBody
+    @RequestMapping(value = "deleteComment", method = RequestMethod.POST, produces = "application/json; charset=utf-8")
+    public String doDeleteComment(@RequestParam("id") int commentId, HttpSession httpSession) {
+        boolean result = true;
+        SessionUser sessionUser = (SessionUser) httpSession.getAttribute("Auth");
+        BookComment bookComment = bookService.getBookComment(commentId);
+        if (bookComment == null) {
+            result = false;
+        }
+        if (result && (sessionUser.isAdmin() || sessionUser.isLibrarian() || sessionUser.getId() == bookComment.getUser().getId())) {
+            result = bookService.deleteComment(commentId);
+        } else {
+            result = false;
+        }
+        return result ?
+                "{\"success\":true}" : "{\"success\":false}";
+    }
+
     @RequestMapping("detail/{id}")
     public String detail(@PathVariable("id") int id, Model model) {
         Book book = bookService.getBook(id);

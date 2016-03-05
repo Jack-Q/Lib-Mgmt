@@ -129,6 +129,13 @@ public class BookDaoImpl implements BookDao {
     }
 
     @Override
+    public boolean deleteComment(int commentId) {
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.delete(getComment(commentId));
+        return true;
+    }
+
+    @Override
     public boolean isBookCodeAvailable(String bookCode) {
 
         Session currentSession = sessionFactory.getCurrentSession();

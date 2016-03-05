@@ -1,10 +1,7 @@
 package cn.edu.xjtu.se.jackq.libmgmt.service;
 
 
-import cn.edu.xjtu.se.jackq.libmgmt.entity.Book;
-import cn.edu.xjtu.se.jackq.libmgmt.entity.BookCopy;
-import cn.edu.xjtu.se.jackq.libmgmt.entity.BookLoan;
-import cn.edu.xjtu.se.jackq.libmgmt.entity.User;
+import cn.edu.xjtu.se.jackq.libmgmt.entity.*;
 import cn.edu.xjtu.se.jackq.libmgmt.viewmodel.PageList;
 
 import java.util.List;
@@ -60,4 +57,9 @@ public interface BookService {
     boolean deleteBookCopy(BookCopy bookCopy);
 
     PageList<Book> listBookByPage(int page);
+
+    BookComment getBookComment(int commentId);
+
+
+    boolean deleteComment(int commentId);
 }
