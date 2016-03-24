@@ -58,13 +58,13 @@
                     Please let him return some books first.
                 </div>
                 <div class="lend-action row">
-                    <div class="col-sm-4 col-lg-3">
+                    <div class="col-xs-6 col-sm-4 col-lg-3">
                         <button data-toggle="tooltip" id="book-lend-toggle"
                                 class="btn btn-raised btn-lg btn-primary"
                                 title="search for a book and lend it to current user">Lend a book
                         </button>
                     </div>
-                    <div class="col-sm-4 col-lg-3">
+                    <div class="col-xs-6 col-sm-4 col-lg-3">
                         <a class="btn btn-raised btn-primary"
                            href="<spring:url value="/loan/return/${CurrentUser.id}"/> ">Return books</a>
                     </div>
@@ -181,7 +181,12 @@
                         return;
                     }
 
-                    $('.select-book').toggleClass('on');
+                    var searchBox = $('.select-book');
+                    searchBox.toggleClass('on');
+                    $('html,body').animate({
+                        "scrollTop": "+=200px"
+                    }, 400);
+
                     candidates.empty();
                     // Call change to trigger Material Float style detector
                     bookSearch.val("").change();

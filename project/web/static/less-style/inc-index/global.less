@@ -82,7 +82,27 @@ body, html {
 
 body {
   padding-top: 50px;
+  @media only screen and (min-width: 1200px) {
+    padding-top: 60px;
+  }
 }
+
+.table-hover tr {
+  transition: all ease-in-out 200ms;
+}
+
+.navbar-collapse.in, .navbar-collapse.collapsing {
+  @media only screen and (max-width: 767px) {
+    background-color: #3f51b5;
+
+  }
+
+  @media only screen and (min-width: 768px) {
+    max-height: 50px;
+    height: 50px;
+  }
+}
+
 
 legend, h4 {
 
@@ -109,7 +129,7 @@ legend, h4 {
 // Global Styles
 
 .main-header {
-  height: 50px;
+  // height: 50px;
   ul.nav > li > .btn {
     margin: 0 10px;
     padding: 0 20px;

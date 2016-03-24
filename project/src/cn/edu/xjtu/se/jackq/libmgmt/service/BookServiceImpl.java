@@ -209,11 +209,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public boolean extendBookLoan(int loanId, int loanPeriod) {
+    public BookLoan extendBookLoan(int loanId, int loanPeriod) {
 
         BookLoan bookLoan = bookLoanDao.getLoan(loanId);
         if (bookLoan == null || bookLoan.isFinished()) {
-            return false;
+            return null;
         }
 
         Calendar instance = Calendar.getInstance();
@@ -227,7 +227,7 @@ public class BookServiceImpl implements BookService {
 
         bookDao.updateBookCopy(bookCopy);
         bookLoanDao.updateLoan(bookLoan);
-        return true;
+        return bookLoan;
     }
 
     @Override

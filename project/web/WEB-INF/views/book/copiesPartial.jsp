@@ -20,7 +20,27 @@
                     <c:forEach var="BookCopy" items="${BookCopies}">
                         <tr>
                             <td>${BookCopy.id}</td>
-                            <td><c:out value="${BookCopy.status}"/></td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${BookCopy.status.toString() == 'AWAY'}">
+                                        <span style="display:inline-block;min-width: 120px;"
+                                              class="label label-inverse"> Away</span>
+                                    </c:when>
+                                    <c:when test="${BookCopy.status.toString() == 'ON_SHELF'}">
+                                        <span style="display:inline-block; min-width: 120px;"
+                                              class="label label-success">On Shelf</span>
+                                    </c:when>
+                                    <c:when test="${BookCopy.status.toString() == 'UNAVAILABLE'}">
+                                        <span style="display:inline-block;min-width: 120px;"
+                                              class="label"> Unavailable</span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span style="display:inline-block;min-width: 120px;" class="label">
+                                            <c:out value="${BookCopy.status}"/>
+                                        </span>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                             <td><fmt:formatDate value="${BookCopy.dateOfRecord}" pattern="yyyy-MM-dd"/></td>
                             <td><c:out value="${BookCopy.note}"/></td>
                             <td><c:if

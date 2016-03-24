@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -106,7 +107,14 @@ public class LoanController {
                 result = bookService.returnBookBroken(loanId);
                 break;
             case "extend":
-                result = bookService.extendBookLoan(loanId, LOAN_PERIOD);
+                BookLoan newBookLoan = bookService.extendBookLoan(loanId, LOAN_PERIOD);
+                if (newBookLoan != null) {
+                    result = true;
+                    response = "{\"success\": true, \"deadline\": \"" + new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(newBookLoan.getDeadlineOfReturning())
+                            + "\", \"period\": " + newBookLoan.getLoanPeriod() + "}";
+                } else {
+                    result = false;
+                }
                 break;
             case "lost":
                 result = bookService.returnBookLost(loanId);
