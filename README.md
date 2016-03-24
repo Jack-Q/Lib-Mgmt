@@ -1,49 +1,35 @@
-[Lib Mgmt]
+[Lib Mgmt] 
 
 Library Management System in Java
 =================================
+> By Thinker & Performer
 
 This repo contains the source code and documents related to
 project `Lib Mgmt`.
 
-Timetable / Schedule
-====================
- * [Feb 2]: Preparations
-   1. Set-up environment
-     * IntelliJ IDEA 15.0.3
-     * Git & GitHub / Git@OSC
-     * JDK, Tomcat, MySQL(server, workbench[opt], documents[opt])
-     * Chrome/IE/Firefox
-     * ...
-   2. Make detailed plan for this project
-     * What framework/library to use/implement?
-     * When to finish them?
-     * Who is responsible to them?
-   3. Decide a fixed time to summarize the progress of each day
-   4. Start coding
+Intro
+=====
+Lib-mgmt (short for *Library Management*) is a Java Web application wich provide a simple solution for small scale library to manage thier books and loan transactions. 
 
- * [Feb 3]: ...
+Basically, it this project consists three components, the user and role management system, book management system and loan management. The user and role management system provide a layered role based user management interface. Users in this system will be divided into 4 types, the admin, librarians, students and guests. The book management system provides a interface to input new book entry, manage its copies, comment the book (also rate the comment), update and search the content. The third part, loan managemnt system is tightly integrated into the book management system, provide interface for librarian to lend book to student and accept book from student in different scenarios including book lost, broken, due and extending loan period. 
 
- * [Feb 4]: Set up workspace/framework
-    * Spring Framework (IoC)
-    * Spring MVC
-    * Hibernate ORM
-    * Slf4j / Logback
+Some popular frameworks and libraries are used in this project including Spring Framework MVC and Hibernate.
+
+How to run
+==========
+ In order yo compile and run this project locally, genrally 
+speaking, you need following steps:
+ 
+ 1. Clone this project
+ 2. Update database connection configuration
+ 3. compile Java, Less code 
+ 4. package libs, class files, static contents and configs
+ 5. deploy to application container
+
+Prerequisite
+============
+ * JDK 1.8 + 
+ * MySQL 5.x
+ * Tomcat 8.0 + / Jetty 8 +
 
 
- * [Feb 5]:
-    * User Register/Login (Server side)
-    * Integrate Twitter Bootstrap
-    * Implement JSP layout page (via tag)
-
- * [Feb 6]: (Postponed)
-    * Book management (CRUD)
-    * Renting management
-    * Search / Query
-
- * [Feb 7]: (Postponed)
-    * Polish UI
-    * Reading Feedback / Comment System
-    * Book recommendation
-
-* [TODO]
