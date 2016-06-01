@@ -118,7 +118,7 @@
         $.material.init();
         <c:if test="${ResultList.size() > 0}">
 
-        var elem = $.jInvertScroll(['.result-content.scroll']);
+        var elem = $.jInvertScroll(['.result-content']);
         $(window).resize(function () {
             elem.reinitialize();
         });
